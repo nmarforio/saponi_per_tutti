@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Calendula",
+    "description": "La calendula è un sapone delicato e senza profumazioni pensato per la pelle dei più piccoli e per le pelli sensibili. Una ricetta con olii e burri ( burro di karité) nutrienti  e realizzato con meno soda per aumentare la delicatezza. La calendula invece è un fiore antinfiammatorio, cicatrizzante e grazie al mix con il burro di karité riequilibra l’idratazione della cute. Lasciando la pelle morbida.",
+    "price": "CHF 7.00",
+    "recipes": "Calendula, etc..."
+  },
+  {
+    "name": "Lavanda",
+    "description": "Lavanda, conosciuta come il grande “calmante” della psiche e dell’anima, come profumo, come prodotto per la cura della pelle, la pulizia degli ambienti e repellente per insetti.",
+    "price": "CHF 8.00",
+    "recipes": "Lavanda, etc..."
+  },
+  {
+    "name": "Mosaico Black or White",
+    "description": "Mosaico black o white, Sapone realizzato con olio extravergine d’oliva, un prodotto compatto e durevole che produce poca schiuma, morbido e cremoso. Adatto a tutti i tipi di pelle. Leggera profumazione agli agrumi. Coloranti minerali e carbone vegetale",
+    "price": "CHF 8.00",
+    "recipes": "Glicerina, etc..."
+  },
+  {
+    "name": "Canapa SCRUB",
+    "description": "Prodotto con olio d’oliva, cocco sesamo e canapa, con semi di canapa ricco di omega 3, e spago da poter attaccare in doccia. Profumazione di pino, timo e lemongras. Due grandezze disponibili.",
+    "price": "CHF 9.00/ 5.00",
+    "recipes": "Canapa, etc..."
+  },
+  {
+    "name": "Sapone Castiglia",
+    "description": "Per gli amanti delle cose semplici, una ricetta semplice e ANTICA. Realizzata mediante la saponificazione di solo olio extravergine di oliva, permette di ottenere un prodotto compatto e durevole che produce poca schiuma, morbida e cremosa.",
+    "price": "CHF 8.00",
+    "recipes": "Castiglia, etc.."
+  },
+  {
+    "name": "Sacchetto salva sapone (senza sapone)",
+    "description": "Descrizione: I sacchi di sapone aiutano a conservare il sapone e ad esfoliare la pelle! un ottimo regalo per la famiglia e gli amici.",
+    "method": "Come si usa: basta mettere il sapone all’interno della borsa, la dimensione per contenere la maggior parte dei saponi. Come prolungare la durata del sapone: dopo l’uso, puoi appendere il sapone con il sacchetto per asciugare rapidamente.",
+    "recipes": "Materiale: lino",
+    "price": "CHF 4.00"
+  },
+  {
+    "name": "Salva sapone in cotone",
+    "description": "Sacchetto in cotone organico, fibra vegetale ricavata dalla pianta di cotone. Ottimo per detergere viso e corpo con la propria saponetta.",
+    "price": "CHF 5.00"
+  },
+  {
+    "name": "Confezione Regalo",
+    "description": "Un idea regalo per qualsiasi occasione, contenuto: 2 saponette (di vostra scelta) di circa 100 gr l’una. sacchetto salva sapone",
+    "price": "CHF 20.00"
+  },
+  {
+    "name": "Confezione Regalo in scatola",
+    "description": "Un idea regalo per qualsiasi occasione, contenuto: 3 saponette (di vostra scelta) di circa 100 gr l’una.",
+    "price": "CHF 25.00"
+  }
+]
