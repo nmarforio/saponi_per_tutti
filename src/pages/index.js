@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("/api");
+      const data = await fetch("/api/soaps/");
       const json = await data.json();
 
       setSoapList(json);
@@ -31,7 +31,15 @@ export default function Home() {
       </Head>
       <main>
         {soapList.map((soap) => {
-          return <Soap key={soap._id} name={soap.name} price={soap.price} />;
+          return (
+            <Soap
+              key={soap._id}
+              id={soap._id}
+              name={soap.name}
+              price={soap.price}
+              image={soap.image}
+            />
+          );
         })}
       </main>
     </>
