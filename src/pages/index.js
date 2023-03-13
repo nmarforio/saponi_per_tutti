@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import Soap from "@/components/Soap";
+import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NavBar />
       <main>
         {soapList.map((soap) => {
           return (
@@ -37,7 +39,7 @@ export default function Home() {
               id={soap._id}
               name={soap.name}
               price={soap.price}
-              image={soap.image}
+              image={soap.pic}
             />
           );
         })}
