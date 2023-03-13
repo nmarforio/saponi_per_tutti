@@ -1,6 +1,7 @@
 import Soap from "@/components/Soap";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState([]);
@@ -24,6 +25,12 @@ export default function Soapdetail() {
   return (
     <>
       <h1>{detialSoap.name}</h1>
+      <Image
+        alt={detialSoap.name}
+        src={detialSoap.pic}
+        width={200}
+        height={200}
+      />
       <p>{detialSoap.description}</p>
       <p>{detialSoap.recipes}</p>
       <p>{detialSoap.price}</p>
