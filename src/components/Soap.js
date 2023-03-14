@@ -5,10 +5,10 @@ export default function Soap({ name, price, id, image }) {
   return (
     <>
       <div>
+        <h1>{name}</h1>
         <Link href={`/${id}`}>
-          <h1>{name}</h1>
+          <Image alt={name} src={image} width={200} height={200} />
         </Link>
-        <Image alt={name} src={image} width={200} height={200} />
         <h3>{price}</h3>
       </div>
     </>
