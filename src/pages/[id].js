@@ -2,6 +2,7 @@ import Soap from "@/components/Soap";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Input from "@/components/Input";
 
 export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState([]);
@@ -31,6 +32,7 @@ export default function Soapdetail() {
         width={200}
         height={200}
       />
+      <Input />
       <p>{detialSoap.price}</p>
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>
