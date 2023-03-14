@@ -7,19 +7,14 @@ export default function NavBar() {
       <div>
         <h1>Saponi per tutti</h1>
         <Link href={`/basket`}>
-          <p>Basket</p>
+          <Image src="./basket.svg" alt="basket" width={30} height={30} />
         </Link>
         <Link href={`/about`}>
           <p>About</p>
         </Link>
-        {/* <Image
-          src={`https://icons8.com/icon/14736/customer`}
-          alt={"profile"}
-          width={50}
-          height={50}
-        >
-          profiel pic
-        </Image> */}
+        <Link href={"/profile"}>
+          <Image src="/profile2.png" alt="profile" width={30} height={30} />
+        </Link>
       </div>
     </>
   );
