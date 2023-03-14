@@ -31,9 +31,10 @@ export default function Soapdetail() {
         width={200}
         height={200}
       />
-      <p>{detialSoap.description}</p>
-      <p>{detialSoap.recipes}</p>
       <p>{detialSoap.price}</p>
+      <p>{detialSoap.description}</p>
+      <h4>Sostanze</h4>
+      <p>{detialSoap.recipes}</p>
     </>
   );
 }

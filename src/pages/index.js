@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import Soap from "@/components/Soap";
 import NavBar from "@/components/NavBar";
+import Title from "@/components/Title";
 
 const inter = Inter({ subsets: ["latin"] });
 
