@@ -9,13 +9,13 @@ export default function Profilepage() {
 
   return (
     <>
-      <LoginButton session={session} />
-      <Link href={"/"}>Home</Link>
       {session && (
         <>
           <User session={session} />
         </>
       )}
+      <LoginButton session={session} />
+      <Link href={"/"}>Home</Link>
     </>
   );
 }

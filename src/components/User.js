@@ -18,7 +18,6 @@ export default function User({ session }) {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
 
-    console.log("USEEEEERRRR", userData);
     const response = await fetch("api/soaps/profile", {
       method: "POST",
       body: JSON.stringify(userData),
