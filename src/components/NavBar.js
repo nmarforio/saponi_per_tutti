@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import { useSession } from "next-auth/react";
 
 export default function NavBar() {
+  const { data: session } = useSession();
   return (
     <>
       <Div>
@@ -13,7 +15,12 @@ export default function NavBar() {
           <Image src="/soap.png" alt="about" width={30} height={30} />
         </Link>
         <Link href={"/profile"}>
-          <Image src="/profile2.png" alt="profile" width={30} height={30} />
+          <img
+            src={session ? session.user.image : "/profile2.png"}
+            alt="profile"
+            width={30}
+            height={30}
+          />
         </Link>
       </Div>
     </>

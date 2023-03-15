@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Input from "@/components/Input";
+import Link from "next/link";
 
 export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState([]);
@@ -37,6 +38,7 @@ export default function Soapdetail() {
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>
       <p>{detialSoap.recipes}</p>
+      <Link href={"/"}>Home</Link>
     </>
   );
 }
