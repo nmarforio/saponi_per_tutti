@@ -2,10 +2,10 @@ import Soap from "@/components/Soap";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Input from "@/components/Input";
 import Link from "next/link";
+import Quantity from "@/components/Quantity";
 
-export default function Soapdetail() {
+export default function Soapdetail({ onSubmit }) {
   const [detialSoap, setDetailSoap] = useState([]);
 
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function Soapdetail() {
         width={200}
         height={200}
       />
-      <Input />
+      <Quantity onSumbit={onSubmit} />
       <p>{detialSoap.price}</p>
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>
