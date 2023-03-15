@@ -33,7 +33,7 @@ export default function Soapdetail({ onSubmit }) {
         width={200}
         height={200}
       />
-      <Quantity onSumbit={onSubmit} />
+      <Quantity />
       <p>{detialSoap.price}</p>
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>

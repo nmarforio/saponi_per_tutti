@@ -9,12 +9,7 @@ export default function NavBar({ onSubmit, count }) {
     <>
       <Div>
         <Link href={`/basket`}>
-          <Image
-            src={onSubmit ? count : "./basket.svg"}
-            alt="basket"
-            width={30}
-            height={30}
-          />
+          <Image src="./basket.svg" alt="basket" width={30} height={30} />
         </Link>
         <Link href={`/about`}>
           <Image src="/soap.png" alt="about" width={30} height={30} />

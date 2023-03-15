@@ -4,8 +4,6 @@ export default function LoginButton({ session }) {
   if (session) {
     return (
       <>
-        <p>Benvenuto, {session.user.name}</p>
-        Signed in as {session.user.email} <br />
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );
