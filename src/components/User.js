@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
+import Router from "next/router";
 
 export default function User({ session, userData }) {
   const user = useSWR("/api/soap/profile");
@@ -32,7 +33,9 @@ export default function User({ session, userData }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    Router.push(`api/soaps/profile/${userData.id}`);
   }
+
   console.log("MYUSERRRRR", userData);
   if (session && !userData) {
     return (
