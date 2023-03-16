@@ -1,5 +1,6 @@
 import dbConnect from "@/db/connect";
 import User from "@/db/model/Profile";
+import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -16,12 +17,10 @@ export default async function handler(req, res) {
       res.status(400).json({ error: error.message });
     }
   }
+  const session = await getSession({ req });
 
-  // const a = req.param;
-  // console.dir(a);
-
-  // if (req.method === "GET") {
-  //   const soaps = await User.findOne({ email: user.email });
-  //   return res.status(200).json(soaps);
-  // }
+  if (req.method === "GET") {
+    const user = await User.findOne({ id: session.id });
+    return res.status(200).json(user);
+  }
 }

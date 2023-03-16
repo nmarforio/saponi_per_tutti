@@ -34,7 +34,7 @@ export default function User({ session, userData }) {
     }
   }
   console.log("MYUSERRRRR", userData);
-  if (session && userData.length === 0) {
+  if (session && !userData) {
     return (
       <>
         <form onSubmit={handelSubmit}>
@@ -63,5 +63,7 @@ export default function User({ session, userData }) {
         </form>
       </>
     );
+  } else {
+    return <p>{userData.name}</p>;
   }
 }

@@ -10,17 +10,17 @@ export default function Profilepage() {
 
   const [userFromDb, setUserFromDb] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await fetch("/api/soaps/profile");
-  //     const json = await data.json();
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("/api/soaps/profile");
+      const json = await data.json();
 
-  //     setUserFromDb(json);
-  //   };
-  //   fetchData().catch(console.error);
-  // }, []);
+      setUserFromDb(json);
+    };
+    fetchData().catch(console.error);
+  }, []);
 
-  console.log(session);
+  console.log("USERFROMDB", userFromDb);
 
   return (
     <>

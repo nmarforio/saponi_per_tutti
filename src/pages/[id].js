@@ -21,9 +21,6 @@ export default function Soapdetail() {
     fetchData().catch(console.error);
   }, []);
 
-  console.log(detialSoap);
-  //image is missing
-
   return (
     <>
       <h1>{detialSoap.name}</h1>
