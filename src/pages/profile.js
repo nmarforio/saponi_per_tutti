@@ -26,7 +26,7 @@ export default function Profilepage() {
     <>
       {session && (
         <>
-          <User userData={userFromDb} session={session} />
+          <User userDb={userFromDb} session={session} />
         </>
       )}
       <LoginButton session={session} />
