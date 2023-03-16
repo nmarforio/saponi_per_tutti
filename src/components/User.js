@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import Router from "next/router";
 
-export default function User({ session, userData }) {
+export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
 
   const [name, setName] = useState("");
@@ -33,11 +33,11 @@ export default function User({ session, userData }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    Router.push(`api/soaps/profile/${userData.id}`);
+    Router.push(`api/soaps/profile/${userDb.id}`);
   }
 
-  console.log("MYUSERRRRR", userData);
-  if (session && !userData) {
+  console.log("MYUSERRRRR", userDb);
+  if (session && !userDb) {
     return (
       <>
         <form onSubmit={handelSubmit}>
