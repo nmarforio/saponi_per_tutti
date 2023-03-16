@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Quantity from "@/components/Quantity";
 
-export default function Soapdetail({ onSubmit }) {
+export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState([]);
 
   const router = useRouter();
@@ -38,7 +38,6 @@ export default function Soapdetail({ onSubmit }) {
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>
       <p>{detialSoap.recipes}</p>
-      <Link href={"/"}>Home</Link>
     </>
   );
 }

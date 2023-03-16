@@ -1,5 +1,5 @@
 import dbConnect from "@/db/connect";
-import User from "@/db/model/User";
+import User from "@/db/model/Profile";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     try {
       const userData = req.body;
       const user = new User(userData);
+
       await user.save();
       res.status(201).json({ status: "User created" });
     } catch (error) {
@@ -15,9 +16,12 @@ export default async function handler(req, res) {
       res.status(400).json({ error: error.message });
     }
   }
-  // if (req.method === "GET"){
-  //   const data = req.body
-  //   const ecxistingUser=
 
+  // const a = req.param;
+  // console.dir(a);
+
+  // if (req.method === "GET") {
+  //   const soaps = await User.findOne({ email: user.email });
+  //   return res.status(200).json(soaps);
   // }
 }

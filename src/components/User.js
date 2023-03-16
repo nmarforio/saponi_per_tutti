@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 
-export default function User({ session }) {
+export default function User({ session, userData }) {
   const user = useSWR("/api/soap/profile");
 
   const [name, setName] = useState("");
@@ -14,6 +14,7 @@ export default function User({ session }) {
   }, []);
 
   async function handelSubmit(event) {
+    // Create the User
     event.preventDefault();
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
@@ -32,8 +33,8 @@ export default function User({ session }) {
       console.error(`Error: ${response.status}`);
     }
   }
-
-  if (session) {
+  console.log("MYUSERRRRR", userData);
+  if (session && userData.length === 0) {
     return (
       <>
         <form onSubmit={handelSubmit}>

@@ -11,7 +11,7 @@ export default function NavBar({ onSubmit, count }) {
         <Link href={`/basket`}>
           <Image src="./basket.svg" alt="basket" width={30} height={30} />
         </Link>
-        <Link href={`/about`}>
+        <Link href={`/`}>
           <Image src="/soap.png" alt="about" width={30} height={30} />
         </Link>
         <Link href={"/profile"}>
