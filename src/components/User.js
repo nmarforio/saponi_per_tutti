@@ -33,7 +33,7 @@ export default function User({ session, userDb }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    Router.push(`api/soaps/profile/${userDb.id}`);
+    // Router.push(`api/soaps/profile/${userDb.id}`);
   }
 
   console.log("MYUSERRRRR", userDb);
@@ -67,6 +67,6 @@ export default function User({ session, userDb }) {
       </>
     );
   } else {
-    return <p>{userData.name}</p>;
+    return <p>{userDb.name}</p>;
   }
 }
