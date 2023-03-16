@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import Router from "next/router";
+import DetailProfile from "@/components/DetailProfile";
 
 export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
@@ -9,7 +10,6 @@ export default function User({ session, userDb }) {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    console.log("Session in User", session);
     setName(session.user.name);
     setEmail(session.user.email);
   }, []);
@@ -33,10 +33,9 @@ export default function User({ session, userDb }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    // Router.push(`api/soaps/profile/${userDb.id}`);
   }
+  // I WANT TO .PUSH() THE PAGE TO REFRESH THE DATA
 
-  console.log("MYUSERRRRR", userDb);
   if (session && !userDb) {
     return (
       <>
@@ -67,6 +66,10 @@ export default function User({ session, userDb }) {
       </>
     );
   } else {
-    return <p>{userDb.name}</p>;
+    return (
+      <>
+        <DetailProfile userDb={userDb} />
+      </>
+    );
   }
 }

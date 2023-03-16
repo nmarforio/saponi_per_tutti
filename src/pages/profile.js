@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 
 export default function Profilepage() {
   const { data: session } = useSession();
-  console.log("Session in ProfilePage", session);
 
   const [userFromDb, setUserFromDb] = useState([]);
 
@@ -19,8 +18,6 @@ export default function Profilepage() {
     };
     fetchData().catch(console.error);
   }, []);
-
-  console.log("USERFROMDB", userFromDb);
 
   return (
     <>
