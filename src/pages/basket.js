@@ -15,18 +15,23 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
-  // console.log(basketItem);
 
-  return (
-    <>
-      <h2>I tuoi prodotti:</h2>
-      {/* <ul>
-        <li>
-          {basketItem.soap.name},{basketItem.quantity}
-        </li>
-      </ul> */}
+  // if (!JSON.stringify(basketItem) === "{}") {
+  //   const quantity = basketItem.basketItems.map((item) => {
+  //     item.quantity;
+  //   });
 
-      <p>stst{content}</p>
-    </>
-  );
+  //   if (!JSON.stringify(basketItem) === "{}")
+  //     return (
+  //       <>
+  //         <ul>
+  //           {basketItem.soaps.map((soap) => (
+  //             <li key={soap.id}>
+  //               {soap.name}, {quantity}
+  //             </li>
+  //           ))}
+  //         </ul>
+  //       </>
+  //     );
+  // }
 }

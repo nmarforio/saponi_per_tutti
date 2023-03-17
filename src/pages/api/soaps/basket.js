@@ -9,12 +9,19 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
 
   if (req.method === "GET") {
-    const basketItem = await BasketItem.findOne({ userId: session.user.id });
-    if (!basketItem) {
+    const basketItems = await BasketItem.find({ userId: session.user.id });
+    const soapPromisses = [];
+    if (!basketItems) {
       return res.status(404).json({ status: "Not Found" });
     } else {
-      const soap = await Soap.findOne({ _id: basketItem.item });
-      return res.status(200).json({ basketItem, soap });
+      const x = basketItems.map((basketItem) => {
+        const soap = Soap.find({ _id: basketItem.item });
+        soapPromisses.push(soap);
+        return { ...basketItem };
+      });
+      return Promise.all(soapPromisses).then((soaps) => {
+        return res.status(200).json({ basketItems: x, soaps });
+      });
     }
   }
 }
