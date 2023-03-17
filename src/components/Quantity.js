@@ -4,20 +4,35 @@ import { useState } from "react";
 import useBasketStore from "@/states/basketStore";
 
 export default function Quantity() {
-  const [count, setCount] = useState(0);
   const { data: session } = useSession();
   const router = useRouter();
   const store = useBasketStore((state) => state);
+  const [count, setCount] = useState();
 
-  function handelSubmit(event) {
+  async function handelSubmit(event) {
     event.preventDefault();
 
     if (session === null) {
       router.push("/profile");
     } else {
       const input = event.target.quantity.value;
-      console.log(input);
       store.addItem(input);
+      setCount(input);
+    }
+
+    const id = router.query.id;
+    const response = await fetch(`api/soaps/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(count, id),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+      event.target.reset();
+    } else {
+      console.error(`Error: ${response.status}`);
     }
   }
   return (

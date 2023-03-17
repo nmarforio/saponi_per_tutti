@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import DetailProfile from "@/components/DetailProfile";
 
 export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,9 +22,14 @@ export default function User({ session, userDb }) {
     const userData = Object.fromEntries(formData);
 
     const response = await fetch("api/soaps/profile", {
-      method: "POST",
-      body: JSON.stringify(userData),
+      method: "PATCH",
+      body: JSON.stringify({
+        adress: userData.adress,
+        email: userData.email,
+        name: userData.name,
+      }),
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
@@ -33,10 +39,12 @@ export default function User({ session, userDb }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    router.push("/profile");
   }
   // I WANT TO .PUSH() THE PAGE TO REFRESH THE DATA
+  // Cookie expired!!
 
-  if (session && !userDb) {
+  if (!userDb.adress) {
     return (
       <>
         <form onSubmit={handelSubmit}>
@@ -66,10 +74,6 @@ export default function User({ session, userDb }) {
       </>
     );
   } else {
-    return (
-      <>
-        <DetailProfile userDb={userDb} />
-      </>
-    );
+    return <>{<DetailProfile userDb={userDb} />}</>;
   }
 }

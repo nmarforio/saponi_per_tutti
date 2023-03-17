@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
 
 export default function Profilepage() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [userFromDb, setUserFromDb] = useState([]);
 
@@ -18,6 +18,7 @@ export default function Profilepage() {
     };
     fetchData().catch(console.error);
   }, []);
+  console.log(userFromDb);
 
   return (
     <>

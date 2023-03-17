@@ -2,7 +2,6 @@ import Soap from "@/components/Soap";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import Quantity from "@/components/Quantity";
 
 export default function Soapdetail() {
