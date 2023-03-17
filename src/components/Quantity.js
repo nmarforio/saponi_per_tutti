@@ -7,23 +7,26 @@ export default function Quantity() {
   const { data: session } = useSession();
   const router = useRouter();
   const store = useBasketStore((state) => state);
-  const [count, setCount] = useState();
 
   async function handelSubmit(event) {
     event.preventDefault();
-
+    let input = 0;
     if (session === null) {
       router.push("/profile");
     } else {
-      const input = event.target.quantity.value;
+      input = event.target.quantity.value;
       store.addItem(input);
-      setCount(input);
+      console.log("INPUT", input);
     }
 
     const id = router.query.id;
     const response = await fetch(`api/soaps/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(count, id),
+      method: "POST",
+      body: JSON.stringify({
+        item: id,
+        userId: session.user.id,
+        quantity: input,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,6 +38,7 @@ export default function Quantity() {
       console.error(`Error: ${response.status}`);
     }
   }
+
   return (
     <>
       {store.items}

@@ -1,5 +1,6 @@
+import Soap from "@/db/model/Soap";
 import dbConnect from "@/db/connect";
-import Profile from "@/db/model/User";
+import BasketItem from "@/db/model/BasketItem";
 import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
@@ -7,8 +8,13 @@ export default async function handler(req, res) {
 
   const session = await getSession({ req });
 
-  if (method.req === "GET") {
-    const basketItem = Profile.findOne({ id: session.id });
-    return res.status(200).json(basketItem);
+  if (req.method === "GET") {
+    const basketItem = await BasketItem.findOne({ userId: session.user.id });
+    if (!basketItem) {
+      return res.status(404).json({ status: "Not Found" });
+    } else {
+      const soap = await Soap.findOne({ _id: basketItem.item });
+      return res.status(200).json({ basketItem, soap });
+    }
   }
 }

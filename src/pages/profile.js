@@ -18,7 +18,6 @@ export default function Profilepage() {
     };
     fetchData().catch(console.error);
   }, []);
-  console.log(userFromDb);
 
   return (
     <>

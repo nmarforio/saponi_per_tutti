@@ -39,8 +39,8 @@ export default function User({ session, userDb }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    router.push("/profile");
   }
+
   // I WANT TO .PUSH() THE PAGE TO REFRESH THE DATA
   // Cookie expired!!
 
@@ -69,7 +69,9 @@ export default function User({ session, userDb }) {
               setEmail(event.target.email);
             }}
           ></input>
-          <button type="submit">Crea</button>
+          <button type="submit" onClick={() => router.push(`/profile`)}>
+            Crea
+          </button>
         </form>
       </>
     );

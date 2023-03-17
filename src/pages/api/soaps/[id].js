@@ -1,6 +1,6 @@
 import dbConnect from "@/db/connect";
+import BasketItem from "@/db/model/BasketItem";
 import Soap from "@/db/model/Soap";
-import Profile from "@/db/model/User";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -10,13 +10,15 @@ export default async function handler(req, res) {
     const soaps = await Soap.findById(id);
     return res.status(200).json(soaps);
   }
-  if (request.method === "PUT") {
-    // If our request method is PUT ...
-    const profiles = await Profile.findByIdAndUpdate(id, {
-      $set: request.body,
-    });
-    // ... find our joke by its ID and update the content that is part of the request body!
-    return response.status(200).json(jokeToUpdate);
-    // If successful, we'll receive an OK status code.
+  if (req.method === "POST") {
+    try {
+      const basketData = req.body;
+      const basketItem = new BasketItem(basketData);
+      await basketItem.save();
+      res.status(201).json({ status: "Created BasketItem" });
+    } catch (error) {
+      console.log(error);
+      response.status(400).json({ error: error.message });
+    }
   }
 }

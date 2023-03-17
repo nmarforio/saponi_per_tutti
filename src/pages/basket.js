@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export default function Basket() {
   const content = useBasketStore((state) => state.content);
 
-  const [basketItem, setBasketItem] = useState([]);
+  const [basketItem, setBasketItem] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,11 +15,17 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
-  console.log(basketItem);
+  // console.log(basketItem);
 
   return (
     <>
-      <p>{}</p>
+      <h2>I tuoi prodotti:</h2>
+      {/* <ul>
+        <li>
+          {basketItem.soap.name},{basketItem.quantity}
+        </li>
+      </ul> */}
+
       <p>stst{content}</p>
     </>
   );
