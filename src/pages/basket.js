@@ -27,7 +27,7 @@ export default function Basket() {
         <h2>Il tuo ordine:</h2>
         <Link href={`/${basketItem.soaps[0][0]._id}`}>
           {basketItem.soaps[0][0].name}
-        </Link>{" "}
+        </Link>
         <p>Quantità: {basketItem.basketItems[0]._doc.quantity}</p>
         <p>Prezzo: {priceInt * quantityInt}</p>
       </>
