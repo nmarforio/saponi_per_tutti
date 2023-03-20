@@ -1,6 +1,7 @@
 import useBasketStore from "@/states/basketStore";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { createGlobalStyle } from "styled-components";
 
 export default function Basket() {
   const content = useBasketStore((state) => state.content);
@@ -16,6 +17,11 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
+  console.log(basketItem);
+
+  // console.log(filterBasket);
+
+  // console.log("SOAP", soaps);
 
   if (basketItem === undefined) {
     return <p>Caricamento...</p>;
@@ -33,22 +39,4 @@ export default function Basket() {
       </>
     );
   }
-  // if (!JSON.stringify(basketItem) === "{}") {
-  //   const quantity = basketItem.basketItems.map((item) => {
-  //     item.quantity;
-  //   });
-
-  //   if (!JSON.stringify(basketItem) === "{}")
-  //     return (
-  //       <>
-  //         <ul>
-  //           {basketItem.soaps.map((soap) => (
-  //             <li key={soap.id}>
-  //               {soap.name}, {quantity}
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </>
-  //     );
-  // }
 }

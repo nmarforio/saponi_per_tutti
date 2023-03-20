@@ -17,7 +17,14 @@ export default function UserPage() {
     fetchData().catch(console.error);
   }, []);
 
-  console.log("USER", user);
+  // function UpDateIntput() {
+  //   return (
+  //     <form>
+  //       <label htmlFor="name">Nome:</label>
+  //       <input id="name" className="name" value={user.name}></input>
+  //     </form>
+  //   );
+  // }
 
   if (user === undefined) {
     return <p>Caricamento...</p>;
@@ -30,6 +37,7 @@ export default function UserPage() {
         <p>{user.adress}</p>
 
         <LoginButton session={session} />
+        <button onClick={UpDateInput}>Cambia i tuoi dati</button>
       </>
     );
   }

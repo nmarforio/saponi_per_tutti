@@ -14,19 +14,19 @@ export default async function handler(req, res) {
     }).populate("soap_id");
     console.log(basketItems);
 
-    const soapPromisses = [];
     if (!basketItems) {
       return res.status(404).json({ status: "Not Found" });
     } else {
-      const x = basketItems.map((basketItem) => {
+      const soapBasket = basketItems.map((basketItem) => {
         const soap = Soap.find({ _id: basketItem.item });
-        soapPromisses.push(soap);
-        return { ...basketItem };
+        console.log(soap, basketItems);
+
+        return res.status(200).json(...basketItems, soap);
       });
-      return Promise.all(soapPromisses).then((soaps) => {
-        console.log({ basketItems: x, soaps });
-        return res.status(200).json({ basketItems: x, soaps });
-      });
+      // return Promise.all(soapPromisses).then((soaps) => {
+      //   console.log({ basketItems: x, soaps });
+      //   return res.status(200).json({ basketItems: soapBasket, soaps });
+      // });
     }
   }
 }
