@@ -8,8 +8,6 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     const users = await User.findById(session.user.id);
-
-    console.log("HELOOOOOOO", users);
     return res.status(200).json(users);
   }
 }

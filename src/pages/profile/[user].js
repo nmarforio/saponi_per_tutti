@@ -1,3 +1,4 @@
+import LoginButton from "@/components/Login-btn";
 import { useSession } from "next-auth/react";
 
 import { useState, useEffect } from "react";
@@ -27,6 +28,8 @@ export default function UserPage() {
         <p>{user.name}</p>
         <p>{user.email}</p>
         <p>{user.adress}</p>
+
+        <LoginButton session={session} />
       </>
     );
   }

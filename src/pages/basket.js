@@ -15,25 +15,20 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
+  console.log(basketItem.basketItems[0]._doc.quantity);
 
   if (basketItem === undefined) {
     return <p>Caricamento...</p>;
   } else {
-    console.log(basketItem.soaps[0]);
-    {
-      basketItem.soaps[0].map((soap) => {
-        return (
-          <>
-            <p key={soap._id}>{soap.name}</p>;
-          </>
-        );
-      });
-    }
-    // {
-    //   basketItem.soaps[0].map((soap) => {
-    //     <p key={soap._id}>{soap.name}</p>;
-    //   });
-    // }
+    return (
+      <>
+        <h2>Il tuo ordine:</h2>
+        <p>
+          {basketItem.soaps[0][0].name}, quantità:
+          {basketItem.basketItems[0]._doc.quantity}
+        </p>
+      </>
+    );
   }
   // if (!JSON.stringify(basketItem) === "{}") {
   //   const quantity = basketItem.basketItems.map((item) => {

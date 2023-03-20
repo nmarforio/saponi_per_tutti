@@ -14,6 +14,7 @@ export default async function handler(req, res) {
     const updatedUser = await User.findByIdAndUpdate(session.user.id, {
       $set: req.body,
     });
+    console.log("UUUUUUU", updatedUser);
     // ... find our joke by its ID and update the content that is part of the request body!
     return res.status(200).json(updatedUser);
     // If successful, we'll receive an OK status code.

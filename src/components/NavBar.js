@@ -14,7 +14,7 @@ export default function NavBar({ onSubmit, count }) {
         <Link href={`/`}>
           <Image src="/soap.png" alt="about" width={30} height={30} />
         </Link>
-        <Link href={"/profile/profile"}>
+        <Link href={"/profile"}>
           <img
             src={session ? session.user.image : "/profile2.png"}
             alt="profile"

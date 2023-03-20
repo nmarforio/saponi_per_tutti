@@ -14,13 +14,14 @@ export default function User({ session, userDb }) {
     setEmail(session.user.email);
   }, []);
 
-  async function handelSubmit(event) {
+  async function handleSubmit(event) {
     // Create the User
     event.preventDefault();
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
 
-    const response = await fetch("api/soaps/profile", {
+    console.log("AFTERINPUT", userData);
+    const response = await fetch("api/profile", {
       method: "PATCH",
       body: JSON.stringify({
         adress: userData.adress,
@@ -45,7 +46,7 @@ export default function User({ session, userDb }) {
   if (!userDb.adress) {
     return (
       <>
-        <form onSubmit={handelSubmit}>
+        <form onSubmit={handleSubmit}>
           <p>Crea il tuo Profilo:</p>
           <label htmlFor="name">Nome:</label>
           <input
