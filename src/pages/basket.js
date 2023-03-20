@@ -20,15 +20,14 @@ export default function Basket() {
   if (basketItem === undefined) {
     return <p>Caricamento...</p>;
   } else {
-    const priceInt = parseInt(basketItem.soaps[0][0].price);
+    const priceInt = parseFloat(basketItem.soaps[0][0].price);
     const quantityInt = parseInt(basketItem.basketItems[0]._doc.quantity);
     return (
       <>
         <h2>Il tuo ordine:</h2>
-
         <Link href={`/${basketItem.soaps[0][0]._id}`}>
-          {basketItem.soaps[0][0].name}:
-        </Link>
+          {basketItem.soaps[0][0].name}
+        </Link>{" "}
         <p>Quantità: {basketItem.basketItems[0]._doc.quantity}</p>
         <p>Prezzo: {priceInt * quantityInt}</p>
       </>

@@ -30,7 +30,7 @@ export default function Soapdetail() {
         height={200}
       />
       <Quantity />
-      <p>{detialSoap.price}</p>
+      <p>CHF: {detialSoap.price}</p>
       <p>{detialSoap.description}</p>
       <h4>Sostanze</h4>
       <p>{detialSoap.recipes}</p>

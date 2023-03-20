@@ -3,9 +3,24 @@ import Link from "next/link";
 import User from "@/components/User";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { getSession } from "next-auth/react";
 
 export default function Profilepage() {
   const { data: session, status } = useSession();
+
+  const getServerSideProps = async (context) => {
+    const session = await getSession(context);
+    if (session === undefined) {
+      return {
+        redirect: {
+          destination: "/profile",
+        },
+      };
+    }
+    return {
+      props: { session },
+    };
+  };
 
   const [userFromDb, setUserFromDb] = useState([]);
 

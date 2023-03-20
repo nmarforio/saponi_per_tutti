@@ -9,7 +9,7 @@ export default function Soap({ name, price, id, image }) {
         <Link href={`/${id}`}>
           <Image alt={name} src={image} width={200} height={200} />
         </Link>
-        <h3>{price}</h3>
+        <h3>CHF:{price}</h3>
       </div>
     </>
   );
