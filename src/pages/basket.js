@@ -1,5 +1,6 @@
 import useBasketStore from "@/states/basketStore";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Basket() {
   const content = useBasketStore((state) => state.content);
@@ -15,18 +16,21 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
-  console.log(basketItem.basketItems[0]._doc.quantity);
 
   if (basketItem === undefined) {
     return <p>Caricamento...</p>;
   } else {
+    const priceInt = parseInt(basketItem.soaps[0][0].price);
+    const quantityInt = parseInt(basketItem.basketItems[0]._doc.quantity);
     return (
       <>
         <h2>Il tuo ordine:</h2>
-        <p>
-          {basketItem.soaps[0][0].name}, quantità:
-          {basketItem.basketItems[0]._doc.quantity}
-        </p>
+
+        <Link href={`/${basketItem.soaps[0][0]._id}`}>
+          {basketItem.soaps[0][0].name}:
+        </Link>
+        <p>Quantità: {basketItem.basketItems[0]._doc.quantity}</p>
+        <p>Prezzo: {priceInt * quantityInt}</p>
       </>
     );
   }
