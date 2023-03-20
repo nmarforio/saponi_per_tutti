@@ -11,7 +11,7 @@ export default function Profilepage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("/api/soaps/profile");
+      const data = await fetch(`/api/profile`);
       const json = await data.json();
 
       setUserFromDb(json);

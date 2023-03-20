@@ -16,6 +16,25 @@ export default function Basket() {
     fetchData().catch(console.error);
   }, []);
 
+  if (basketItem === undefined) {
+    return <p>Caricamento...</p>;
+  } else {
+    console.log(basketItem.soaps[0]);
+    {
+      basketItem.soaps[0].map((soap) => {
+        return (
+          <>
+            <p key={soap._id}>{soap.name}</p>;
+          </>
+        );
+      });
+    }
+    // {
+    //   basketItem.soaps[0].map((soap) => {
+    //     <p key={soap._id}>{soap.name}</p>;
+    //   });
+    // }
+  }
   // if (!JSON.stringify(basketItem) === "{}") {
   //   const quantity = basketItem.basketItems.map((item) => {
   //     item.quantity;

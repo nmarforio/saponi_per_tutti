@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import DetailProfile from "@/components/DetailProfile";
 
 export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
@@ -41,7 +40,6 @@ export default function User({ session, userDb }) {
     }
   }
 
-  // I WANT TO .PUSH() THE PAGE TO REFRESH THE DATA
   // Cookie expired!!
 
   if (!userDb.adress) {
@@ -69,13 +67,16 @@ export default function User({ session, userDb }) {
               setEmail(event.target.email);
             }}
           ></input>
-          <button type="submit" onClick={() => router.push(`/profile`)}>
+          <button
+            type="submit"
+            onClick={() => router.push(`/profile/${session.user.id}`)}
+          >
             Crea
           </button>
         </form>
       </>
     );
   } else {
-    return <>{<DetailProfile userDb={userDb} />}</>;
+    router.push(`/profile/${session.user.id}`);
   }
 }
