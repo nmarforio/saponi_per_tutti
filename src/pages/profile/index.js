@@ -1,4 +1,4 @@
-import LoginButton from "@/components/login-btn";
+import LoginButton from "@/components/Login-btn";
 import Link from "next/link";
 import User from "@/components/User";
 import { useSession, signIn, signOut } from "next-auth/react";
