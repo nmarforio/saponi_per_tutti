@@ -1,7 +1,8 @@
 import GlobalStyle from "../styles/styles";
 import Title from "@/components/Title";
 import { SessionProvider } from "next-auth/react";
-import NavBar from "@/components/NavBar";
+
+import Layout from "@/components/Layout";
 
 export default function App({
   Component,
@@ -9,11 +10,12 @@ export default function App({
 }) {
   return (
     <>
-      <Title />
-      <GlobalStyle />
       <SessionProvider session={session}>
-        <NavBar />
-        <Component {...pageProps} />
+        <Title />
+        <Layout>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </Layout>
       </SessionProvider>
     </>
   );
