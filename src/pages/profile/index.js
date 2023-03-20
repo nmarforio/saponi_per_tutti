@@ -5,22 +5,19 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
 
 export default function Profilepage() {
-  const { data: session } = useSession();
-  console.log("Session in ProfilePage", session);
+  const { data: session, status } = useSession();
 
   const [userFromDb, setUserFromDb] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("/api/soaps/profile");
+      const data = await fetch(`/api/profile`);
       const json = await data.json();
 
       setUserFromDb(json);
     };
     fetchData().catch(console.error);
   }, []);
-
-  console.log("USERFROMDB", userFromDb);
 
   return (
     <>

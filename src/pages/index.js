@@ -22,6 +22,8 @@ export default function Home() {
     fetchData().catch(console.error);
   }, []);
 
+  console.log(soapList);
+
   return (
     <>
       <Head>
@@ -38,7 +40,7 @@ export default function Home() {
               id={soap._id}
               name={soap.name}
               price={soap.price}
-              image={soap.pic}
+              image={soap.image}
             />
           );
         })}

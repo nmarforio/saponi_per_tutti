@@ -1,13 +1,13 @@
+import User from "@/db/model/User";
 import dbConnect from "@/db/connect";
-import Profile from "@/db/model/Profile";
 import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
   await dbConnect();
-  const session = getSession({ req });
+  const session = await getSession({ req });
 
   if (req.method === "GET") {
-    const profile = await Profile.findById(session.id);
-    return res.status(200).json(profile);
+    const users = await User.findById(session.user.id);
+    return res.status(200).json(users);
   }
 }

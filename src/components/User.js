@@ -1,29 +1,35 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    console.log("Session in User", session);
     setName(session.user.name);
     setEmail(session.user.email);
   }, []);
 
-  async function handelSubmit(event) {
+  async function handleSubmit(event) {
     // Create the User
     event.preventDefault();
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
 
-    const response = await fetch("api/soaps/profile", {
-      method: "POST",
-      body: JSON.stringify(userData),
+    console.log("AFTERINPUT", userData);
+    const response = await fetch("api/profile", {
+      method: "PATCH",
+      body: JSON.stringify({
+        adress: userData.adress,
+        email: userData.email,
+        name: userData.name,
+      }),
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
@@ -33,14 +39,14 @@ export default function User({ session, userDb }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    Router.push(`api/soaps/profile/${userDb.id}`);
   }
 
-  console.log("MYUSERRRRR", userDb);
-  if (session && !userDb) {
+  // Cookie expired!!
+
+  if (!userDb.adress) {
     return (
       <>
-        <form onSubmit={handelSubmit}>
+        <form onSubmit={handleSubmit}>
           <p>Crea il tuo Profilo:</p>
           <label htmlFor="name">Nome:</label>
           <input
@@ -62,11 +68,16 @@ export default function User({ session, userDb }) {
               setEmail(event.target.email);
             }}
           ></input>
-          <button type="submit">Crea</button>
+          <button
+            type="submit"
+            onClick={() => router.push(`/profile/${session.user.id}`)}
+          >
+            Crea
+          </button>
         </form>
       </>
     );
   } else {
-    return <p>{userData.name}</p>;
+    router.push(`/profile/${session.user.id}`);
   }
 }

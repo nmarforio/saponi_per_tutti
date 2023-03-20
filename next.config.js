@@ -5,5 +5,4 @@ const nextConfig = {
     domains: ["upload.wikimedia.org"],
   },
 };
-
 module.exports = nextConfig;
