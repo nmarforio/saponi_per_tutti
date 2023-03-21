@@ -23,7 +23,7 @@ export default function Quantity() {
     const response = await fetch(`api/soaps/${id}`, {
       method: "POST",
       body: JSON.stringify({
-        item: id,
+        soapId: id,
         userId: session.user.id,
         quantity: input,
       }),

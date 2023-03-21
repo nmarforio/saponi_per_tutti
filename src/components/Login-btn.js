@@ -1,10 +1,12 @@
 import { signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function LoginButton({ session }) {
+  const router = useRouter();
   if (session)
     return (
       <>
-        <button onClick={() => signOut()}>Log Out</button>
+        <button onClick={() => signOut() && router.push("/")}>Log Out</button>
       </>
     );
 

@@ -37,7 +37,7 @@ export default function UserPage() {
         <p>{user.adress}</p>
 
         <LoginButton session={session} />
-        <button onClick={UpDateInput}>Cambia i tuoi dati</button>
+        {/* <button onClick={UpDateInput}>Cambia i tuoi dati</button> */}
       </>
     );
   }

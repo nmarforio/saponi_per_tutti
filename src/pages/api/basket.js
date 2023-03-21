@@ -7,26 +7,23 @@ export default async function handler(req, res) {
   await dbConnect();
 
   const session = await getSession({ req });
+  console.log("USERID", session.user.id);
 
   if (req.method === "GET") {
-    const basketItems = await BasketItem.find({
-      userId: session.user.id,
-    }).populate("soap_id");
-    console.log(basketItems);
+    const basketItems = await BasketItem.find({ userId: session.user.id });
+
+    console.log("BASKETITEMSSS", basketItems);
 
     if (!basketItems) {
       return res.status(404).json({ status: "Not Found" });
     } else {
-      const soapBasket = basketItems.map((basketItem) => {
-        const soap = Soap.find({ _id: basketItem.item });
-        console.log(soap, basketItems);
-
-        return res.status(200).json(...basketItems, soap);
+      const id = basketItems.map((soap) => {
+        return soap.soapId;
       });
-      // return Promise.all(soapPromisses).then((soaps) => {
-      //   console.log({ basketItems: x, soaps });
-      //   return res.status(200).json({ basketItems: soapBasket, soaps });
-      // });
+
+      const soapBasket = await Soap.find({ _id: id });
+      console.log("SOAP", soapBasket);
+      return res.status(200).json({ basketItems, soapBasket });
     }
   }
 }
