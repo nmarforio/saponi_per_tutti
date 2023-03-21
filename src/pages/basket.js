@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { createGlobalStyle } from "styled-components";
+import { useSession } from "next-auth/react";
 
 export default function Basket() {
+  const { data: session } = useSession();
+  // console.log(session.user.id);
+
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
-
+  console.log("QUANTITY", quantity);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch("/api/basket");
@@ -19,14 +22,63 @@ export default function Basket() {
   }, []);
   // console.log(basketItem, quantity);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target.quantity);
+  function updateQuantity(value, index) {
+    const newQuantity = [...quantity];
+    newQuantity[index] = +value;
+    console.log(newQuantity);
+    setQuantity(newQuantity);
   }
+
+  const newOrder = {
+    // userId: session.user.user.id,
+    total: 0,
+    items: [],
+  };
+  if (basketItem === undefined) {
+    return <p>Caricamento...</p>;
+  } else {
+    basketItem.soapBasket.forEach((soap, index) => {
+      const newSoap = {
+        id: soap._id,
+        amount: quantity[index],
+        userId: session.user.id,
+        soapPrice: soap.price,
+      };
+      newOrder.total += soap.price * newSoap.amount;
+      newOrder.items.push(newSoap);
+    });
+  }
+  console.log("NEWORDER", newOrder);
+
+  async function handleSubmit(event) {
+    // event.preventDefault();
+    // console.log(event.target.quantity);
+    // // this was added
+    // const formData = new FormData(event.target);
+    // const formProps = Object.fromEntries(formData);
+
+    // console.log(formProps);
+
+    const response = await fetch(`api/basket`, {
+      method: "POST",
+      body: JSON.stringify(newOrder),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+      event.target.reset();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
+  console.log(basketItem.soapBasket);
 
   if (basketItem === undefined) {
     return <p>Caricamento...</p>;
   } else {
+    let sum = 0;
     return (
       <>
         <form onSubmit={handleSubmit}>
@@ -34,7 +86,8 @@ export default function Basket() {
           {basketItem.soapBasket.map((soap, index) => {
             const price = +soap.price;
             const item = basketItem.basketItems[index];
-            const quantityItem = +item.quantity;
+            const total = quantity[index] * price;
+            sum += total;
 
             return (
               <>
@@ -43,17 +96,26 @@ export default function Basket() {
                 <input
                   key={item._id}
                   onChange={(event) => {
-                    setQuantity(event.target.quantity);
+                    console.log(event.target.value);
+                    updateQuantity(event.target.value, index);
+                    // setQuantity(event.target.quantity);
                   }}
                   id="quantity"
-                  name={`quantity${[index]}`}
+                  // this is changed
+                  name={`${soap._id}`}
                   value={quantity[index]}
                   type={"number"}
+                  min={0}
+                  max={10}
                 ></input>
-                <p>CHF Prezzo: {quantityItem * price}</p>
+                <p name="eachprice" id="eachprice">
+                  CHF Prezzo: {total}
+                </p>
               </>
             );
           })}
+          <label htmlFor="total">Totale:</label>
+          <input id="total" name="total" value={sum}></input>
           <button type="Submit">Inviare</button>
         </form>
       </>

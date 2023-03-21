@@ -7,12 +7,9 @@ export default async function handler(req, res) {
   await dbConnect();
 
   const session = await getSession({ req });
-  console.log("USERID", session.user.id);
 
   if (req.method === "GET") {
     const basketItems = await BasketItem.find({ userId: session.user.id });
-
-    console.log("BASKETITEMSSS", basketItems);
 
     if (!basketItems) {
       return res.status(404).json({ status: "Not Found" });
@@ -22,8 +19,18 @@ export default async function handler(req, res) {
       });
 
       const soapBasket = await Soap.find({ _id: id });
-      console.log("SOAP", soapBasket);
+
       return res.status(200).json({ basketItems, soapBasket });
+    }
+  }
+
+  if (req.method === "POST") {
+    try {
+      const newOrder = req.body;
+      cosole.log("NEWORDER", newOrder);
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ error: error.message });
     }
   }
 }
