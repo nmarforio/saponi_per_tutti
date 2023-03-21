@@ -1,4 +1,4 @@
-import Navbar from "./navbar";
+import Navbar from "../components/NavBar";
 
 export default function Layout({ children }) {
   return (
