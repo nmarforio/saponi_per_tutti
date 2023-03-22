@@ -22,6 +22,7 @@ export default function NavBar({ onSubmit, count }) {
             height={30}
           />
         </Link>
+        <Link href={`/order`}>Ordini</Link>
       </Div>
     </>
   );

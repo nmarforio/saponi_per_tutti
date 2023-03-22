@@ -48,7 +48,9 @@ export default function Quantity() {
           min="0"
           type={"number"}
         ></input>
-        <button type="submit">Aggiungi al Cestino</button>
+        <button type="submit" onClick={() => router.push("/")}>
+          Aggiungi al Cestino
+        </button>
       </form>
     </>
   );
