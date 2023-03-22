@@ -9,11 +9,6 @@ export default function User({ session, userDb }) {
   const [name, setName] = useState(session.user.name);
   const [email, setEmail] = useState(session.user.email);
 
-  // useEffect(() => {
-  //   setName(session.user.name);
-  //   setEmail(session.user.email);
-  // }, []);
-
   async function handleSubmit(event) {
     // Create the User
     event.preventDefault();

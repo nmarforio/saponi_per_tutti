@@ -13,6 +13,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const basketData = req.body;
+      console.log(basketData);
       const basketItem = new BasketItem(basketData);
       await basketItem.save();
       res.status(201).json({ status: "Created BasketItem" });

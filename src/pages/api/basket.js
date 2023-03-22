@@ -2,6 +2,7 @@ import Soap from "@/db/model/Soap";
 import dbConnect from "@/db/connect";
 import BasketItem from "@/db/model/BasketItem";
 import { getSession } from "next-auth/react";
+import Order from "@/db/model/Order";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -27,7 +28,10 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const newOrder = req.body;
-      cosole.log("NEWORDER", newOrder);
+      console.log("NEWORDER", newOrder);
+      const order = new Order(newOrder);
+      await order.save();
+      return res.status(201).json("Created Order");
     } catch (error) {
       console.log(error);
       res.status(400).json({ error: error.message });
@@ -35,10 +39,10 @@ export default async function handler(req, res) {
   }
   if (req.method === "DELETE") {
     // If our request method is DELETE ...
-    const basketItemToDelete = await BasketItem.findByIdAndDelete({
+    const basketItemToDelete = await BasketItem.deleteMany({
       userId: session.user.id,
     });
 
-    return response.status(200).json();
+    return res.status(200).json(basketItemToDelete);
   }
 }
