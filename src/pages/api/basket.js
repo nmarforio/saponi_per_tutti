@@ -33,4 +33,12 @@ export default async function handler(req, res) {
       res.status(400).json({ error: error.message });
     }
   }
+  if (req.method === "DELETE") {
+    // If our request method is DELETE ...
+    const basketItemToDelete = await BasketItem.findByIdAndDelete({
+      userId: session.user.id,
+    });
+
+    return response.status(200).json();
+  }
 }

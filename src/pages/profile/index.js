@@ -13,7 +13,7 @@ export default function Profilepage() {
     if (session === undefined) {
       return {
         redirect: {
-          destination: ["/profile", "/basket"],
+          destination: ["/profile"],
         },
       };
     }

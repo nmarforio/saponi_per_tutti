@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Basket() {
   const { data: session } = useSession();
+  const router = useRouter();
   // console.log(session.user.id);
 
   const [basketItem, setBasketItem] = useState();
@@ -51,13 +53,9 @@ export default function Basket() {
   console.log("NEWORDER", newOrder);
 
   async function handleSubmit(event) {
-    // event.preventDefault();
-    // console.log(event.target.quantity);
-    // // this was added
-    // const formData = new FormData(event.target);
-    // const formProps = Object.fromEntries(formData);
-
-    // console.log(formProps);
+    await fetch(`/api/basket`, {
+      method: "DELETE",
+    });
 
     const response = await fetch(`api/basket`, {
       method: "POST",
@@ -72,6 +70,7 @@ export default function Basket() {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    router.push("/basket");
   }
   console.log(basketItem.soapBasket);
 
