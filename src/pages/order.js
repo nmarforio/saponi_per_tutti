@@ -9,7 +9,6 @@ export default function Order() {
       const json = await data.json();
 
       setOrders(json);
-      // setQuantity(json.basketItems.map)
     };
     fetchData().catch(console.error);
   }, []);
@@ -20,7 +19,7 @@ export default function Order() {
 
   return (
     <>
-      <h1>Lista dei tuoi ordini</h1>
+      <h2>Lista dei tuoi ordini</h2>
       {orders.map((order) => {
         const items = order.items;
         const newArray = items.flat();

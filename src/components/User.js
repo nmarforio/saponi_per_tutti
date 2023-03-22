@@ -15,8 +15,7 @@ export default function User({ session, userDb }) {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
 
-    console.log("AFTERINPUT", userData);
-    const response = await fetch("api/profile", {
+    const response = await fetch("/api/profile", {
       method: "PATCH",
       body: JSON.stringify({
         adress: userData.adress,
@@ -51,9 +50,10 @@ export default function User({ session, userDb }) {
             onChange={(event) => {
               setName(event.target.email);
             }}
+            required
           ></input>
           <label htmlFor="adress">Indirizzo:</label>
-          <input name="adress" id="adress"></input>
+          <input name="adress" id="adress" required></input>
           <label htmlFor="email">Email:</label>
           <input
             name="email"
@@ -62,6 +62,7 @@ export default function User({ session, userDb }) {
             onChange={(event) => {
               setEmail(event.target.email);
             }}
+            required
           ></input>
           <button
             type="submit"

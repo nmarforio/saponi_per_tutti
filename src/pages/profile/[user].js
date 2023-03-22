@@ -1,66 +1,100 @@
 import LoginButton from "@/components/Login-btn";
+import { set } from "mongoose";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export default function UserPage({ upDateInput }) {
+export default function UserPage() {
   const { data: session, status } = useSession();
   const [showForm, setShowForm] = useState(false);
   const [user, setUser] = useState();
-
-  // const [name, setName] = useState(session.user.name);
-  // const [email, setEmail] = useState(session.user.email);
-  // const [adress, setAdress] = useState(user.adress);
-
   const router = useRouter();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [adress, setAdress] = useState();
 
-  console.log("FORM", showForm);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(`/api/profile/${session.user.id}`);
       const json = await data.json();
 
       setUser(json);
+      setAdress(json.adress);
+      setName(json.name);
+      setEmail(json.email);
     };
+
     fetchData().catch(console.error);
   }, []);
 
-  if (user === undefined) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const userData = Object.fromEntries(formData);
+    console.log("FORM INPUt", userData);
+
+    const response = await fetch(`/api/profile/${session.user.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        adress: userData.adress,
+        email: userData.email,
+        name: userData.name,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+      event.target.reset();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
+
+  if (!user) {
     return <p>Nessun Dato</p>;
   }
   if (showForm) {
     return (
       <>
         <h2>Cambia i toui Dati:</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Nome:</label>
           <input
             id="name"
-            className="name"
-            value={user.name}
+            name="name"
+            value={name}
             onChange={(event) => {
-              setName(event.target.name);
+              setName(event.target.adress);
             }}
+            required
           ></input>
+
           <label htmlFor="adress">Indirizzo:</label>
           <input
             id="adress"
-            className="adress"
-            value={user.adress}
+            name="adress"
+            value={adress}
             onChange={(event) => {
               setAdress(event.target.adress);
             }}
+            required
           ></input>
-          <label htmlFor="email">Nome:</label>
+          <label htmlFor="email">Email:</label>
           <input
             id="email"
-            className="email"
-            value={user.email}
+            name="email"
+            value={email}
             onChange={(event) => {
               setEmail(event.target.email);
             }}
+            required
           ></input>
-          <button type="Submit">Salva</button>
+          <button type="Submit" onClick={() => router.push("/profile")}>
+            Salva
+          </button>
         </form>
       </>
     );
