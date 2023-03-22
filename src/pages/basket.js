@@ -47,7 +47,9 @@ export default function Basket() {
       soapId: soap._id,
       amount: quantity[index],
       soapPrice: soap.price,
+      name: soap.name,
     };
+    console.log(soap.name);
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });

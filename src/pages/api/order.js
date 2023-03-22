@@ -5,7 +5,6 @@ import dbConnect from "@/db/connect";
 export default async function handler(req, res) {
   await dbConnect();
   const session = await getSession({ req });
-  console.log("Session", session);
 
   if (req.method === "GET") {
     const orders = await Order.find({ userId: session.user.id });

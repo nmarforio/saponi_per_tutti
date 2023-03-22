@@ -6,6 +6,7 @@ const orderSchema = new Schema({
       soap: { type: mongoose.Schema.Types.ObjectId, ref: "Soaps" },
       amount: Number,
       soapPrice: String,
+      name: String,
     },
   ],
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
