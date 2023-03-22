@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   await dbConnect();
 
   const session = await getSession({ req });
-  console.log(session.user.id);
 
   if (req.method === "PATCH") {
     // If our request method is PUT ...

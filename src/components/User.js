@@ -6,13 +6,13 @@ export default function User({ session, userDb }) {
   const user = useSWR("/api/soap/profile");
   const router = useRouter();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(session.user.name);
+  const [email, setEmail] = useState(session.user.email);
 
-  useEffect(() => {
-    setName(session.user.name);
-    setEmail(session.user.email);
-  }, []);
+  // useEffect(() => {
+  //   setName(session.user.name);
+  //   setEmail(session.user.email);
+  // }, []);
 
   async function handleSubmit(event) {
     // Create the User
@@ -50,11 +50,11 @@ export default function User({ session, userDb }) {
           <p>Crea il tuo Profilo:</p>
           <label htmlFor="name">Nome:</label>
           <input
-            id="name"
             name="name"
+            id="name"
             value={name}
             onChange={(event) => {
-              setName(event.target.name);
+              setName(event.target.email);
             }}
           ></input>
           <label htmlFor="adress">Indirizzo:</label>
