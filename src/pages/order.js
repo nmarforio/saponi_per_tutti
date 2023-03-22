@@ -13,6 +13,7 @@ export default function Order() {
     };
     fetchData().catch(console.error);
   }, []);
+  console.log("ORDDRER", order);
 
   if (!order) {
     return <p>Nessun Ordine</p>;
