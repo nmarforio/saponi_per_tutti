@@ -83,7 +83,7 @@ export default function Basket() {
   return (
     <>
       <form>
-        <h1>Il tuo Ordine</h1>
+        <h2>Il tuo Ordine</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
           const item = basketItem.basketItems[index];

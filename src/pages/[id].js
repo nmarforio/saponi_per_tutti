@@ -20,20 +20,22 @@ export default function Soapdetail() {
     fetchData().catch(console.error);
   }, []);
 
-  return (
-    <>
-      <h1>{detialSoap.name}</h1>
-      <Image
-        alt={detialSoap.name}
-        src={detialSoap.pic}
-        width={200}
-        height={200}
-      />
-      <Quantity />
-      <p>CHF: {detialSoap.price}</p>
-      <p>{detialSoap.description}</p>
-      <h4>Sostanze</h4>
-      <p>{detialSoap.recipes}</p>
-    </>
-  );
+  if (detialSoap) {
+    return (
+      <>
+        <h1>{detialSoap.name}</h1>
+        <Image
+          alt={detialSoap._id}
+          src={detialSoap.image}
+          width={200}
+          height={200}
+        />
+        <Quantity />
+        <p>CHF: {detialSoap.price}</p>
+        <p>{detialSoap.description}</p>
+        <h4>Sostanze</h4>
+        <p>{detialSoap.recipes}</p>
+      </>
+    );
+  }
 }
