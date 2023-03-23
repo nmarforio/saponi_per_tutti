@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["upload.wikimedia.org"],
+    domains: ["res.cloudinary.com", "lh3.googleusercontent.com"],
   },
 };
 module.exports = nextConfig;

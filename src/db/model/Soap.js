@@ -7,6 +7,7 @@ const soapSchema = new Schema({
   price: String,
   recipes: String,
   method: String,
+  image: Array,
 });
 
 const Soap = mongoose.models.Soap || mongoose.model("Soap", soapSchema);

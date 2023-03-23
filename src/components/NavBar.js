@@ -5,34 +5,29 @@ import { useSession } from "next-auth/react";
 
 export default function NavBar() {
   const { data: session } = useSession();
-  if (session) {
-    return (
-      <>
-        <Div>
-          <Link href={`/basket`}>
-            <Image src="./basket.svg" alt="basket" width={30} height={30} />
-          </Link>
-          <Link href={`/`}>
-            <Image src="/soap.png" alt="about" width={30} height={30} />
-          </Link>
 
-          <Link href={`/order`}>Ordini</Link>
-          <Link href={"/profile"}>
-            <img
-              src={session ? session.user.image : "/profile2.png"}
-              alt="profile"
-              width={30}
-              height={30}
-            />
-          </Link>
-        </Div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="navbar">
+        <Link href={`/basket`}>
+          <Image src="./basket.svg" alt="basket" width={35} height={35} />
+        </Link>
+        <Link href={`/`}>
+          <Image src="/soap-2.png" alt="home" width={35} height={35} />
+        </Link>
+
+        <Link href={`/order`}>
+          <Image src="/order-now.png" alt="orders" width={35} height={35} />
+        </Link>
+        <Link href={"/profile"}>
+          <Image
+            src={session ? session.user.image : "/profile2.png"}
+            alt="profile"
+            width={35}
+            height={35}
+          />
+        </Link>
+      </div>
+    </>
+  );
 }
-
-const Div = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid black 2px;
-`;
