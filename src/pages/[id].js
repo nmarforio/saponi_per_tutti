@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Quantity from "@/components/Quantity";
+import { CldImage } from "next-cloudinary";
 
 export default function Soapdetail() {
-  const [detialSoap, setDetailSoap] = useState([]);
+  const [detialSoap, setDetailSoap] = useState();
 
   const router = useRouter();
   const id = router.query.id;
@@ -17,19 +18,25 @@ export default function Soapdetail() {
 
       setDetailSoap(json);
     };
-    fetchData().catch(console.error);
-  }, []);
+    id && fetchData().catch(console.error);
+  }, [id]);
 
   if (detialSoap) {
+    console.log("DADAWSASA", detialSoap.image);
     return (
       <>
         <h1>{detialSoap.name}</h1>
-        <Image
-          alt={detialSoap._id}
-          src={detialSoap.image}
-          width={200}
-          height={200}
-        />
+        {detialSoap.image.map((im) => {
+          return (
+            <Image
+              key={im}
+              alt={detialSoap._id}
+              src={im}
+              width={200}
+              height={200}
+            />
+          );
+        })}
         <Quantity />
         <p>CHF: {detialSoap.price}</p>
         <p>{detialSoap.description}</p>
