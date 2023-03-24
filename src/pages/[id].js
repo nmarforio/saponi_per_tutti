@@ -25,23 +25,25 @@ export default function Soapdetail() {
     console.log("DADAWSASA", detialSoap.image);
     return (
       <>
-        <h1>{detialSoap.name}</h1>
-        {detialSoap.image.map((im) => {
-          return (
-            <Image
-              key={im}
-              alt={detialSoap._id}
-              src={im}
-              width={200}
-              height={200}
-            />
-          );
-        })}
-        <Quantity />
-        <p>CHF: {detialSoap.price}</p>
-        <p>{detialSoap.description}</p>
-        <h4>Sostanze</h4>
-        <p>{detialSoap.recipes}</p>
+        <div className="soapcard">
+          <h1>{detialSoap.name}</h1>
+          {detialSoap.image.map((im) => {
+            return (
+              <Image
+                key={im}
+                alt={detialSoap._id}
+                src={im}
+                width={200}
+                height={200}
+              />
+            );
+          })}
+          <Quantity />
+          <p>CHF: {detialSoap.price}</p>
+          <p>{detialSoap.description}</p>
+          <h4>Sostanze</h4>
+          <p>{detialSoap.recipes}</p>
+        </div>
       </>
     );
   }

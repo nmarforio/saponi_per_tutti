@@ -92,26 +92,28 @@ export default function Basket() {
 
           return (
             <>
-              <p key={soap._id}>{soap.name}</p>
-              <label htmlFor="quantity">Quantità</label>
-              <input
-                key={item._id}
-                onChange={(event) => {
-                  console.log(event.target.value);
-                  updateQuantity(event.target.value, index);
-                  // setQuantity(event.target.quantity);
-                }}
-                id="quantity"
-                // this is changed
-                name={`${soap._id}`}
-                value={quantity[index]}
-                type={"number"}
-                min={0}
-                max={10}
-              ></input>
-              <p name="eachprice" id="eachprice">
-                CHF Prezzo: {total}
-              </p>
+              <div className="soapcard">
+                <p key={soap._id}>{soap.name}</p>
+                <label htmlFor="quantity">Quantità</label>
+                <input
+                  key={item._id}
+                  onChange={(event) => {
+                    console.log(event.target.value);
+                    updateQuantity(event.target.value, index);
+                    // setQuantity(event.target.quantity);
+                  }}
+                  id="quantity"
+                  // this is changed
+                  name={`${soap._id}`}
+                  value={quantity[index]}
+                  type={"number"}
+                  min={0}
+                  max={10}
+                ></input>
+                <p name="eachprice" id="eachprice">
+                  CHF Prezzo: {total}
+                </p>
+              </div>
             </>
           );
         })}

@@ -40,37 +40,39 @@ export default function User({ session, userDb }) {
   if (!userDb.adress) {
     return (
       <>
-        <form onSubmit={handleSubmit}>
-          <p>Crea il tuo Profilo:</p>
-          <label htmlFor="name">Nome:</label>
-          <input
-            name="name"
-            id="name"
-            value={name}
-            onChange={(event) => {
-              setName(event.target.email);
-            }}
-            required
-          ></input>
-          <label htmlFor="adress">Indirizzo:</label>
-          <input name="adress" id="adress" required></input>
-          <label htmlFor="email">Email:</label>
-          <input
-            name="email"
-            id="email"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.email);
-            }}
-            required
-          ></input>
-          <button
-            type="submit"
-            onClick={() => router.push(`/profile/${session.user.id}`)}
-          >
-            Crea
-          </button>
-        </form>
+        <div className="soapcard">
+          <form onSubmit={handleSubmit}>
+            <p>Crea il tuo Profilo:</p>
+            <label htmlFor="name">Nome:</label>
+            <input
+              name="name"
+              id="name"
+              value={name}
+              onChange={(event) => {
+                setName(event.target.email);
+              }}
+              required
+            ></input>
+            <label htmlFor="adress">Indirizzo:</label>
+            <input name="adress" id="adress" required></input>
+            <label htmlFor="email">Email:</label>
+            <input
+              name="email"
+              id="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.email);
+              }}
+              required
+            ></input>
+            <button
+              type="submit"
+              onClick={() => router.push(`/profile/${session.user.id}`)}
+            >
+              Crea
+            </button>
+          </form>
+        </div>
       </>
     );
   } else {

@@ -4,6 +4,7 @@ export default createGlobalStyle`
 *,*::before, *::after{
     box-sizing: border-box;
 }
+
 body{
     margin:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -40,7 +41,38 @@ body{
   opacity: 0.9;
   border: solid black 2px;
   border-radius: 5%;
-  margin-top: 10px;
+  margin-top: 10px;  
+  flex-wrap:wrap;
+  
+}
+.orderscard{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+
+  background-color: rgb(212, 205, 195) ;
+  opacity: 0.9;
+  border-radius: 5%;
+  border: solid 2px white;
+  margin-top: 10px;  
+  flex-wrap:wrap;
+  margin-left: 35px;
+  box-shadow: 10px 10px 15px white
+}
+.ordernumber{
+    display: contents;
+    font-size: x-small;
+}
+.swiper-button-next,
+.swiper-button-prev{
+    color:white !important;
+    
+}
+.swiper-slide{
+    display: flex;
+    justify-content: center;
 
 }
+
 `;

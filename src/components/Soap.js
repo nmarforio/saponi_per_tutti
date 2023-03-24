@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CldImage } from "next-cloudinary";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import { Navigation, EffectFade } from "swiper";
 
 export default function Soap({ name, price, id, image }) {
   console.log("IMAGEEEE", image);
@@ -9,16 +14,33 @@ export default function Soap({ name, price, id, image }) {
       <div className="soapcard">
         <h1>{name}</h1>
 
-        <Link href={`/${id}`}>
+        <Swiper
+          modules={[Navigation, EffectFade]}
+          navigation
+          effect
+          speed={800}
+          slidesPerView={1}
+          loop
+          className="myswiper"
+        >
           {image.map((im) => {
             return (
               <>
-                <Image key={im} alt={name} src={im} width={150} height={150} />
+                <SwiperSlide>
+                  <Link href={`/${id}`}>
+                    <Image
+                      key={im}
+                      alt={name}
+                      src={im}
+                      width={150}
+                      height={150}
+                    />
+                  </Link>
+                </SwiperSlide>
               </>
             );
           })}
-        </Link>
-
+        </Swiper>
         <h3>CHF:{price}</h3>
       </div>
     </>

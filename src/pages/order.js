@@ -25,16 +25,22 @@ export default function Order() {
         const newArray = items.flat();
         return (
           <>
-            <p>Ordine numero: {order._id}</p>
-            {newArray.map((s) => {
-              return (
-                <>
-                  <p key={s._id}>Nome: {s.name}</p>
-                  <p>Quantità: {s.amount}</p>
-                </>
-              );
-            })}
-            <p>Totale CHF: {order.total}</p>
+            <div className="orderscard">
+              <dt>Ordine numero:</dt>
+              <dd className="ordernumber">{order._id}</dd>
+              {newArray.map((s) => {
+                return (
+                  <>
+                    <dl>
+                      <dt key={s._id}>{s.name}</dt>
+                      <dd>Quantità: {s.amount}</dd>
+                    </dl>
+                  </>
+                );
+              })}
+
+              <p>Totale CHF: {order.total}</p>
+            </div>
           </>
         );
       })}
