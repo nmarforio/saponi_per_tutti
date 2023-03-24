@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Quantity from "@/components/Quantity";
-import { CldImage } from "next-cloudinary";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import { Navigation, EffectFade } from "swiper";
 
 export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState();
@@ -27,17 +31,30 @@ export default function Soapdetail() {
       <>
         <div className="soapcard">
           <h1>{detialSoap.name}</h1>
-          {detialSoap.image.map((im) => {
-            return (
-              <Image
-                key={im}
-                alt={detialSoap._id}
-                src={im}
-                width={200}
-                height={200}
-              />
-            );
-          })}
+
+          <Swiper
+            modules={[Navigation, EffectFade]}
+            navigation
+            effect
+            speed={800}
+            slidesPerView={1}
+            loop
+            className="myswiper"
+          >
+            <SwiperSlide>
+              {detialSoap.image.map((im) => {
+                return (
+                  <Image
+                    key={im}
+                    alt={detialSoap._id}
+                    src={im}
+                    width={200}
+                    height={200}
+                  />
+                );
+              })}
+            </SwiperSlide>
+          </Swiper>
           <Quantity />
           <p>CHF: {detialSoap.price}</p>
           <p>{detialSoap.description}</p>
@@ -48,3 +65,31 @@ export default function Soapdetail() {
     );
   }
 }
+
+// <Swiper
+// modules={[Navigation, EffectFade]}
+// navigation
+// effect
+// speed={800}
+// slidesPerView={1}
+// loop
+// className="myswiper"
+// >
+// {image.map((im) => {
+//   return (
+//     <>
+//       <SwiperSlide>
+//         <Link href={`/${id}`}>
+//           <Image
+//             key={im}
+//             alt={name}
+//             src={im}
+//             width={150}
+//             height={150}
+//           />
+//         </Link>
+//       </SwiperSlide>
+//     </>
+//   );
+// })}
+// </Swiper>

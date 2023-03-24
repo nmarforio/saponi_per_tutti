@@ -47,23 +47,39 @@ body{
 }
 .orderscard{
     width: 300px;
-    display: flex;
-    justify-content: space-around;
-    justify-items: center;
-
+   display:grid;
+   justify-items: center;
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
   border-radius: 5%;
-  border: solid 2px white;
+  border: solid 2px rgb(156, 89, 18);
   margin-top: 10px;  
   flex-wrap:wrap;
   margin-left: 35px;
-  box-shadow: 10px 10px 15px white
+  box-shadow: 10px 10px 15px rgb(156, 89, 18)
 }
 .ordernumber{
-    display: contents;
     font-size: x-small;
+    color: black;
+    padding-left: 10px;
 }
+.ordertitle{
+    color: white;
+    margin-left: 20px;
+}
+.orderspan1{
+    display: flex;
+    align-items: center;
+    
+}
+.orderspan2{
+    display: flex;
+    align-items: center;
+}
+.orderquantity{
+    margin-left: 15px;
+}
+
 .swiper-button-next,
 .swiper-button-prev{
     color:white !important;

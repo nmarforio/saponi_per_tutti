@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Ordercard from "@/components/Ordercard";
 
 export default function Order() {
   const [orders, setOrders] = useState();
@@ -19,30 +20,11 @@ export default function Order() {
 
   return (
     <>
-      <h2>Lista dei tuoi ordini</h2>
+      <h2 className="ordertitle">Lista dei tuoi ordini</h2>
       {orders.map((order) => {
         const items = order.items;
         const newArray = items.flat();
-        return (
-          <>
-            <div className="orderscard">
-              <dt>Ordine numero:</dt>
-              <dd className="ordernumber">{order._id}</dd>
-              {newArray.map((s) => {
-                return (
-                  <>
-                    <dl>
-                      <dt key={s._id}>{s.name}</dt>
-                      <dd>Quantità: {s.amount}</dd>
-                    </dl>
-                  </>
-                );
-              })}
-
-              <p>Totale CHF: {order.total}</p>
-            </div>
-          </>
-        );
+        return <Ordercard key={order._id} order={order} newArray={newArray} />;
       })}
     </>
   );
