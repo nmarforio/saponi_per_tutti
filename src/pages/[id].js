@@ -41,9 +41,9 @@ export default function Soapdetail() {
             loop
             className="myswiper"
           >
-            <SwiperSlide>
-              {detialSoap.image.map((im) => {
-                return (
+            {detialSoap.image.map((im) => {
+              return (
+                <SwiperSlide key={im}>
                   <Image
                     key={im}
                     alt={detialSoap._id}
@@ -51,9 +51,9 @@ export default function Soapdetail() {
                     width={200}
                     height={200}
                   />
-                );
-              })}
-            </SwiperSlide>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
           <Quantity />
           <p>CHF: {detialSoap.price}</p>
