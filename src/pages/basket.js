@@ -18,7 +18,6 @@ export default function Basket() {
       const json = await data.json();
 
       setBasketItem(json);
-      // setQuantity(json.basketItems.map)
       setQuantity(json.basketItems.map((item) => +item.quantity));
     };
     fetchData().catch(console.error);

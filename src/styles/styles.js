@@ -11,38 +11,39 @@ body{
     background-image: url('background.jpg');
     background-size: cover;
     background-attachment:fixed ;
-    color:rgb(134, 60, 13); 
+    color: rgb(134, 60, 13)
     
     }
 
 .navbar{
 
   display: flex;
-  justify-content: space-between;
-  border-bottom: solid black 2px;
+  justify-content: space-around;
+  border: solid rgb(134, 60, 13) 2px;
   background-color: rgb(212, 205, 195);
   opacity: 0.8;
-  color: balck;
   margin-top: 5px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgb(156, 89, 18);;
 }
 
 #__next > div:nth-child(1){
     display: flex;
     justify-content: center;
 }
-#__next > main > main > div > h1{
-    font-size: medium;
-}
+
 
 .soapcard{
     display: flex;
     justify-content: center;
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
-  border: solid black 2px;
+  border: solid rgb(134, 60, 13) 2px;
   border-radius: 5%;
   margin-top: 10px;  
   flex-wrap:wrap;
+  box-shadow: 5px 5px 5px rgb(156, 89, 18);
+
   
 }
 .orderscard{
@@ -52,7 +53,7 @@ body{
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
   border-radius: 5%;
-  border: solid 2px rgb(156, 89, 18);
+  border: solid 2px rgb(134, 60, 13);
   margin-top: 10px;  
   flex-wrap:wrap;
   margin-left: 35px;
@@ -64,8 +65,14 @@ body{
     padding-left: 10px;
 }
 .ordertitle{
-    color: white;
-    margin-left: 20px;
+    border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: 225px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    
 }
 .orderspan1{
     display: flex;
@@ -90,5 +97,124 @@ body{
     justify-content: center;
 
 }
+.formNewUser{
+  background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 5%;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+}
+.formNewUser input,textarea{
+    margin: 10px;
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.formNewUser label{
+    display: flex;
+    justify-content: flex-start;
+}
+.createProfile{
+    color: rgb(134, 60, 13);
+    margin-left: 40px;
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18);
+    border: solid 2px rgb(134, 60, 13)
 
+}
+.createButton{
+background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: larger;
+  border-radius: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.logOut{
+    margin-top: 25px;
+    margin-left: 40px;
+  color:rgb(134, 60, 13) ;
+  box-shadow: 5px 5px 5px rgb(156, 89, 18) ;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: 20px;
+  border-radius: 8px;
+  background-color: rgb(212, 205, 195);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.profileCard{
+    background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 5%;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  padding-top: 0;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13);
+  
+}
+.profileCard p{
+    font-size: larger;
+}
+.yourDatas{
+    color: rgb(134, 60, 13);
+    margin-left: 40px;
+    border: 2px solid rgb(134, 60, 13);
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+}
+.changeDatas{
+    background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.changeDatasForm{
+    background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 5%;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+}
+.changeDatasForm input,textarea{
+    margin: 10px;
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.changeDatasForm label{
+    display: flex;
+    justify-content: flex-start;
+    font-size: large;
+}
+.saveDatasButton{  
+background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
 `;

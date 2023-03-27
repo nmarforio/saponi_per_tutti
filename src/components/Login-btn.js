@@ -6,14 +6,21 @@ export default function LoginButton({ session }) {
   if (session)
     return (
       <>
-        <button onClick={() => signOut() && router.push("/")}>Log Out</button>
+        <button
+          className="logOut"
+          onClick={() => signOut() && router.push("/")}
+        >
+          Log Out
+        </button>
       </>
     );
 
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign In / Log In</button>
+      <button className="logIn" onClick={() => signIn()}>
+        Sign In / Log In
+      </button>
     </>
   );
 }

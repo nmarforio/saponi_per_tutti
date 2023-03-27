@@ -12,6 +12,7 @@ export default function UserPage() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [adress, setAdress] = useState();
+  const [id, setId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +61,7 @@ export default function UserPage() {
     return (
       <>
         <h2>Cambia i toui Dati:</h2>
-        <div className="soapcard">
+        <div className="changeDatasForm">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Nome:</label>
             <input
@@ -74,7 +75,7 @@ export default function UserPage() {
             ></input>
 
             <label htmlFor="adress">Indirizzo:</label>
-            <input
+            <textarea
               id="adress"
               name="adress"
               value={adress}
@@ -82,7 +83,7 @@ export default function UserPage() {
                 setAdress(event.target.adress);
               }}
               required
-            ></input>
+            ></textarea>
             <label htmlFor="email">Email:</label>
             <input
               id="email"
@@ -93,7 +94,11 @@ export default function UserPage() {
               }}
               required
             ></input>
-            <button type="Submit" onClick={() => router.push("/profile")}>
+            <button
+              className="saveDatasButton"
+              type="Submit"
+              onClick={() => router.push("/profile")}
+            >
               Salva
             </button>
           </form>
@@ -103,17 +108,20 @@ export default function UserPage() {
   } else {
     return (
       <>
-        <div className="soapcard">
-          <h2>I tuoi Dati:</h2>
+        <h2 className="yourDatas">I tuoi Dati:</h2>
+        <div className="profileCard">
           <p>{user.name}</p>
           <p>{user.email}</p>
           <p>{user.adress}</p>
 
-          <LoginButton session={session} />
-          <button onClick={() => setShowForm(!showForm)}>
+          <button
+            className="changeDatas"
+            onClick={() => setShowForm(!showForm)}
+          >
             Cambia i tuoi dati
           </button>
         </div>
+        <LoginButton session={session} />
       </>
     );
   }
