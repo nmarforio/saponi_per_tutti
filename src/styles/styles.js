@@ -8,16 +8,16 @@ export default createGlobalStyle`
 body{
     margin:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url('background.jpg');
+    background-image: url('background_blur_12.jpg');
     background-size: cover;
     background-attachment:fixed ;
     color: rgb(134, 60, 13)
-    
     }
 
 .navbar{
 
   display: flex;
+  
   justify-content: space-around;
   border: solid rgb(134, 60, 13) 2px;
   background-color: rgb(212, 205, 195);
@@ -39,7 +39,7 @@ body{
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
   border: solid rgb(134, 60, 13) 2px;
-  border-radius: 5%;
+  border-radius: 8px;
   margin-top: 10px;  
   flex-wrap:wrap;
   box-shadow: 5px 5px 5px rgb(156, 89, 18);
@@ -52,7 +52,7 @@ body{
    justify-items: center;
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
-  border-radius: 5%;
+  border-radius: 8px;
   border: solid 2px rgb(134, 60, 13);
   margin-top: 10px;  
   flex-wrap:wrap;
@@ -101,7 +101,7 @@ body{
   background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;
-  border-radius: 5%;
+  border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
   padding: 5vw;
@@ -153,7 +153,7 @@ background-color: white;
     background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;
-  border-radius: 5%;
+  border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
   padding: 5vw;
@@ -188,7 +188,7 @@ background-color: white;
     background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;
-  border-radius: 5%;
+  border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
   padding: 5vw;
@@ -217,4 +217,119 @@ background-color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
+.yourOrder{
+    border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: 160px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+}
+.total {
+    background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 8px;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13);
+  margin-top: 10px;
+}
+.total label{
+    margin-right: 10px;
+    font-size: large;
+}
+.total input{
+    margin: 10px;
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.total button{
+background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.basketCard{
+    
+    background-color: rgb(212, 205, 195) ;
+    margin-top: 10px;  
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 8px;
+  border: 1px solid rgb(134, 60, 13);
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+}
+.basketCard input{
+    margin-left: 10px;
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.basketCard h3{
+    margin-top: 5px;
+}
+.soapdetails{
+background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+}
+.soapdetails input{
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 10px;
+    font-size: medium;
+}
+.soapdetails button{
+    background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  margin-left:30%;
+  margin-top: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.soapdetails h4{
+    margin-bottom: 2px;
+}
+.recipes{
+    margin-top: 5px;
+}
+
+.singIn button{
+background-color: white;
+  color: rgb(134, 60, 13);
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  margin-left:30%;
+  margin-top: 150px;
+  height: 60px;
+  background-color: rgb(212, 205, 195);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.profileimg{
+    border-radius: 8px;
+}
+
+
 `;

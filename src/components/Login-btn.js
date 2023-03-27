@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 
 export default function LoginButton({ session }) {
   const router = useRouter();
+
   if (session)
     return (
       <>
         <button
           className="logOut"
-          onClick={() => signOut() && router.push("/")}
+          onClick={() => signOut({ callbackUrl: "/profile" })}
         >
           Log Out
         </button>
@@ -17,10 +18,9 @@ export default function LoginButton({ session }) {
 
   return (
     <>
-      Not signed in <br />
-      <button className="logIn" onClick={() => signIn()}>
-        Sign In / Log In
-      </button>
+      <div className="singIn">
+        <button onClick={() => signIn()}>Sign In / Log In</button>
+      </div>
     </>
   );
 }

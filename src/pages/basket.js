@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import BasketSoapCards from "@/components/BasketSoapCards";
 
 export default function Basket() {
   const { data: session } = useSession();
@@ -82,7 +83,7 @@ export default function Basket() {
   return (
     <>
       <form>
-        <h2>Il tuo Ordine</h2>
+        <h2 className="yourOrder">Il tuo Ordine</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
           const item = basketItem.basketItems[index];
@@ -91,36 +92,24 @@ export default function Basket() {
 
           return (
             <>
-              <div className="soapcard">
-                <p key={soap._id}>{soap.name}</p>
-                <label htmlFor="quantity">Quantità</label>
-                <input
-                  key={item._id}
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                    updateQuantity(event.target.value, index);
-                    // setQuantity(event.target.quantity);
-                  }}
-                  id="quantity"
-                  // this is changed
-                  name={`${soap._id}`}
-                  value={quantity[index]}
-                  type={"number"}
-                  min={0}
-                  max={10}
-                ></input>
-                <p name="eachprice" id="eachprice">
-                  CHF Prezzo: {total}
-                </p>
-              </div>
+              <BasketSoapCards
+                item={item}
+                soap={soap}
+                quantity={quantity}
+                index={index}
+                total={total}
+                updateQuantity={updateQuantity}
+              />
             </>
           );
         })}
-        <label htmlFor="total">Totale:</label>
-        <input id="total" name="total" value={sum}></input>
-        <button type="Submit" onClick={deleteBasketItemsAndPostOrder}>
-          Inviare
-        </button>
+        <div className="total">
+          <label htmlFor="total">Totale:</label>
+          <input id="total" name="total" value={sum}></input>
+          <button type="Submit" onClick={deleteBasketItemsAndPostOrder}>
+            Inviare
+          </button>
+        </div>
       </form>
     </>
   );

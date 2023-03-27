@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function FormNewUser({ session }) {
   const [name, setName] = useState(session.user.name);

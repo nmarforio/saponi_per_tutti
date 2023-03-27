@@ -55,11 +55,13 @@ export default function Soapdetail() {
               );
             })}
           </Swiper>
-          <Quantity />
-          <p>CHF: {detialSoap.price}</p>
-          <p>{detialSoap.description}</p>
-          <h4>Sostanze</h4>
-          <p>{detialSoap.recipes}</p>
+          <div className="soapdetails">
+            <Quantity />
+            <p>CHF: {detialSoap.price}</p>
+            <p>{detialSoap.description}</p>
+            <h4>Sostanze</h4>
+            <p className="recipes">{detialSoap.recipes}</p>
+          </div>
         </div>
       </>
     );

@@ -22,6 +22,7 @@ export default function NavBar() {
         <Link href={"/profile"}>
           <Image
             src={session ? session.user.image : "/profile2.png"}
+            className="profileimg"
             alt="profile"
             width={35}
             height={35}
