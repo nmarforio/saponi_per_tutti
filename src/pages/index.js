@@ -18,8 +18,6 @@ export default function Home() {
     fetchData().catch(console.error);
   }, []);
 
-  console.log(soapList);
-
   return (
     <>
       <Head>

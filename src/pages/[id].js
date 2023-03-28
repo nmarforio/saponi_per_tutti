@@ -26,7 +26,6 @@ export default function Soapdetail() {
   }, [id]);
 
   if (detialSoap) {
-    console.log("DADAWSASA", detialSoap.image);
     return (
       <>
         <div className="soapcard">

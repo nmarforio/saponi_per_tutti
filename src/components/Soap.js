@@ -7,7 +7,6 @@ import "swiper/css/effect-fade";
 import { Navigation, EffectFade } from "swiper";
 
 export default function Soap({ name, price, id, image }) {
-  console.log("IMAGEEEE", image);
   return (
     <>
       <div className="soapcard">

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
@@ -11,6 +10,7 @@ export default function Basket() {
 
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
+  const [userData, setUserData] = useState();
 
   console.log("QUANTITY", quantity);
   useEffect(() => {
@@ -20,11 +20,12 @@ export default function Basket() {
 
       setBasketItem(json);
       setQuantity(json.basketItems.map((item) => +item.quantity));
+      setUserData(json.user);
     };
     fetchData().catch(console.error);
   }, []);
   // console.log(basketItem, quantity);
-  if (!basketItem || !session) {
+  if (!basketItem || !session || !userData) {
     return <p>Caricamento...</p>;
   }
 
@@ -40,6 +41,7 @@ export default function Basket() {
     total: 0,
     items: [],
     userId: session.user.id,
+    status: "new",
   };
 
   basketItem.soapBasket.forEach((soap, index) => {
@@ -53,8 +55,6 @@ export default function Basket() {
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
-
-  console.log("NEWORDER", newOrder);
 
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
@@ -77,13 +77,11 @@ export default function Basket() {
     router.push("/order");
   }
 
-  console.log(basketItem.soapBasket);
-
   let sum = 0;
   return (
     <>
       <form>
-        <h2 className="yourOrder">Il tuo Ordine</h2>
+        <h2 className="yourOrder">Il tuo Ordine:</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
           const item = basketItem.basketItems[index];
@@ -106,7 +104,14 @@ export default function Basket() {
         <div className="total">
           <label htmlFor="total">Totale:</label>
           <input id="total" name="total" value={sum}></input>
-          <button type="Submit" onClick={deleteBasketItemsAndPostOrder}>
+          <button
+            type="Submit"
+            onClick={
+              userData.adress
+                ? deleteBasketItemsAndPostOrder
+                : router.push("/profile")
+            }
+          >
             Inviare
           </button>
         </div>

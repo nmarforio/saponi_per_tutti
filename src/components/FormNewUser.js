@@ -17,6 +17,7 @@ export default function FormNewUser({ session }) {
         adress: userData.adress,
         email: userData.email,
         name: userData.name,
+        admin: false,
       }),
       headers: {
         Accept: "application/json",
@@ -35,7 +36,9 @@ export default function FormNewUser({ session }) {
 
   return (
     <>
-      <h2 className="createProfile">Crea il tuo Profilo:</h2>
+      <h2 className="createProfile">
+        Crea il tuo profilo, aggiungi un valido indirizzo:
+      </h2>
       <div className="formNewUser">
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Nome:</label>

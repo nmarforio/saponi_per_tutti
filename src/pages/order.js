@@ -20,7 +20,7 @@ export default function Order() {
 
   return (
     <>
-      <h2 className="ordertitle">Lista dei tuoi ordini</h2>
+      <h2 className="ordertitle">Lista dei tuoi ordini:</h2>
       {orders.map((order) => {
         const items = order.items;
         const newArray = items.flat();

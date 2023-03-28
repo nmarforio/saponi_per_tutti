@@ -69,7 +69,7 @@ body{
     color: rgb(134, 60, 13);
     margin-left: 35px;
     background-color: rgb(212, 205, 195);
-    width: 225px;
+    width: 250px;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
     
@@ -124,7 +124,7 @@ body{
     color: rgb(134, 60, 13);
     margin-left: 40px;
     background-color: rgb(212, 205, 195);
-    width: fit-content;
+    width: 250px;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18);
     border: solid 2px rgb(134, 60, 13)
@@ -329,6 +329,49 @@ background-color: white;
 }
 .profileimg{
     border-radius: 8px;
+}
+
+.footer{
+  position: fixed;
+  text-align:center;
+
+  bottom: 0;
+   width: 100%;
+   border: solid rgb(134, 60, 13) 2px;
+  background-color: rgb(212, 205, 195);
+  opacity: 0.8;
+  margin-top: 5px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgb(156, 89, 18);
+  height: 30px;
+  
+}
+.footerlink{
+  text-decoration: none;
+  color:rgb(134, 60, 13)
+}
+.admintitle{
+  border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    
+}
+.admincard{
+  background-color: rgb(212, 205, 195) ;
+    margin-top: 10px;  
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 8px;
+  border: 1px solid rgb(134, 60, 13);
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13)
 }
 
 
