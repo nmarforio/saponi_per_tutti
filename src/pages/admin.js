@@ -20,6 +20,17 @@ export default function Admin() {
         <h2 className="admintitle">Sezione per amministratore</h2>
         <div className="admincard">
           <p>i nuovi ordini</p>
+          {allOrders.orders.map((order, index) => {
+            const user = allOrders.user;
+            order.items.map((item) => {
+              return (
+                <div key={order.id} className="adminorders">
+                  <p>{user.name}</p>
+                  <p>{item.name[index]}</p>
+                </div>
+              );
+            });
+          })}
         </div>
       </>
     );
