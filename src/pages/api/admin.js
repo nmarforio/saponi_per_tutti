@@ -12,13 +12,21 @@ export default async function handler(req, res) {
     if (!orders) {
       return res.status(404).json({ status: "Not Found" });
     } else {
-      const id = orders.map((order) => {
-        return order.userId;
-      });
+      const extendedOrders = [];
+      for (const eachorder of orders) {
+        // console.log("ORDEEERSSSSS", eachorder);
+        const id = eachorder.userId;
+        const user = await User.findById(id);
+        extendedOrders.push({
+          ...eachorder,
+          user,
+        });
+        //extendedOrders.push(eachorder);
+      }
+      console.log("AERRAAAAY", extendedOrders);
+      // const users = await User.findById(id);
 
-      const user = await User.findById(id);
-
-      return res.status(200).json({ orders, user });
+      return res.status(200).json(extendedOrders);
     }
   }
 }

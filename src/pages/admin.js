@@ -15,26 +15,31 @@ export default function Admin() {
 
   if (allOrders) {
     console.log("ORDERS", allOrders);
+
     return (
       <>
-        <h2 className="admintitle">Sezione per amministratore</h2>
-        <div className="admincard">
-          <p>i nuovi ordini</p>
-          {allOrders.orders.map((order, index) => {
-            const user = allOrders.user;
-            order.items.map((item) => {
-              return (
-                <div key={order.id} className="adminorders">
-                  <p>{user.name}</p>
-                  <p>{item.name[index]}</p>
-                </div>
-              );
-            });
-          })}
-        </div>
+        <h2 className="admintitle">Nuovi Ordini</h2>
+
+        {allOrders.map((order, index) => {
+          return (
+            <div className="admincard" key={order._doc._id}>
+              <p>Cliente: {order.user.name}</p>
+              <p>Indirizzo: {order.user.adress}</p>
+
+              <p>{order._doc.status}</p>
+              {order._doc.items.map((soap) => {
+                return (
+                  <>
+                    <p>{soap.name}</p>
+                    <p>quantità: {soap.amount}</p>
+                  </>
+                );
+              })}
+              <p>Totale: {order._doc.total}</p>
+            </div>
+          );
+        })}
       </>
     );
-  } else {
-    <p>nessun Ordine</p>;
   }
 }
