@@ -6,39 +6,39 @@ export default function Quantity() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  async function handelSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     let input = 0;
-    if (session === null) {
+    if (!session) {
       router.push("/profile");
     } else {
       input = event.target.quantity.value;
       console.log("INPUT", input);
-    }
 
-    const id = router.query.id;
-    const response = await fetch(`api/soaps/${id}`, {
-      method: "POST",
-      body: JSON.stringify({
-        soapId: id,
-        userId: session.user.id,
-        quantity: input,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      await response.json();
-      event.target.reset();
-    } else {
-      console.error(`Error: ${response.status}`);
+      const id = router.query.id;
+      const response = await fetch(`api/soaps/${id}`, {
+        method: "POST",
+        body: JSON.stringify({
+          soapId: id,
+          userId: session.user.id,
+          quantity: input,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        await response.json();
+        event.target.reset();
+      } else {
+        console.error(`Error: ${response.status}`);
+      }
     }
   }
 
   return (
     <>
-      <form onSubmit={handelSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="quatity">Quantità</label>
 
         <input

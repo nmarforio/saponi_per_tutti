@@ -7,17 +7,15 @@ export default async function handler(req, res) {
   await dbConnect();
 
   const session = await getSession({ req });
-  console.log(session.user.id);
 
   if (req.method === "PATCH") {
     // If our request method is PUT ...
     const updatedUser = await User.findByIdAndUpdate(session.user.id, {
       $set: req.body,
     });
-    console.log("UUUUUUU", updatedUser);
-    // ... find our joke by its ID and update the content that is part of the request body!
+    console.log("NEWUSERDMIN", updatedUser);
+
     return res.status(200).json(updatedUser);
-    // If successful, we'll receive an OK status code.
   }
 
   if (req.method === "GET") {

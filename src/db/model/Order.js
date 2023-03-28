@@ -10,6 +10,7 @@ const orderSchema = new Schema({
     },
   ],
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  status: String,
   total: Number,
 });
 

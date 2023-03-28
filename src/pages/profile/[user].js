@@ -1,5 +1,5 @@
 import LoginButton from "@/components/Login-btn";
-import { set } from "mongoose";
+
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -12,6 +12,8 @@ export default function UserPage() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [adress, setAdress] = useState();
+  const id = router.query;
+  console.log("ID", id.user);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,7 @@ export default function UserPage() {
     };
 
     fetchData().catch(console.error);
-  }, []);
+  }, [id.user]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -60,56 +62,67 @@ export default function UserPage() {
     return (
       <>
         <h2>Cambia i toui Dati:</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Nome:</label>
-          <input
-            id="name"
-            name="name"
-            value={name}
-            onChange={(event) => {
-              setName(event.target.adress);
-            }}
-            required
-          ></input>
+        <div className="changeDatasForm">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Nome:</label>
+            <input
+              id="name"
+              name="name"
+              value={name}
+              onChange={(event) => {
+                setName(event.target.adress);
+              }}
+              required
+            ></input>
 
-          <label htmlFor="adress">Indirizzo:</label>
-          <input
-            id="adress"
-            name="adress"
-            value={adress}
-            onChange={(event) => {
-              setAdress(event.target.adress);
-            }}
-            required
-          ></input>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            name="email"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.email);
-            }}
-            required
-          ></input>
-          <button type="Submit" onClick={() => router.push("/profile")}>
-            Salva
-          </button>
-        </form>
+            <label htmlFor="adress">Indirizzo:</label>
+            <textarea
+              id="adress"
+              name="adress"
+              value={adress}
+              onChange={(event) => {
+                setAdress(event.target.adress);
+              }}
+              required
+            ></textarea>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              name="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.email);
+              }}
+              required
+            ></input>
+            <button
+              className="saveDatasButton"
+              type="Submit"
+              onClick={() => router.push("/profile")}
+            >
+              Salva
+            </button>
+          </form>
+        </div>
       </>
     );
   } else {
     return (
       <>
-        <h2>I tuoi Dati:</h2>
-        <p>{user.name}</p>
-        <p>{user.email}</p>
-        <p>{user.adress}</p>
+        <h2 className="yourDatas">I tuoi Dati:</h2>
+        <div className="profileCard">
+          <p>{user.name}</p>
+          <p>{user.email}</p>
+          <p>{user.adress}</p>
 
+          <button
+            className="changeDatas"
+            onClick={() => setShowForm(!showForm)}
+          >
+            Cambia i tuoi dati
+          </button>
+        </div>
         <LoginButton session={session} />
-        <button onClick={() => setShowForm(!showForm)}>
-          Cambia i tuoi dati
-        </button>
       </>
     );
   }
