@@ -333,8 +333,8 @@ background-color: white;
 
 .footer{
   position: fixed;
-  text-align:center;
-
+  display: flex;
+  justify-content: space-around;
   bottom: 0;
    width: 100%;
    border: solid rgb(134, 60, 13) 2px;
@@ -373,6 +373,49 @@ background-color: white;
   margin-left: 10%;
   box-shadow: 10px 10px 15px rgb(134, 60, 13)
 }
+.newProductTitle{
+  border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+}
+.newProductcard{
+  background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 8px;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13)
 
+}
+.newProductcard input,textarea{
+    margin: 10px;
+    border-radius: 8px;
+    border-color: rgb(134, 60, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.newProductcard label{
+    display: flex;
+    justify-content: flex-start;
+}
+.newProductcard button{
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  margin-left:30%;
+  margin-top: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
 
 `;

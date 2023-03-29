@@ -13,7 +13,6 @@ export default function UserPage() {
   const [email, setEmail] = useState();
   const [adress, setAdress] = useState();
   const id = router.query;
-  console.log("ID", id.user);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -6,7 +6,10 @@ export default function Footer() {
   return (
     <div className="footer">
       <Link className="footerlink" href={"/admin"}>
-        ADMIN
+        Ordini
+      </Link>
+      <Link className="footerlink" href={"/newProduct"}>
+        Aggiungi Prodotto
       </Link>
     </div>
   );

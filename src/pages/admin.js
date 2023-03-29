@@ -26,12 +26,13 @@ export default function Admin() {
               <p>Cliente: {order.user.name}</p>
               <p>Indirizzo: {order.user.adress}</p>
 
-              <p>{order._doc.status}</p>
+              <p>Stato: {order._doc.status}</p>
+              <>Data ordine: {order._doc.date}</>
               {order._doc.items.map((soap) => {
                 return (
                   <>
-                    <p>{soap.name}</p>
-                    <p>quantità: {soap.amount}</p>
+                    <p>Prodotto: {soap.name}</p>
+                    <p>Quantità: {soap.amount}</p>
                   </>
                 );
               })}
