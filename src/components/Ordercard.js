@@ -13,6 +13,7 @@ export default function Ordercard({ order, newArray }) {
                 <p key={s._id}>{s.name}</p>
                 <p className="orderquantity">quantità: {s.amount}</p>
               </span>
+              <p>Data del tuo ordine: {order.date}</p>
             </>
           );
         })}

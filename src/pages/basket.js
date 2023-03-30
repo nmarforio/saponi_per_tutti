@@ -29,6 +29,12 @@ export default function Basket() {
     return <p>Caricamento...</p>;
   }
 
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  let dayOfOrders = `${day}-${month}-${year}`;
+
   function updateQuantity(value, index) {
     const newQuantity = [...quantity];
     newQuantity[index] = +value;
@@ -41,7 +47,8 @@ export default function Basket() {
     total: 0,
     items: [],
     userId: session.user.id,
-    status: "new",
+    status: "New",
+    date: dayOfOrders,
   };
 
   basketItem.soapBasket.forEach((soap, index) => {
@@ -76,6 +83,8 @@ export default function Basket() {
     }
     router.push("/order");
   }
+
+  console.log(typeof dayOfOrder);
 
   let sum = 0;
   return (

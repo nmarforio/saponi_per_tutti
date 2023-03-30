@@ -12,6 +12,7 @@ const orderSchema = new Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   status: String,
   total: Number,
+  date: String,
 });
 
 const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);

@@ -1,9 +1,6 @@
 import { signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
 
 export default function LoginButton({ session }) {
-  const router = useRouter();
-
   if (session)
     return (
       <>
@@ -15,7 +12,6 @@ export default function LoginButton({ session }) {
         </button>
       </>
     );
-
   return (
     <>
       <div className="singIn">
