@@ -55,7 +55,7 @@ export default function UserPage() {
   }
 
   if (!user) {
-    return <p>Nessun Dato</p>;
+    return <p className="createProfile">Cariamento...</p>;
   }
   if (showForm) {
     return (
