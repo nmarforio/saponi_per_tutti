@@ -9,6 +9,7 @@ export default function Ordercard({ order, newArray }) {
         {newArray.map((s) => {
           return (
             <>
+              <p>Stato: {order.status} </p>
               <span className="orderspan2">
                 <p key={s._id}>{s.name}</p>
                 <p className="orderquantity">quantità: {s.amount}</p>

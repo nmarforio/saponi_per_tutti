@@ -26,7 +26,7 @@ export default function Basket() {
   }, []);
   // console.log(basketItem, quantity);
   if (!basketItem || !session || !userData) {
-    return <p>Caricamento...</p>;
+    return <p className="yourOrder">Cestino vuoto</p>;
   }
 
   const date = new Date();
