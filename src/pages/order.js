@@ -15,7 +15,7 @@ export default function Order() {
   }, []);
 
   if (!orders) {
-    return <p>Nessun Ordine</p>;
+    return <p className="ordertitle">Nessun Ordine</p>;
   }
 
   return (

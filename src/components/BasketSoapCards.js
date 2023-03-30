@@ -21,7 +21,7 @@ export default function BasketSoapCards({
         // this is changed
         name={`${soap._id}`}
         value={quantity[index]}
-        type={"number"}
+        type="number"
         min={0}
         max={10}
       ></input>

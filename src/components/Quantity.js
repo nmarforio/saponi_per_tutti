@@ -46,7 +46,7 @@ export default function Quantity() {
           placeholder="0"
           max="10"
           min="0"
-          type={"number"}
+          type="number"
         ></input>
         <button type="submit" onClick={() => router.push("/")}>
           Aggiungi al Cestino
