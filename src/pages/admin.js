@@ -23,8 +23,8 @@ export default function Admin() {
         {allOrders.map((order, index) => {
           return (
             <div className="admincard" key={order._doc._id}>
-              <p>Cliente: {order.user.name}</p>
-              <p>Indirizzo: {order.user.adress}</p>
+              <p>Cliente: {order.user?.name}</p>
+              <p>Indirizzo: {order.user?.adress}</p>
 
               <p>Stato: {order._doc.status}</p>
               <>Data ordine: {order._doc.date}</>

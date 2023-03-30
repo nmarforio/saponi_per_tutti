@@ -22,7 +22,7 @@ export default function Layout({ children }) {
         <main>{children}</main>
       </>
     );
-  } else if (data.admin) {
+  } else if (data.admin === true) {
     return (
       <>
         <Navbar />
