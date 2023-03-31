@@ -83,8 +83,15 @@ export default function Basket() {
     }
     router.push("/order");
   }
-
-  console.log(typeof dayOfOrder);
+  function sendingCost(quantity, total) {
+    if (quantity > 1 && quantity <= 3) {
+      return total + 7;
+    } else if (quantity > 3 && quantity <= 6) {
+      return total + 3.5;
+    } else {
+      return total + 0;
+    }
+  }
 
   let sum = 0;
   return (
@@ -95,7 +102,7 @@ export default function Basket() {
           const price = +soap.price;
           const item = basketItem.basketItems[index];
           const total = quantity[index] * price;
-          sum += total;
+          sum += sendingCost(quantity, total);
 
           return (
             <>
@@ -111,7 +118,7 @@ export default function Basket() {
           );
         })}
         <div className="total">
-          <label htmlFor="total">Totale:</label>
+          <label htmlFor="total">Totale incluso spese:</label>
           <input id="total" name="total" value={sum}></input>
           <button
             type="Submit"

@@ -74,6 +74,16 @@ body{
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
     
 }
+.ordertitle2{
+  border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: 120px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+
+}
 .orderspan1{
     display: flex;
     align-items: center;
@@ -415,6 +425,39 @@ background-color: white;
   margin-left:30%;
   margin-top: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.questionMark{
+  border-radius: 8px;
+  position: fixed;
+  bottom: 0%;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.contactTitle{
+  border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    margin-left: 35px;
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+
+}
+.contactcard{
+  background-color: rgb(212, 205, 195) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+  border-radius: 8px;
+  border: 1px solid rgb(134, 60, 13);
+  height: fit-content;
+  padding: 5vw;
+  position: relative;
+  width: 300px;
+  margin-left: 10%;
+  box-shadow: 10px 10px 15px rgb(134, 60, 13);
+  margin-bottom: 10px
 
 }
 
