@@ -15,7 +15,11 @@ export default function Order() {
   }, []);
 
   if (!orders) {
-    return <p className="ordertitle">Nessun dato / Caricamento...</p>;
+
+    return <p className="ordertitle2">Nessun Ordine</p>;
+
+    
+
   }
 
   return (

@@ -1,16 +1,19 @@
 import Link from "next/link";
-import styled from "styled-components";
-import useSWR from "swr";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="footer">
-      <Link className="footerlink" href={"/admin"}>
-        Ordini
-      </Link>
-      <Link className="footerlink" href={"/newProduct"}>
-        Aggiungi Prodotto
-      </Link>
-    </div>
+    <>
+      <div className="questionMark">
+        <Link href={"/contact"}>
+          <Image
+            src="/questionmark.png"
+            alt="contact"
+            width={35}
+            height={35}
+          ></Image>
+        </Link>
+      </div>
+    </>
   );
 }

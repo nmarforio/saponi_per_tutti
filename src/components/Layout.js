@@ -1,7 +1,7 @@
 import Navbar from "../components/NavBar";
-import Footer from "../components/Footer";
+import FooterAdmin from "./FooterAdmin";
 import { useEffect, useState } from "react";
-import { trusted } from "mongoose";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   const [data, setData] = useState();
@@ -20,6 +20,7 @@ export default function Layout({ children }) {
       <>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </>
     );
   } else if (data.admin === true) {
@@ -27,7 +28,7 @@ export default function Layout({ children }) {
       <>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        <FooterAdmin />
       </>
     );
   } else {
@@ -35,6 +36,7 @@ export default function Layout({ children }) {
       <>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </>
     );
   }
