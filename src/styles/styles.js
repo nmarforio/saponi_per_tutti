@@ -4,8 +4,17 @@ export default createGlobalStyle`
 *,*::before, *::after{
     box-sizing: border-box;
 }
+@media (min-width: 80rem) {
+
+}
+
+#__next > main > main{
+  display: flex;
+    flex-wrap: wrap;
+}
 
 body{
+  
     margin:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-image: url('background_blur_12.jpg');
@@ -15,16 +24,11 @@ body{
     }
 
 .navbar{
-
   display: flex;
-  
   justify-content: space-around;
-  border: solid rgb(134, 60, 13) 2px;
-  background-color: rgb(212, 205, 195);
-  opacity: 0.8;
+  border-bottom: solid rgb(134, 60, 13) 2px;
   margin-top: 5px;
-  border-radius: 8px;
-  box-shadow: 5px 5px 5px rgb(156, 89, 18);;
+  margin-bottom: 10px;
 }
 
 #__next > div:nth-child(1){
@@ -34,14 +38,13 @@ body{
 
 
 .soapcard{
-    display: flex;
-    justify-content: center;
+  
   background-color: rgb(212, 205, 195) ;
   opacity: 0.9;
   border: solid rgb(134, 60, 13) 2px;
   border-radius: 8px;
   margin-top: 10px;  
-  flex-wrap:wrap;
+  width: 50%;
   box-shadow: 5px 5px 5px rgb(156, 89, 18);
 
   
@@ -292,13 +295,18 @@ background-color: white;
 .basketCard h3{
     margin-top: 5px;
 }
+
+
 .soapdetails{
-background-color: rgb(212, 205, 195) ;
-  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgb(212, 205, 195) ;
   height: fit-content;
-  padding: 5vw;
-  position: relative;
-  width: 300px;
+  padding: 10px;
+  width: auto;
+}
+.soapdetails h1{
+display: flex;
+justify-content: space-around
 }
 .soapdetails input{
     border-radius: 8px;
@@ -324,18 +332,22 @@ background-color: rgb(212, 205, 195) ;
     margin-top: 5px;
 }
 
+.singIn{
+  
+  display:grid;
+  justify-items:center;
+ 
+
+}
 .singIn button{
-background-color: white;
   color: rgb(134, 60, 13);
   border: 2px solid rgb(134, 60, 13);
   font-size: medium;
   border-radius: 8px;
-  margin-left:30%;
-  margin-top: 150px;
   height: 60px;
-  background-color: rgb(212, 205, 195);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+  background: rgb(212, 205, 195);
+  margin-top: 10%
 }
 .profileimg{
     border-radius: 8px;

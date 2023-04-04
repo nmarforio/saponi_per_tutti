@@ -4,12 +4,11 @@ export default function LoginButton({ session }) {
   if (session)
     return (
       <>
-        <button
-          className="logOut"
-          onClick={() => signOut({ callbackUrl: "/profile" })}
-        >
-          Log Out
-        </button>
+        <div className="logOut">
+          <button onClick={() => signOut({ callbackUrl: "/profile" })}>
+            Log Out
+          </button>
+        </div>
       </>
     );
   return (

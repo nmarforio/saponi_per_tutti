@@ -28,7 +28,7 @@ export default function Soapdetail() {
   if (detialSoap) {
     return (
       <>
-        <div className="soapcard">
+        <div className="soapdetails">
           <h1>{detialSoap.name}</h1>
 
           <Swiper
@@ -54,13 +54,12 @@ export default function Soapdetail() {
               );
             })}
           </Swiper>
-          <div className="soapdetails">
-            <Quantity />
-            <p>CHF: {detialSoap.price}</p>
-            <p>{detialSoap.description}</p>
-            <h4>Sostanze</h4>
-            <p className="recipes">{detialSoap.recipes}</p>
-          </div>
+
+          <Quantity />
+          <p>CHF: {detialSoap.price}</p>
+          <p>{detialSoap.description}</p>
+          <h4>Sostanze</h4>
+          <p className="recipes">{detialSoap.recipes}</p>
         </div>
       </>
     );
