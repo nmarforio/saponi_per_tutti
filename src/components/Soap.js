@@ -10,7 +10,7 @@ export default function Soap({ name, price, id, image }) {
   return (
     <>
       <div className="soapcard">
-        <h1>{name}</h1>
+        <h2>{name}</h2>
 
         <Swiper
           modules={[Navigation, EffectFade]}

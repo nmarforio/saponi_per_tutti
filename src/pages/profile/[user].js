@@ -60,7 +60,7 @@ export default function UserPage() {
   if (showForm) {
     return (
       <>
-        <h2>Cambia i toui Dati:</h2>
+        <h2 className="changeDatasTitle">Cambia i toui Dati:</h2>
         <div className="changeDatasForm">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Nome:</label>

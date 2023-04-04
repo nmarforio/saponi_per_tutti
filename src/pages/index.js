@@ -26,19 +26,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        {soapList.map((soap) => {
-          return (
-            <Soap
-              key={soap._id}
-              id={soap._id}
-              name={soap.name}
-              price={soap.price}
-              image={soap.image}
-            />
-          );
-        })}
-      </main>
+
+      {soapList.map((soap) => {
+        return (
+          <Soap
+            key={soap._id}
+            id={soap._id}
+            name={soap.name}
+            price={soap.price}
+            image={soap.image}
+          />
+        );
+      })}
     </>
   );
 }

@@ -4,13 +4,11 @@ export default createGlobalStyle`
 *,*::before, *::after{
     box-sizing: border-box;
 }
-@media (min-width: 80rem) {
+#__next > main{
 
-}
-
-#__next > main > main{
-  display: flex;
-    flex-wrap: wrap;
+display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 body{
@@ -46,9 +44,12 @@ body{
   margin-top: 10px;  
   width: 50%;
   box-shadow: 5px 5px 5px rgb(156, 89, 18);
-
-  
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
+
+
 .orderscard{
     width: 300px;
    display:grid;
@@ -58,8 +59,6 @@ body{
   border-radius: 8px;
   border: solid 2px rgb(134, 60, 13);
   margin-top: 10px;  
-  flex-wrap:wrap;
-  margin-left: 35px;
   box-shadow: 10px 10px 15px rgb(156, 89, 18)
 }
 .ordernumber{
@@ -70,9 +69,9 @@ body{
 .ordertitle{
     border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    margin-left: 35px;
     background-color: rgb(212, 205, 195);
-    width: 250px;
+    width: fit-content;
+    height: fit-content;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
     
@@ -152,8 +151,14 @@ background-color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .logOut{
-    margin-top: 25px;
-    margin-left: 40px;
+height: 100%;
+width: 100%;
+display: grid;
+    justify-items: center;
+margin-top: 10%
+}
+
+.logOut button{
   color:rgb(134, 60, 13) ;
   box-shadow: 5px 5px 5px rgb(156, 89, 18) ;
   border: 2px solid rgb(134, 60, 13);
@@ -161,33 +166,40 @@ background-color: white;
   border-radius: 8px;
   background-color: rgb(212, 205, 195);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: fit-content;
+
 }
+
 .profileCard{
-    background-color: rgb(212, 205, 195) ;
-  box-sizing: border-box;
-  opacity: 0.9;
+  background-color: rgb(212, 205, 195) ;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
-  padding: 5vw;
-  padding-top: 0;
-  position: relative;
-  width: 300px;
-  margin-left: 10%;
+  padding: 10px;
+  width: fit-content;
   box-shadow: 10px 10px 15px rgb(134, 60, 13);
-  
 }
 .profileCard p{
     font-size: larger;
 }
 .yourDatas{
     color: rgb(134, 60, 13);
-    margin-left: 40px;
     border: 2px solid rgb(134, 60, 13);
     background-color: rgb(212, 205, 195);
     width: fit-content;
+    height: fit-content;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
+}
+.changeDatasTitle{
+  border: solid 2px rgb(134, 60, 13);
+    color: rgb(134, 60, 13);
+    background-color: rgb(212, 205, 195);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+
 }
 .changeDatas{
     background-color: white;
@@ -233,7 +245,7 @@ background-color: white;
 .yourOrder{
     border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    margin-left: 35px;
+    
     background-color: rgb(212, 205, 195);
     width: 160px;
     border-radius: 8px;
@@ -241,15 +253,12 @@ background-color: white;
 }
 .total {
     background-color: rgb(212, 205, 195) ;
-  box-sizing: border-box;
   opacity: 0.9;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
   padding: 5vw;
-  position: relative;
-  width: 300px;
-  margin-left: 10%;
+  width: auto;
   box-shadow: 10px 10px 15px rgb(134, 60, 13);
   margin-top: 10px;
 }
@@ -274,20 +283,19 @@ background-color: white;
 }
 .basketCard{
     
-    background-color: rgb(212, 205, 195) ;
-    margin-top: 10px;  
-  box-sizing: border-box;
+  background-color: rgb(212, 205, 195) ;
+  margin-top: 10px;  
+  display:grid;
+  justify-content:center;
   opacity: 0.9;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   padding: 5vw;
-  position: relative;
-  width: 300px;
-  margin-left: 10%;
+  width: 250px;
   box-shadow: 10px 10px 15px rgb(134, 60, 13)
 }
 .basketCard input{
-    margin-left: 10px;
+  margin-top: 10px;
     border-radius: 8px;
     border-color: rgb(134, 60, 13);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -301,8 +309,9 @@ background-color: white;
   border-radius: 8px;
   background-color: rgb(212, 205, 195) ;
   height: fit-content;
-  padding: 10px;
-  width: auto;
+  padding: 25px;
+  width: 400px
+
 }
 .soapdetails h1{
 display: flex;
@@ -375,9 +384,10 @@ justify-content: space-around
 .admintitle{
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    margin-left: 35px;
+    
     background-color: rgb(212, 205, 195);
     width: fit-content;
+    height: fit-content;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
     
@@ -385,22 +395,22 @@ justify-content: space-around
 .admincard{
   background-color: rgb(212, 205, 195) ;
     margin-top: 10px;  
-  box-sizing: border-box;
+ 
   opacity: 0.9;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   padding: 5vw;
-  position: relative;
+  
   width: 300px;
-  margin-left: 10%;
+ 
   box-shadow: 10px 10px 15px rgb(134, 60, 13)
 }
 .newProductTitle{
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    margin-left: 35px;
     background-color: rgb(212, 205, 195);
     width: fit-content;
+    height: fit-content;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
 }
@@ -414,7 +424,6 @@ justify-content: space-around
   padding: 5vw;
   position: relative;
   width: 300px;
-  margin-left: 10%;
   box-shadow: 10px 10px 15px rgb(134, 60, 13)
 
 }
@@ -434,7 +443,6 @@ justify-content: space-around
   border: 2px solid rgb(134, 60, 13);
   font-size: medium;
   border-radius: 8px;
-  margin-left:30%;
   margin-top: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -450,9 +458,10 @@ justify-content: space-around
 .contactTitle{
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    margin-left: 35px;
+    
     background-color: rgb(212, 205, 195);
     width: fit-content;
+    height: fit-content;
     border-radius: 8px;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
 
@@ -467,7 +476,6 @@ justify-content: space-around
   padding: 5vw;
   position: relative;
   width: 300px;
-  margin-left: 10%;
   box-shadow: 10px 10px 15px rgb(134, 60, 13);
   margin-bottom: 10px
 
