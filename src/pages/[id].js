@@ -65,31 +65,3 @@ export default function Soapdetail() {
     );
   }
 }
-
-// <Swiper
-// modules={[Navigation, EffectFade]}
-// navigation
-// effect
-// speed={800}
-// slidesPerView={1}
-// loop
-// className="myswiper"
-// >
-// {image.map((im) => {
-//   return (
-//     <>
-//       <SwiperSlide>
-//         <Link href={`/${id}`}>
-//           <Image
-//             key={im}
-//             alt={name}
-//             src={im}
-//             width={150}
-//             height={150}
-//           />
-//         </Link>
-//       </SwiperSlide>
-//     </>
-//   );
-// })}
-// </Swiper>

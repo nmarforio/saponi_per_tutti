@@ -43,7 +43,6 @@ export default function Basket() {
   }
 
   const newOrder = {
-    // userId: session.user.user.id,
     total: 0,
     items: [],
     userId: session.user.id,
@@ -92,6 +91,8 @@ export default function Basket() {
       return total + 0;
     }
   }
+
+  //https://www.youtube.com/watch?v=YQjB1ZjTj8c STRIPE Payment
 
   let sum = 0;
   return (
