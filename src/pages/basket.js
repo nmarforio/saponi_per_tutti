@@ -2,17 +2,16 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
+import { checkout } from "../../checkout";
 
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
-  // console.log(session.user.id);
 
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
 
-  console.log("QUANTITY", quantity);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch("/api/basket");
@@ -24,7 +23,7 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
-  // console.log(basketItem, quantity);
+
   if (!basketItem || !session || !userData) {
     return <p className="yourOrder">Cestino vuoto</p>;
   }
@@ -38,7 +37,6 @@ export default function Basket() {
   function updateQuantity(value, index) {
     const newQuantity = [...quantity];
     newQuantity[index] = +value;
-    console.log(newQuantity);
     setQuantity(newQuantity);
   }
 
@@ -82,6 +80,7 @@ export default function Basket() {
     }
     router.push("/order");
   }
+
   function sendingCost(quantity, total) {
     if (quantity > 1 && quantity <= 3) {
       return total + 7;
@@ -129,7 +128,7 @@ export default function Basket() {
                 : router.push("/profile")
             }
           >
-            Inviare
+            compra
           </button>
         </div>
       </form>
