@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
-import { checkout } from "../../checkout";
 
 export default function Basket() {
   const { data: session } = useSession();
@@ -54,8 +53,9 @@ export default function Basket() {
       amount: quantity[index],
       soapPrice: soap.price,
       name: soap.name,
+      price_id: soap.price_id,
     };
-    console.log(soap.name);
+    console.log(soap.price_id);
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
@@ -67,6 +67,13 @@ export default function Basket() {
     });
 
     const response = await fetch(`/api/basket`, {
+      method: "POST",
+      body: JSON.stringify(newOrder),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responsePayment = await fetch(`/api/checkout_session`, {
       method: "POST",
       body: JSON.stringify(newOrder),
       headers: {
