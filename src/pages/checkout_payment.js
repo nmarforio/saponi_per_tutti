@@ -21,10 +21,23 @@ export default function PreviewPage() {
     }
   }, []);
 
+  const newOrder = usePaymentOrder((state) => state.order);
+  console.log(newOrder);
+
+  async function handlersubmit() {
+    const resPayment = await fetch(`/api/checkout_sessions`, {
+      method: "POST",
+      body: JSON.stringify(newOrder),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
   return (
     <form action="/api/checkout_sessions" method="POST">
       <section>
-        <button type="submit" role="link">
+        <button onClick={handlersubmit} type="submit" role="link">
           Checkout
         </button>
       </section>

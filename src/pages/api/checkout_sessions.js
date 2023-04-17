@@ -1,19 +1,19 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  const newOrder = req.body;
+  console.log("Hello", newOrder);
+
+  if (newOrder) {
+    const line_items = newOrder.items?.map((item) => {
+      return { price: item.price_id, quantity: item.amount };
+    });
+  }
+  console.log("OBJECT FOT THE CHECKOUT", line_items);
+
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
-      const newOrder = req.body;
-      console.log("Hello", newOrder);
-
-      if (newOrder) {
-        line_items = newOrder.items.map((item) => {
-          return { price: item.price_id, quantity: item.amount };
-        });
-      }
-
-      console.log("OBJECT FOT THE CHECKOUT", line_items);
       const session = await stripe.checkout.sessions.create({
         line_items,
         mode: "payment",

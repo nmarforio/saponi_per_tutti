@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
+import { create } from "zustand";
 
 export default function Basket() {
   const { data: session } = useSession();
@@ -46,6 +47,9 @@ export default function Basket() {
     status: "New",
     date: dayOfOrders,
   };
+  const usePaymentOrder = create((set) => ({
+    order: newOrder,
+  }));
 
   basketItem.soapBasket.forEach((soap, index) => {
     const newSoap = {
@@ -67,13 +71,6 @@ export default function Basket() {
     });
 
     const response = await fetch(`/api/basket`, {
-      method: "POST",
-      body: JSON.stringify(newOrder),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const resPayment = await fetch(`/api/checkout_sessions`, {
       method: "POST",
       body: JSON.stringify(newOrder),
       headers: {
