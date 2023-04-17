@@ -73,7 +73,7 @@ export default function Basket() {
         "Content-Type": "application/json",
       },
     });
-    const responsePayment = await fetch(`/api/checkout_session`, {
+    const resPayment = await fetch(`/api/checkout_sessions`, {
       method: "POST",
       body: JSON.stringify(newOrder),
       headers: {
@@ -85,7 +85,7 @@ export default function Basket() {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    router.push("/order");
+    router.push("/checkout_payment");
   }
 
   function sendingCost(quantity, total) {

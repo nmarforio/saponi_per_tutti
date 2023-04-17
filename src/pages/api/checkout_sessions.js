@@ -5,15 +5,17 @@ export default async function handler(req, res) {
     try {
       // Create Checkout Sessions from body params.
       const newOrder = req.body;
-      console.log(newOrder);
+      console.log("Hello", newOrder);
+
+      if (newOrder) {
+        line_items = newOrder.items.map((item) => {
+          return { price: item.price_id, quantity: item.amount };
+        });
+      }
+
+      console.log("OBJECT FOT THE CHECKOUT", line_items);
       const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: "id",
-            quantity: 1,
-          },
-        ],
+        line_items,
         mode: "payment",
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
