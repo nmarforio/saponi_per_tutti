@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
-import { create } from "zustand";
+import { useOrderPayment } from "@/useState";
 
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
 
+  const { createOrder } = useOrderPayment();
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
@@ -47,9 +48,6 @@ export default function Basket() {
     status: "New",
     date: dayOfOrders,
   };
-  const usePaymentOrder = create((set) => ({
-    order: newOrder,
-  }));
 
   basketItem.soapBasket.forEach((soap, index) => {
     const newSoap = {
@@ -63,9 +61,10 @@ export default function Basket() {
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
-
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
+    createOrder(newOrder);
+
     const res = await fetch(`/api/basket`, {
       method: "DELETE",
     });
