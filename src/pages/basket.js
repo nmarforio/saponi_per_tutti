@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
-import { useOrderPayment } from "@/useState";
 
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  const { createOrder } = useOrderPayment();
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
@@ -63,7 +61,6 @@ export default function Basket() {
   });
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
-    createOrder(newOrder);
 
     const res = await fetch(`/api/basket`, {
       method: "DELETE",
@@ -81,7 +78,7 @@ export default function Basket() {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    router.push("/checkout_payment");
+    router.push({ pathname: "/checkout_payment", query: newOrder });
   }
 
   function sendingCost(quantity, total) {
@@ -93,8 +90,6 @@ export default function Basket() {
       return total + 0;
     }
   }
-
-  //https://www.youtube.com/watch?v=YQjB1ZjTj8c STRIPE Payment
 
   let sum = 0;
   return (

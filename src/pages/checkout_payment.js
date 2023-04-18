@@ -1,6 +1,5 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { usePaymentOrder } from "../useState";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -22,12 +21,23 @@ export default function PreviewPage() {
     }
   }, []);
 
-  const { order } = usePaymentOrder();
+  async function getServerSideProps({ query }) {
+    try {
+      const response = await wrecht("api/checkout_session").post(query).json();
+      const scheme = response.data;
+      return console.log(scheme);
+    } catch (error) {
+      return {
+        props: {},
+      };
+    }
+  }
+  getServerSideProps();
 
   async function handlersubmit() {
     const resPayment = await fetch(`/api/checkout_sessions`, {
       method: "POST",
-      body: JSON.stringify({ order }),
+      body: JSON.stringify(NewOrder),
       headers: {
         "Content-Type": "application/json",
       },
