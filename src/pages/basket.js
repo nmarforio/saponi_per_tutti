@@ -62,6 +62,11 @@ export default function Basket() {
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
 
+    const setLocalStorage = localStorage.setItem(
+      "orderKey",
+      JSON.stringify(newOrder)
+    );
+
     const res = await fetch(`/api/basket`, {
       method: "DELETE",
     });
@@ -78,7 +83,7 @@ export default function Basket() {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    router.push({ pathname: "/checkout_payment", query: newOrder });
+    router.push("/checkout_payment");
   }
 
   function sendingCost(quantity, total) {

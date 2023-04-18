@@ -4,14 +4,15 @@ export default async function handler(req, res) {
   const newOrder = req.body;
   console.log("Hello", newOrder);
 
+  let line_items = [];
   if (newOrder) {
-    const line_items = newOrder.items?.map((item) => {
-      return { price: item.price_id, quantity: item.amount };
+    newOrder.items?.map((item) => {
+      return line_items.push({ price: item.price_id, quantity: item.amount });
     });
   }
   console.log("OBJECT FOT THE CHECKOUT", line_items);
 
-  if (req.method === "POST") {
+  if (req.method === "POST" && line_items) {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({

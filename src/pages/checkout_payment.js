@@ -21,23 +21,14 @@ export default function PreviewPage() {
     }
   }, []);
 
-  async function getServerSideProps({ query }) {
-    try {
-      const response = await wrecht("api/checkout_session").post(query).json();
-      const scheme = response.data;
-      return console.log(scheme);
-    } catch (error) {
-      return {
-        props: {},
-      };
-    }
-  }
-  getServerSideProps();
+  const orderFromBasket = localStorage.getItem("orderKey");
+  console.log("MYORDER!!!", orderFromBasket);
 
-  async function handlersubmit() {
+  async function handlersubmit(event) {
+    event.preventDefault();
     const resPayment = await fetch(`/api/checkout_sessions`, {
       method: "POST",
-      body: JSON.stringify(NewOrder),
+      body: orderFromBasket,
       headers: {
         "Content-Type": "application/json",
       },
@@ -45,9 +36,13 @@ export default function PreviewPage() {
   }
 
   return (
-    <form action="/api/checkout_sessions" method="POST">
+    <form
+      onSubmit={handlersubmit}
+      action="/api/checkout_sessions"
+      method="POST"
+    >
       <section>
-        <button onClick={handlersubmit} type="submit" role="link">
+        <button type="submit" role="link">
           Checkout
         </button>
       </section>
