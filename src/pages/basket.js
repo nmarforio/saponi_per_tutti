@@ -6,13 +6,11 @@ import BasketSoapCards from "@/components/BasketSoapCards";
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
-  // console.log(session.user.id);
 
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
 
-  console.log("QUANTITY", quantity);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch("/api/basket");
@@ -24,7 +22,7 @@ export default function Basket() {
     };
     fetchData().catch(console.error);
   }, []);
-  // console.log(basketItem, quantity);
+
   if (!basketItem || !session || !userData) {
     return <p className="yourOrder">Cestino vuoto</p>;
   }
@@ -38,12 +36,10 @@ export default function Basket() {
   function updateQuantity(value, index) {
     const newQuantity = [...quantity];
     newQuantity[index] = +value;
-    console.log(newQuantity);
     setQuantity(newQuantity);
   }
 
   const newOrder = {
-    // userId: session.user.user.id,
     total: 0,
     items: [],
     userId: session.user.id,
@@ -57,14 +53,20 @@ export default function Basket() {
       amount: quantity[index],
       soapPrice: soap.price,
       name: soap.name,
+      price_id: soap.price_id,
     };
-    console.log(soap.name);
+    console.log(soap.price_id);
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
-
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
+
+    const setLocalStorage = localStorage.setItem(
+      "orderKey",
+      JSON.stringify(newOrder)
+    );
+
     const res = await fetch(`/api/basket`, {
       method: "DELETE",
     });
@@ -81,8 +83,9 @@ export default function Basket() {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    router.push("/order");
+    router.push("/checkout_payment");
   }
+
   function sendingCost(quantity, total) {
     if (quantity > 1 && quantity <= 3) {
       return total + 7;
@@ -128,7 +131,7 @@ export default function Basket() {
                 : router.push("/profile")
             }
           >
-            Inviare
+            compra
           </button>
         </div>
       </form>
