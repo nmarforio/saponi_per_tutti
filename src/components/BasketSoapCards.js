@@ -8,10 +8,10 @@ export default function BasketSoapCards({
 }) {
   return (
     <div className="basketCard">
-      <h3 key={soap._id}>{soap.name}</h3>
+      <h3 key={soap.price_id}>{soap.name}</h3>
       <label htmlFor="quantity">quantità:</label>
       <input
-        key={item._id}
+        key={soap.price_id}
         onChange={(event) => {
           console.log(event.target.value);
           updateQuantity(event.target.value, index);
@@ -20,7 +20,7 @@ export default function BasketSoapCards({
         id="quantity"
         // this is changed
         name={`${soap._id}`}
-        value={quantity[index]}
+        defaultValue={quantity[index]}
         type="number"
         min={0}
         max={10}
