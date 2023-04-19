@@ -124,7 +124,7 @@ export default function Basket() {
         })}
         <div className="total">
           <label htmlFor="total">Totale incluso spese:</label>
-          <input id="total" name="total" value={sum}></input>
+          <input id="total" name="total" defaultValue={sum}></input>
           <button
             type="Submit"
             onClick={
