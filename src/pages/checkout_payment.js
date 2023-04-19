@@ -20,9 +20,10 @@ export default function PreviewPage() {
       );
     }
   }, []);
-
-  const orderFromBasket = localStorage.getItem("orderKey");
-  console.log("MYORDER!!!", orderFromBasket);
+  if (typeof window !== "undefined") {
+    const orderFromBasket = localStorage.getItem("orderKey");
+    console.log("MYORDER!!!", orderFromBasket);
+  }
 
   async function handlersubmit(event) {
     event.preventDefault();
