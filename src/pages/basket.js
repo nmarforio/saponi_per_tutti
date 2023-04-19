@@ -62,10 +62,12 @@ export default function Basket() {
   async function deleteBasketItemsAndPostOrder(event) {
     event.preventDefault();
 
-    const setLocalStorage = localStorage.setItem(
-      "orderKey",
-      JSON.stringify(newOrder)
-    );
+    if (window !== "undefined") {
+      const setLocalStorage = localStorage.setItem(
+        "orderKey",
+        JSON.stringify(newOrder)
+      );
+    }
 
     const res = await fetch(`/api/basket`, {
       method: "DELETE",

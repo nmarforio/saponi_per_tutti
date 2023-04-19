@@ -1,6 +1,5 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import localStorage from 
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -21,7 +20,7 @@ export default function PreviewPage() {
       );
     }
   }, []);
-  if(typeof window !== 'undefined'){
+  if (typeof window !== "undefined") {
     const orderFromBasket = localStorage.getItem("orderKey");
     console.log("MYORDER!!!", orderFromBasket);
   }
