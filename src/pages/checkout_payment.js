@@ -20,15 +20,20 @@ export default function PreviewPage() {
       );
     }
   }, []);
-  // if (typeof window !== "undefined") {
-  const orderFromBasket = localStorage.getItem("orderKey");
 
-  console.log("My ORFDER!!", orderFromBasket);
+  let ordersFromBasket = [];
+  if (typeof window !== "undefined") {
+    ordersFromBasket.push(localStorage.getItem("orderKey"));
+  }
+
+  console.log("My ORFDER!!", ordersFromBasket);
+
   async function handlersubmit(event) {
     event.preventDefault();
+
     const resPayment = await fetch("/api/checkout_sessions", {
       method: "POST",
-      body: orderFromBasket,
+      body: ordersFromBasket,
       headers: {
         "Content-Type": "application/json",
       },
