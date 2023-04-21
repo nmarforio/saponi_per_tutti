@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
-  const newOrder = req.body;
+  const newOrder = JSON.parse(req.body);
   console.log("Hello", newOrder);
 
   let line_items = [];

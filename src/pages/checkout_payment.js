@@ -33,7 +33,7 @@ export default function PreviewPage() {
   async function handlersubmit(event) {
     event.preventDefault();
 
-    const checkoutSession = await fetch("/api/checkout_sessions", {
+    const checkoutSession = await fetch("/api/checkout_session", {
       method: "POST",
       body: ordersFromBasket,
       mode: "no-cors",
@@ -45,7 +45,7 @@ export default function PreviewPage() {
   }
 
   return (
-    <form action="/api/checkout_session" method="POST" onSubmit={handlersubmit}>
+    <form onSubmit={handlersubmit}>
       <section>
         <button type="submit" role="link">
           Checkout

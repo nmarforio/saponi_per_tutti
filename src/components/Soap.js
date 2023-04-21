@@ -27,6 +27,7 @@ export default function Soap({ name, price, id, image }) {
                 <SwiperSlide>
                   <Link href={`/${id}`}>
                     <Image
+                      style={{ objectFit: "cover" }}
                       key={im}
                       alt={name}
                       src={im}
