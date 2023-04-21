@@ -40,6 +40,7 @@ export default function PreviewPage() {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`,
       },
     });
   }
