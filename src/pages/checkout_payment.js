@@ -3,9 +3,11 @@ import { loadStripe } from "@stripe/stripe-js";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
+
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
+
 export default function PreviewPage() {
   React.useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -31,17 +33,19 @@ export default function PreviewPage() {
   async function handlersubmit(event) {
     event.preventDefault();
 
-    const resPayment = await fetch("/api/checkout_sessions", {
+    const checkoutSession = await fetch("/api/checkout_sessions", {
       method: "POST",
       body: ordersFromBasket,
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
   }
 
   return (
-    <form onSubmit={handlersubmit}>
+    <form action="/api/checkout_session" method="POST" onSubmit={handlersubmit}>
       <section>
         <button type="submit" role="link">
           Checkout
