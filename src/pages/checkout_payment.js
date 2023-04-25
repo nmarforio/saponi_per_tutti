@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -9,6 +10,7 @@ const stripePromise = loadStripe(
 );
 
 export default function PreviewPage() {
+  const [ordersFromBasket, setOrdersFromBasket] = useState();
   React.useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -23,12 +25,14 @@ export default function PreviewPage() {
     }
   }, []);
 
-  let ordersFromBasket = [];
-  if (typeof window !== "undefined") {
-    ordersFromBasket.push(localStorage.getItem("orderKey"));
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrdersFromBasket(localStorage.getItem("orderKey"));
+    }
+  }, []);
 
-  console.log("My ORFDER!!", ordersFromBasket);
+  // console.log("My ORFDER!!", ordersFromBasket);
+  console.log("AAaaaaaaaaaaaaaaa", ordersFromBasket);
 
   async function handlersubmit(event) {
     event.preventDefault();
