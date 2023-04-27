@@ -21,16 +21,21 @@ export default async function handler(req, res) {
         return soap.soapId;
       });
 
+      const basketItemsId = basketItems.map((item) => {
+        return item._id;
+      });
+
       const soapBasket = await Soap.find({ _id: id });
 
-      return res.status(200).json({ basketItems, soapBasket, user });
+      return res
+        .status(200)
+        .json({ basketItems, soapBasket, user, basketItemsId });
     }
   }
 
   if (req.method === "POST") {
     try {
       const newOrder = req.body;
-      console.log("NEWORDER", newOrder);
       const order = new Order(newOrder);
       await order.save();
       return res.status(201).json("Created Order");
@@ -39,12 +44,13 @@ export default async function handler(req, res) {
       res.status(400).json({ error: error.message });
     }
   }
+
   if (req.method === "DELETE") {
     // If our request method is DELETE ...
-    const basketItemToDelete = await BasketItem.deleteMany({
+    const basketItemsToDelete = await BasketItem.deleteMany({
       userId: session.user.id,
     });
 
-    return res.status(200).json(basketItemToDelete);
+    return res.status(200).json(basketItemsToDelete);
   }
 }

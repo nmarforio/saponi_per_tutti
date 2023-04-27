@@ -55,7 +55,6 @@ export default function Basket() {
       name: soap.name,
       price_id: soap.price_id,
     };
-    console.log(soap.price_id);
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
@@ -98,6 +97,18 @@ export default function Basket() {
     }
   }
 
+  const basketIdMongo = basketItem.basketItemsId.map((item, index) => {
+    return item;
+  });
+  console.log(basketIdMongo, "AIUTOOOOOO");
+  const idBasket = basketIdMongo.toString();
+
+  async function soapDeleting(id) {
+    const res = await fetch(`/api/basket/${id}`, {
+      method: "DELETE",
+    });
+  }
+
   let sum = 0;
   return (
     <>
@@ -105,19 +116,19 @@ export default function Basket() {
         <h2 className="yourOrder">Il tuo Ordine:</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
-          const item = basketItem.basketItems[index];
+          // const item = basketItem.basketItems[index];
           const total = quantity[index] * price;
           sum += sendingCost(quantity, total);
-
           return (
             <>
               <BasketSoapCards
-                item={item}
                 soap={soap}
                 quantity={quantity}
                 index={index}
                 total={total}
                 updateQuantity={updateQuantity}
+                onDelete={soapDeleting}
+                idtoDelete={basketIdMongo}
               />
             </>
           );

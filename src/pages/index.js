@@ -30,7 +30,7 @@ export default function Home() {
       {soapList.map((soap) => {
         return (
           <Soap
-            key={soap.price_id}
+            key={soap.name}
             id={soap._id}
             name={soap.name}
             price={soap.price}

@@ -10,7 +10,7 @@ export default function NavBar() {
     <>
       <div className="navbar">
         <Link href={`/basket`}>
-          <Image src="./basket.svg" alt="basket" width={35} height={35} />
+          <p>Basket </p>
         </Link>
 
         <Link href={`/`}>
