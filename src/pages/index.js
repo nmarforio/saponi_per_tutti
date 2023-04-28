@@ -27,10 +27,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {soapList.map((soap) => {
+      {soapList.map((soap, index) => {
         return (
           <Soap
-            key={soap.name}
+            key={index}
             id={soap._id}
             name={soap.name}
             price={soap.price}
