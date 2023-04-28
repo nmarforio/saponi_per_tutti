@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
-import getStripe from "./checkout_payment";
+
 import axios from "axios";
 
 export default function Basket() {
@@ -63,6 +63,16 @@ export default function Basket() {
     newOrder.items.push(newSoap);
   });
 
+  let stripePromise = null;
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      );
+    }
+    return stripePromise;
+  };
+
   const redirectToCheckout = async () => {
     const {
       data: { id },
@@ -72,6 +82,8 @@ export default function Basket() {
         quantity,
       })),
     });
+
+    console.log(items);
 
     const stripe = await getStripe();
     await stripe.redirectToCheckout({ sessionId: id });
