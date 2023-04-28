@@ -2,24 +2,24 @@ export default function BasketSoapCards({
   soap,
   quantity,
   index,
-  item,
   total,
   updateQuantity,
+  onDelete,
+  idtoDelete,
 }) {
   return (
     <div className="basketCard">
       <h3 key={soap.price_id}>{soap.name}</h3>
       <label htmlFor="quantity">quantità:</label>
       <input
-        key={soap.price_id}
+        key={soap._id}
         onChange={(event) => {
           console.log(event.target.value);
           updateQuantity(event.target.value, index);
           // setQuantity(event.target.quantity);
         }}
         id="quantity"
-        // this is changed
-        name={`${soap._id}`}
+        name="quantity"
         defaultValue={quantity[index]}
         type="number"
         min={0}
@@ -28,6 +28,13 @@ export default function BasketSoapCards({
       <p name="eachprice" id="eachprice">
         CHF Prezzo: {total}
       </p>
+      <button
+        onClick={() => {
+          onDelete(idtoDelete[index]);
+        }}
+      >
+        <p>X</p>
+      </button>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
 
+import axios from "axios";
+
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function Basket() {
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
+  const [idItemsBasketToDelete, setIdItemsBasketToDelete] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +22,7 @@ export default function Basket() {
       setBasketItem(json);
       setQuantity(json.basketItems.map((item) => +item.quantity));
       setUserData(json.user);
+      setIdItemsBasketToDelete(json.basketItemsId);
     };
     fetchData().catch(console.error);
   }, []);
@@ -55,38 +59,63 @@ export default function Basket() {
       name: soap.name,
       price_id: soap.price_id,
     };
-    console.log(soap.price_id);
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
-  async function deleteBasketItemsAndPostOrder(event) {
-    event.preventDefault();
 
-    if (window !== "undefined") {
-      const setLocalStorage = localStorage.setItem(
-        "orderKey",
-        JSON.stringify(newOrder)
+  let stripePromise = null;
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
       );
     }
+    return stripePromise;
+  };
 
-    const res = await fetch(`/api/basket`, {
-      method: "DELETE",
+  const redirectToCheckout = async () => {
+    const {
+      data: { id },
+    } = await axios.post("/api/checkout_sessions", {
+      itmes: Object.entries(newOrder.items).map(([_, { id, quantity }]) => ({
+        price: id,
+        quantity,
+      })),
     });
 
-    const response = await fetch(`/api/basket`, {
-      method: "POST",
-      body: JSON.stringify(newOrder),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      await response.json();
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
-    router.push("/checkout_payment");
-  }
+    console.log(items);
+
+    const stripe = await getStripe();
+    await stripe.redirectToCheckout({ sessionId: id });
+  };
+  // async function deleteBasketItemsAndPostOrder(event) {
+  //   event.preventDefault();
+
+  //   if (window !== "undefined") {
+  //     const setLocalStorage = localStorage.setItem(
+  //       "orderKey",
+  //       JSON.stringify(newOrder)
+  //     );
+  //   }
+
+  //   const res = await fetch(`/api/basket`, {
+  //     method: "DELETE",
+  //   });
+
+  //   const response = await fetch(`/api/basket`, {
+  //     method: "POST",
+  //     body: JSON.stringify(newOrder),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   if (response.ok) {
+  //     await response.json();
+  //   } else {
+  //     console.error(`Error: ${response.status}`);
+  //   }
+
+  // }
 
   function sendingCost(quantity, total) {
     if (quantity > 1 && quantity <= 3) {
@@ -98,6 +127,12 @@ export default function Basket() {
     }
   }
 
+  async function basketItmeToDelete(id) {
+    const res = await fetch(`/api/basket/${id}`, {
+      method: "DELETE",
+    });
+  }
+
   let sum = 0;
   return (
     <>
@@ -105,19 +140,20 @@ export default function Basket() {
         <h2 className="yourOrder">Il tuo Ordine:</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
-          const item = basketItem.basketItems[index];
+          // const item = basketItem.basketItems[index];
           const total = quantity[index] * price;
           sum += sendingCost(quantity, total);
 
           return (
             <>
               <BasketSoapCards
-                item={item}
                 soap={soap}
                 quantity={quantity}
                 index={index}
                 total={total}
                 updateQuantity={updateQuantity}
+                onDelete={basketItmeToDelete}
+                idtoDelete={idItemsBasketToDelete}
               />
             </>
           );
@@ -128,9 +164,7 @@ export default function Basket() {
           <button
             type="Submit"
             onClick={
-              userData.adress
-                ? deleteBasketItemsAndPostOrder
-                : router.push("/profile")
+              userData.adress ? redirectToCheckout : router.push("/profile")
             }
           >
             compra

@@ -49,6 +49,7 @@ export default function Soapdetail() {
                     src={im}
                     width={200}
                     height={200}
+                    style={{ objectFit: "cover" }}
                   />
                 </SwiperSlide>
               );
