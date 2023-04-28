@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
+import getStripe from "./checkout_payment";
+import axios from "axios";
 
 export default function Basket() {
   const { data: session } = useSession();
@@ -60,34 +62,48 @@ export default function Basket() {
     newOrder.total += soap.price * newSoap.amount;
     newOrder.items.push(newSoap);
   });
-  async function deleteBasketItemsAndPostOrder(event) {
-    event.preventDefault();
 
-    if (window !== "undefined") {
-      const setLocalStorage = localStorage.setItem(
-        "orderKey",
-        JSON.stringify(newOrder)
-      );
-    }
-
-    const res = await fetch(`/api/basket`, {
-      method: "DELETE",
+  const redirectToCheckout = async () => {
+    const {
+      data: { id },
+    } = await axios.post("/api/checkout_sessions", {
+      itmes: Object.entries(newOrder.items).map(([_, { id, quantity }]) => ({
+        price: id,
+        quantity,
+      })),
     });
 
-    const response = await fetch(`/api/basket`, {
-      method: "POST",
-      body: JSON.stringify(newOrder),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      await response.json();
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
-    router.push("/checkout_payment");
-  }
+    const stripe = await getStripe();
+    await stripe.redirectToCheckout({ sessionId: id });
+  };
+  // async function deleteBasketItemsAndPostOrder(event) {
+  //   event.preventDefault();
+
+  //   if (window !== "undefined") {
+  //     const setLocalStorage = localStorage.setItem(
+  //       "orderKey",
+  //       JSON.stringify(newOrder)
+  //     );
+  //   }
+
+  //   const res = await fetch(`/api/basket`, {
+  //     method: "DELETE",
+  //   });
+
+  //   const response = await fetch(`/api/basket`, {
+  //     method: "POST",
+  //     body: JSON.stringify(newOrder),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   if (response.ok) {
+  //     await response.json();
+  //   } else {
+  //     console.error(`Error: ${response.status}`);
+  //   }
+
+  // }
 
   function sendingCost(quantity, total) {
     if (quantity > 1 && quantity <= 3) {
@@ -136,9 +152,7 @@ export default function Basket() {
           <button
             type="Submit"
             onClick={
-              userData.adress
-                ? deleteBasketItemsAndPostOrder
-                : router.push("/profile")
+              userData.adress ? redirectToCheckout : router.push("/profile")
             }
           >
             compra
