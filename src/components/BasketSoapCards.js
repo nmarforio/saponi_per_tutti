@@ -2,7 +2,6 @@ export default function BasketSoapCards({
   soap,
   quantity,
   index,
-  item,
   total,
   updateQuantity,
   onDelete,
@@ -29,13 +28,13 @@ export default function BasketSoapCards({
       <p name="eachprice" id="eachprice">
         CHF Prezzo: {total}
       </p>
-      {idtoDelete.map((id) => {
-        return (
-          <button key={id} onClick={() => onDelete(id)}>
-            <p>x</p>
-          </button>
-        );
-      })}
+      <button
+        onClick={() => {
+          onDelete(idtoDelete[index]);
+        }}
+      >
+        <p>X</p>
+      </button>
     </div>
   );
 }

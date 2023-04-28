@@ -10,6 +10,7 @@ export default function Basket() {
   const [basketItem, setBasketItem] = useState();
   const [quantity, setQuantity] = useState();
   const [userData, setUserData] = useState();
+  const [idItemsBasketToDelete, setIdItemsBasketToDelete] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +20,7 @@ export default function Basket() {
       setBasketItem(json);
       setQuantity(json.basketItems.map((item) => +item.quantity));
       setUserData(json.user);
+      setIdItemsBasketToDelete(json.basketItemsId);
     };
     fetchData().catch(console.error);
   }, []);
@@ -97,13 +99,7 @@ export default function Basket() {
     }
   }
 
-  const basketIdMongo = basketItem.basketItemsId.map((item, index) => {
-    return item;
-  });
-  console.log(basketIdMongo, "AIUTOOOOOO");
-  const idBasket = basketIdMongo.toString();
-
-  async function soapDeleting(id) {
+  async function basketItmeToDelete(id) {
     const res = await fetch(`/api/basket/${id}`, {
       method: "DELETE",
     });
@@ -119,6 +115,7 @@ export default function Basket() {
           // const item = basketItem.basketItems[index];
           const total = quantity[index] * price;
           sum += sendingCost(quantity, total);
+
           return (
             <>
               <BasketSoapCards
@@ -127,8 +124,8 @@ export default function Basket() {
                 index={index}
                 total={total}
                 updateQuantity={updateQuantity}
-                onDelete={soapDeleting}
-                idtoDelete={basketIdMongo}
+                onDelete={basketItmeToDelete}
+                idtoDelete={idItemsBasketToDelete}
               />
             </>
           );
