@@ -47,18 +47,19 @@ export default function Home() {
             <SwiperSlide key={soap._id}>
               <div key={soap._id} className="soapdetails">
                 <h1>{soap.name}</h1>
-                <Image
-                  key={soap._id}
-                  alt={soap._id}
-                  src={soap.image[index]}
-                  width={200}
-                  height={200}
-                  style={{ objectFit: "cover" }}
-                />
+                <div className="imgDiv">
+                  <Image
+                    key={soap._id}
+                    alt={soap._id}
+                    src={soap.image[index]}
+                    width={200}
+                    height={250}
+                  />
+                </div>
                 <Quantity soapId={soap._id} index={index} />
-                <p>CHF: {soap.price}</p>
+                <strong>CHF: {soap.price}</strong>
                 <p>{soap.description}</p>
-                <h4>Sostanze</h4>
+                <strong>Sostanze</strong>
                 <p className="recipes">{soap.recipes}</p>;
               </div>
             </SwiperSlide>

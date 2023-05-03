@@ -38,7 +38,7 @@ export default function Quantity({ soapId }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="quatity">Quantità</label>
+        <label htmlFor="quatity">Quantità:</label>
         <input
           id="quantity"
           placeholder="0"

@@ -35,21 +35,6 @@ body{
 }
 
 
-.soapcard{
-  
-  background-color: rgb(212, 205, 195) ;
-  opacity: 0.9;
-  border: solid rgb(134, 60, 13) 2px;
-  border-radius: 8px;
-  margin-top: 10px;  
-  width: 50%;
-  box-shadow: 5px 5px 5px rgb(156, 89, 18);
-  display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-
 .orderscard{
     width: 300px;
    display:grid;
@@ -99,9 +84,10 @@ body{
     margin-left: 15px;
 }
 
-.swiper-button-next,
+.swiper-button-next{
+  color: black !important;
+}
 .swiper-button-prev{
-    size: 10px;
   color:black !important;
     
 }
@@ -311,14 +297,16 @@ background-color: white;
   background-color: rgb(212, 205, 195) ;
   height: fit-content;
   padding: 25px;
-  width: 400px
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 
-}
-.soapdetails h1{
-display: flex;
-justify-content: space-around
-}
+
 .soapdetails input{
+  margin-top: 30px;
+  margin-bottom: 30px;
     border-radius: 8px;
     border-color: rgb(134, 60, 13);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -331,7 +319,7 @@ justify-content: space-around
   border: 2px solid rgb(134, 60, 13);
   font-size: medium;
   border-radius: 8px;
-  margin-left:30%;
+  margin-left: 10px;
   margin-top: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
