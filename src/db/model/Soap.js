@@ -7,7 +7,7 @@ const soapSchema = new Schema({
   price: String,
   recipes: String,
   method: String,
-  image: Array,
+  image: String,
   price_id: String,
 });
 

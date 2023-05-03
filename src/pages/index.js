@@ -8,11 +8,14 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import { Navigation, EffectFade } from "swiper";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [soapList, setSoapList] = useState([]);
+  const [showMore, setShowMore] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +26,8 @@ export default function Home() {
     };
     fetchData().catch(console.error);
   }, []);
+  const image = soapList;
+  console.log("image", image);
 
   return (
     <>
@@ -44,25 +49,27 @@ export default function Home() {
       >
         {soapList.map((soap, index) => {
           return (
-            <SwiperSlide key={soap._id}>
-              <div key={soap._id} className="soapdetails">
-                <h1>{soap.name}</h1>
-                <div className="imgDiv">
-                  <Image
-                    key={soap._id}
-                    alt={soap._id}
-                    src={soap.image[index]}
-                    width={200}
-                    height={250}
-                  />
+            <>
+              <SwiperSlide key={soap._id}>
+                <div key={soap._id} className="soapdetails">
+                  <h1>{soap.name}</h1>
+                  <div className="imgDiv">
+                    <Image
+                      key={soap._id}
+                      alt={soap._id}
+                      src={soap.image}
+                      width={200}
+                      height={250}
+                    />
+                  </div>
+                  <Quantity soapId={soap._id} index={index} />
+                  <strong>CHF: {soap.price}</strong>
+                  <button onClick={() => router.push(`/${soap._id}`)}>
+                    altro da sapere
+                  </button>
                 </div>
-                <Quantity soapId={soap._id} index={index} />
-                <strong>CHF: {soap.price}</strong>
-                <p>{soap.description}</p>
-                <strong>Sostanze</strong>
-                <p className="recipes">{soap.recipes}</p>;
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
+            </>
           );
         })}
       </Swiper>
