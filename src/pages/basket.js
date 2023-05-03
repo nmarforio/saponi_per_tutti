@@ -3,8 +3,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
 
-import axios from "axios";
-
 export default function Basket() {
   const { data: session } = useSession();
   const router = useRouter();
@@ -63,31 +61,31 @@ export default function Basket() {
     newOrder.items.push(newSoap);
   });
 
-  let stripePromise = null;
-  const getStripe = () => {
-    if (!stripePromise) {
-      stripePromise = loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-      );
-    }
-    return stripePromise;
-  };
+  // let stripePromise = null;
+  // const getStripe = () => {
+  //   if (!stripePromise) {
+  //     stripePromise = loadStripe(
+  //       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  //     );
+  //   }
+  //   return stripePromise;
+  // };
 
-  const redirectToCheckout = async () => {
-    const {
-      data: { id },
-    } = await axios.post("/api/checkout_sessions", {
-      itmes: Object.entries(newOrder.items).map(([_, { id, quantity }]) => ({
-        price: id,
-        quantity,
-      })),
-    });
+  // const redirectToCheckout = async () => {
+  //   const {
+  //     data: { id },
+  //   } = await axios.post("/api/checkout_sessions", {
+  //     itmes: Object.entries(newOrder.items).map(([_, { id, quantity }]) => ({
+  //       price: id,
+  //       quantity,
+  //     })),
+  //   });
 
-    console.log(items);
+  //   console.log(items);
 
-    const stripe = await getStripe();
-    await stripe.redirectToCheckout({ sessionId: id });
-  };
+  //   const stripe = await getStripe();
+  //   await stripe.redirectToCheckout({ sessionId: id });
+  // };
   // async function deleteBasketItemsAndPostOrder(event) {
   //   event.preventDefault();
 
@@ -115,8 +113,6 @@ export default function Basket() {
   //     console.error(`Error: ${response.status}`);
   //   }
 
-  // }
-
   function sendingCost(quantity, total) {
     if (quantity > 1 && quantity <= 3) {
       return total + 7;
@@ -140,7 +136,6 @@ export default function Basket() {
         <h2 className="yourOrder">Il tuo Ordine:</h2>
         {basketItem.soapBasket.map((soap, index) => {
           const price = +soap.price;
-          // const item = basketItem.basketItems[index];
           const total = quantity[index] * price;
           sum += sendingCost(quantity, total);
 
@@ -161,14 +156,7 @@ export default function Basket() {
         <div className="total">
           <label htmlFor="total">Totale incluso spese:</label>
           <input id="total" name="total" defaultValue={sum}></input>
-          <button
-            type="Submit"
-            onClick={
-              userData.adress ? redirectToCheckout : router.push("/profile")
-            }
-          >
-            compra
-          </button>
+          <button type="Submit">compra</button>
         </div>
       </form>
     </>

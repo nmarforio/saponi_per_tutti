@@ -101,7 +101,8 @@ body{
 
 .swiper-button-next,
 .swiper-button-prev{
-    color:white !important;
+    size: 10px;
+  color:black !important;
     
 }
 .swiper-slide{

@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Quantity() {
+export default function Quantity({ soapId }) {
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -13,9 +13,8 @@ export default function Quantity() {
       router.push("/profile");
     } else {
       input = event.target.quantity.value;
-      console.log("INPUT", input);
+      const id = event.target.btn.value;
 
-      const id = router.query.id;
       const response = await fetch(`api/soaps/${id}`, {
         method: "POST",
         body: JSON.stringify({
@@ -40,7 +39,6 @@ export default function Quantity() {
     <>
       <form onSubmit={handleSubmit}>
         <label htmlFor="quatity">Quantità</label>
-
         <input
           id="quantity"
           placeholder="0"
@@ -48,7 +46,7 @@ export default function Quantity() {
           min="0"
           type="number"
         ></input>
-        <button type="submit" onClick={() => router.push("/")}>
+        <button id="btn" value={soapId} type="submit">
           Aggiungi al Cestino
         </button>
       </form>

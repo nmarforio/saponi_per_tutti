@@ -1,7 +1,13 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import Soap from "@/components/Soap";
+import Quantity from "@/components/Quantity";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import { Navigation, EffectFade } from "swiper";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,17 +33,38 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {soapList.map((soap) => {
-        return (
-          <Soap
-            key={soap.name}
-            id={soap._id}
-            name={soap.name}
-            price={soap.price}
-            image={soap.image}
-          />
-        );
-      })}
+      <Swiper
+        modules={[Navigation, EffectFade]}
+        navigation
+        effect
+        speed={800}
+        slidesPerView={1}
+        loop
+        className="myswiper"
+      >
+        {soapList.map((soap, index) => {
+          return (
+            <SwiperSlide key={soap._id}>
+              <div key={soap._id} className="soapdetails">
+                <h1>{soap.name}</h1>
+                <Image
+                  key={soap._id}
+                  alt={soap._id}
+                  src={soap.image[index]}
+                  width={200}
+                  height={200}
+                  style={{ objectFit: "cover" }}
+                />
+                <Quantity soapId={soap._id} index={index} />
+                <p>CHF: {soap.price}</p>
+                <p>{soap.description}</p>
+                <h4>Sostanze</h4>
+                <p className="recipes">{soap.recipes}</p>;
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </>
   );
 }
