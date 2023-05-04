@@ -9,17 +9,11 @@ export default function NavBar() {
   return (
     <>
       <div className="navbar">
-        <Link href={`/basket`}>
-          <Image src="/basket.svg" alt="basket" width={35} height={35} />
-        </Link>
+        <Link href={`/basket`}>CESTINO</Link>
 
-        <Link href={`/`}>
-          <Image src="/soap-2.png" alt="home" width={35} height={35} />
-        </Link>
+        <Link href={`/`}>HOME</Link>
 
-        <Link href={`/order`}>
-          <Image src="/order-now.png" alt="orders" width={35} height={35} />
-        </Link>
+        <Link href={`/contact`}>INFO</Link>
         <Link href={"/profile"}>
           <Image
             src={session ? session.user.image : "/profile2.png"}

@@ -15,24 +15,35 @@ body{
   
     margin:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url('background_blur_12.jpg');
-    background-size: cover;
-    background-attachment:fixed ;
-    color: rgb(134, 60, 13)
-    }
+    background: rgb(228,190,151);
+background: radial-gradient(circle, rgba(228,190,151,1) 0%, rgba(197,155,126,1) 100%);
+    color: rgb(122, 65, 23);
+  }
+  
 
 .navbar{
-  display: flex;
-  justify-content: space-around;
-  border-bottom: solid rgb(134, 60, 13) 2px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 319px;
+  display: table;
+  margin: 40px auto;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.navbar a{
+  position: relative;
+  width: 33.333%;
+  display: table-cell;
+  text-align: center;
+  color:rgb(122, 65, 23);
+  text-decoration: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  padding: 10px 20px;
 }
 
-#__next > div:nth-child(1){
-    display: flex;
-    justify-content: center;
-}
+
 
 .toogleInfoNone{
   display: none
@@ -57,7 +68,7 @@ body{
   opacity: 0.9;
   border-radius: 8px;
   border: solid 2px rgb(134, 60, 13);
-  margin-top: 10px;  
+  margin-top: 90px;  
   box-shadow: 10px 10px 15px rgb(156, 89, 18)
 }
 .ordernumber{
@@ -66,6 +77,7 @@ body{
     padding-left: 10px;
 }
 .ordertitle{
+    margin-top: 90px;
     border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
     background-color: rgb(212, 205, 195);
@@ -76,6 +88,7 @@ body{
     
 }
 .ordertitle2{
+  margin-top: 90px;
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
     margin-left: 35px;
@@ -99,10 +112,10 @@ body{
 }
 
 .swiper-button-next{
-  color: black !important;
+  color: rgb(122, 65, 23) !important;
 }
 .swiper-button-prev{
-  color:black !important;
+  color: rgb(122, 65, 23)!important;
     
 }
 .swiper-slide{
@@ -111,6 +124,7 @@ body{
 
 }
 .formNewUser{
+  margin-top: 90px;
   background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;
@@ -134,6 +148,7 @@ body{
     justify-content: flex-start;
 }
 .createProfile{
+    margin-top: 90px;
     color: rgb(134, 60, 13);
     margin-left: 40px;
     background-color: rgb(212, 205, 195);
@@ -155,7 +170,7 @@ background-color: white;
 height: 100%;
 width: 100%;
 display: grid;
-    justify-items: center;
+justify-items: center;
 margin-top: 10%
 }
 
@@ -172,11 +187,15 @@ margin-top: 10%
 }
 
 .profileCard{
+  margin-top: 90px;
   background-color: rgb(212, 205, 195) ;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
   height: fit-content;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
   width: fit-content;
   box-shadow: 10px 10px 15px rgb(134, 60, 13);
 }
@@ -184,8 +203,9 @@ margin-top: 10%
     font-size: larger;
 }
 .yourDatas{
+    margin-top: 90px;
     color: rgb(134, 60, 13);
-    border: 2px solid rgb(134, 60, 13);
+    border: 1px solid rgb(134, 60, 13);
     background-color: rgb(212, 205, 195);
     width: fit-content;
     height: fit-content;
@@ -301,6 +321,16 @@ background-color: white;
     border-color: rgb(134, 60, 13);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.basketCard button{
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .basketCard h3{
     margin-top: 5px;
 }
@@ -315,6 +345,9 @@ background-color: white;
   display: flex;
   flex-direction: column;
   text-align: center;
+  box-shadow: 5px 5px 15px 5px #7a4117;
+  margin-top: 90px;
+  margin-bottom: 40px;
 }
 
 
@@ -378,6 +411,7 @@ background-color: white;
   border-radius: 8px;
   box-shadow: 5px 5px 5px rgb(156, 89, 18);
   height: 30px;
+  z-index: 1;
   
 }
 .footerlink{

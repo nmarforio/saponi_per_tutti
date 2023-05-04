@@ -15,6 +15,8 @@ export default function Quantity({ soapId }) {
       input = event.target.quantity.value;
       const id = event.target.btn.value;
 
+      window.alert("Articolo aggiunto al carrello!");
+
       const response = await fetch(`api/soaps/${id}`, {
         method: "POST",
         body: JSON.stringify({

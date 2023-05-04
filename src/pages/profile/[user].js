@@ -108,8 +108,8 @@ export default function UserPage() {
   } else {
     return (
       <>
-        <h2 className="yourDatas">I tuoi Dati:</h2>
         <div className="profileCard">
+          <h2>I tuoi Dati:</h2>
           <p>{user.name}</p>
           <p>{user.email}</p>
           <p>{user.adress}</p>

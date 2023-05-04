@@ -33,7 +33,7 @@ export default function BasketSoapCards({
           onDelete(idtoDelete[index]);
         }}
       >
-        <p>X</p>
+        <p>Elimina</p>
       </button>
     </div>
   );
