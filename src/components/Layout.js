@@ -1,7 +1,6 @@
 import Navbar from "../components/NavBar";
 import FooterAdmin from "./FooterAdmin";
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
 
 export default function Layout({ children }) {
   const [data, setData] = useState();
@@ -20,7 +19,6 @@ export default function Layout({ children }) {
       <>
         <Navbar />
         <main>{children}</main>
-        <Footer />
       </>
     );
   } else if (data.admin === true) {
@@ -36,7 +34,6 @@ export default function Layout({ children }) {
       <>
         <Navbar />
         <main>{children}</main>
-        <Footer />
       </>
     );
   }

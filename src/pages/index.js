@@ -83,5 +83,3 @@ export default function Home() {
     </>
   );
 }
-
-// moreInfos ? `${styles.toogleInfo}`: `${styles.toogleInfoNone}`

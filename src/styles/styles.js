@@ -264,6 +264,7 @@ background-color: white;
 
 }
 .yourOrder{
+  margin-top: 90px;
     border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
     
@@ -302,12 +303,12 @@ background-color: white;
   border-radius: 8px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.basketCard{
-    
+.basketCard{ 
   background-color: rgb(212, 205, 195) ;
-  margin-top: 10px;  
-  display:grid;
-  justify-content:center;
+  margin-top: 50px;  
+  display: flex;
+  align-content: center;
+  flex-direction: column;
   opacity: 0.9;
   border-radius: 8px;
   border: 1px solid rgb(134, 60, 13);
@@ -331,9 +332,7 @@ background-color: white;
   margin-top: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.basketCard h3{
-    margin-top: 5px;
-}
+
 
 
 .soapdetails{
@@ -421,7 +420,7 @@ background-color: white;
 .admintitle{
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
-    
+    margin-top: 90px;
     background-color: rgb(212, 205, 195);
     width: fit-content;
     height: fit-content;
@@ -430,6 +429,7 @@ background-color: white;
     
 }
 .admincard{
+  margin-top: 90px;
   background-color: rgb(212, 205, 195) ;
     margin-top: 10px;  
  
@@ -443,6 +443,7 @@ background-color: white;
   box-shadow: 10px 10px 15px rgb(134, 60, 13)
 }
 .newProductTitle{
+  margin-top: 90px;
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
     background-color: rgb(212, 205, 195);
@@ -452,6 +453,7 @@ background-color: white;
     box-shadow: 5px 5px 5px rgb(156, 89, 18)
 }
 .newProductcard{
+  margin-top: 90px;
   background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;
@@ -484,15 +486,9 @@ background-color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
-.questionMark{
-  border-radius: 8px;
-  position: fixed;
-  bottom: 0%;
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
+
 .contactTitle{
+  margin-top: 90px;
   border: solid 2px rgb(134, 60, 13);
     color: rgb(134, 60, 13);
     
@@ -504,6 +500,7 @@ background-color: white;
 
 }
 .contactcard{
+  margin-top: 90px;
   background-color: rgb(212, 205, 195) ;
   box-sizing: border-box;
   opacity: 0.9;

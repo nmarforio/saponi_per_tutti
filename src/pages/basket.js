@@ -89,15 +89,17 @@ export default function Basket() {
 
           return (
             <>
-              <BasketSoapCards
-                soap={soap}
-                quantity={quantity}
-                index={index}
-                total={total}
-                updateQuantity={updateQuantity}
-                onDelete={basketItmeToDelete}
-                idtoDelete={idItemsBasketToDelete}
-              />
+              <div>
+                <BasketSoapCards
+                  soap={soap}
+                  quantity={quantity}
+                  index={index}
+                  total={total}
+                  updateQuantity={updateQuantity}
+                  onDelete={basketItmeToDelete}
+                  idtoDelete={idItemsBasketToDelete}
+                />
+              </div>
             </>
           );
         })}

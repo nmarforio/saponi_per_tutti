@@ -8,7 +8,7 @@ export default function BasketSoapCards({
   idtoDelete,
 }) {
   return (
-    <div className="basketCard">
+    <div key={soap.name} className="basketCard">
       <h3 key={soap.price_id}>{soap.name}</h3>
       <label htmlFor="quantity">quantità:</label>
       <input
