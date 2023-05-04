@@ -9,12 +9,14 @@ import "swiper/css/effect-fade";
 import { Navigation, EffectFade } from "swiper";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import styles from "@/styles/styles";
+import { clsx } from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [soapList, setSoapList] = useState([]);
-  const [showMore, setShowMore] = useState(true);
+  const [moreInfos, setMoreInfos] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -26,8 +28,8 @@ export default function Home() {
     };
     fetchData().catch(console.error);
   }, []);
-  const image = soapList;
-  console.log("image", image);
+
+  console.log("image", moreInfos);
 
   return (
     <>
@@ -64,9 +66,14 @@ export default function Home() {
                   </div>
                   <Quantity soapId={soap._id} index={index} />
                   <strong>CHF: {soap.price}</strong>
-                  <button onClick={() => router.push(`/${soap._id}`)}>
+                  <button onClick={() => setMoreInfos(!moreInfos)}>
                     altro da sapere
                   </button>
+                  <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>
+                    <p>{soap.description}</p>
+                    <strong>Sostanze</strong>
+                    <p className="recipes">{soap.recipes}</p>
+                  </div>
                 </div>
               </SwiperSlide>
             </>
@@ -76,3 +83,5 @@ export default function Home() {
     </>
   );
 }
+
+// moreInfos ? `${styles.toogleInfo}`: `${styles.toogleInfoNone}`

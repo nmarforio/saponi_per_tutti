@@ -34,6 +34,20 @@ body{
     justify-content: center;
 }
 
+.toogleInfoNone{
+  display: none
+}
+.toogleInfo{
+  border-radius: 8px;
+  background-color: rgb(212, 205, 195) ;
+  height: fit-content;
+  padding: 25px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
 
 .orderscard{
     width: 300px;
@@ -297,7 +311,7 @@ background-color: white;
   background-color: rgb(212, 205, 195) ;
   height: fit-content;
   padding: 25px;
-  width: 400px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   text-align: center;
