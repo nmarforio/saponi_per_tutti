@@ -48,7 +48,7 @@ export default function Quantity({ soapId }) {
           min="0"
           type="number"
         ></input>
-        <button id="btn" value={soapId} type="submit">
+        <button className="addBasket" id="btn" value={soapId} type="submit">
           Aggiungi al Cestino
         </button>
       </form>

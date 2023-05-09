@@ -9,15 +9,30 @@ import "swiper/css/effect-fade";
 import { Navigation, EffectFade } from "swiper";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import styles from "@/styles/styles";
-import { clsx } from "clsx";
+import StarRating from "react-rating-stars-component";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [soapList, setSoapList] = useState([]);
   const [moreInfos, setMoreInfos] = useState(false);
+  const [rating, setRating] = useState(0);
   const router = useRouter();
+
+  const customStyles = {
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+    },
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+  const handleStarClick = (nextValue, prevValue, name) => {};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +43,6 @@ export default function Home() {
     };
     fetchData().catch(console.error);
   }, []);
-
-  console.log("image", moreInfos);
 
   return (
     <>
@@ -66,9 +79,26 @@ export default function Home() {
                   </div>
                   <Quantity soapId={soap._id} index={index} />
                   <strong>CHF: {soap.price}</strong>
-                  <button onClick={() => setMoreInfos(!moreInfos)}>
-                    altro da sapere
+                  <button
+                    className="menuButton"
+                    onClick={() => setMoreInfos(!moreInfos)}
+                  >
+                    <Image
+                      src={"/dots.png"}
+                      alt={"menu"}
+                      width={30}
+                      height={30}
+                    />
                   </button>
+                  <div className="ratingStar">
+                    <StarRating
+                      value={rating}
+                      onStarClick={(nextValue, prevValue, name) =>
+                        handleStarClick(nextValue, prevValue, name)
+                      }
+                      activeColor="#dc9109"
+                    />
+                  </div>
                   <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>
                     <p>{soap.description}</p>
                     <strong>Sostanze</strong>

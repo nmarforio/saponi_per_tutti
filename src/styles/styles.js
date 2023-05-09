@@ -15,8 +15,9 @@ body{
   
     margin:0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background: rgb(228,190,151);
-background: radial-gradient(circle, rgba(228,190,151,1) 0%, rgba(197,155,126,1) 100%);
+    background: rgb(220,172,163);
+background: radial-gradient(circle, rgba(220,172,163,1) 0%, rgba(255,220,193,1) 100%);
+opacity: 0.8;
     color: rgb(122, 65, 23);
   }
   
@@ -50,7 +51,7 @@ background: radial-gradient(circle, rgba(228,190,151,1) 0%, rgba(197,155,126,1) 
 }
 .toogleInfo{
   border-radius: 8px;
-  background-color: rgb(212, 205, 195) ;
+  background: rgb(220,172,163);
   height: fit-content;
   padding: 25px;
   width: 400px;
@@ -271,7 +272,7 @@ background-color: white;
     background-color: rgb(212, 205, 195);
     width: 160px;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    box-shadow:  5px 5px 17px -5px  rgb(134, 60, 13);
 }
 .total {
     background-color: rgb(212, 205, 195) ;
@@ -281,7 +282,7 @@ background-color: white;
   height: fit-content;
   padding: 5vw;
   width: auto;
-  box-shadow: 10px 10px 15px rgb(134, 60, 13);
+  box-shadow:  5px 5px 17px -5px  rgb(134, 60, 13);
   margin-top: 10px;
 }
 .total label{
@@ -314,8 +315,9 @@ background-color: white;
   border: 1px solid rgb(134, 60, 13);
   padding: 5vw;
   width: 250px;
-  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+  box-shadow:  5px 5px 17px -5px rgb(134, 60, 13)
 }
+
 .basketCard input{
   margin-top: 10px;
     border-radius: 8px;
@@ -333,22 +335,41 @@ background-color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.menuButton{
+  margin-top: 10px;
+  border: none;
+  width: fit-content;
+  background-color: rgb(255,220,193);
+  opacity: 0.5;
+  border-radius: 8px;
+}
+.menuButton :hover{
+  background-color: rgb(220,172,163);
+  opacity: 0.7;
+  width: fit-content;
+  border-radius: 8px;
+}
+.ratingStar{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
 
 
 .soapdetails{
   border-radius: 8px;
-  background-color: rgb(212, 205, 195) ;
-  height: fit-content;
+  background: rgb(220,172,163);
+background: radial-gradient(circle, rgba(220,172,163,1) 0%, rgba(255,220,193,1) 100%);
+ height: fit-content;
   padding: 25px;
   width: 450px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  box-shadow: 5px 5px 15px 5px #7a4117;
+  box-shadow:  5px 5px 17px -5px  #7a4117;
   margin-top: 90px;
   margin-bottom: 40px;
 }
-
 
 .soapdetails input{
   margin-top: 30px;
@@ -359,8 +380,8 @@ background-color: white;
     margin-left: 10px;
     font-size: medium;
 }
-.soapdetails button{
-    background-color: white;
+.addBasket{
+  background-color: white;
   color: black;
   border: 2px solid rgb(134, 60, 13);
   font-size: medium;
@@ -368,6 +389,7 @@ background-color: white;
   margin-left: 10px;
   margin-top: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
 }
 .soapdetails h4{
     margin-bottom: 2px;
@@ -377,11 +399,9 @@ background-color: white;
 }
 
 .singIn{
-  
-  display:grid;
+  margin-top: 30%;
+  display:flex;
   justify-items:center;
- 
-
 }
 .singIn button{
   color: rgb(134, 60, 13);
@@ -390,8 +410,7 @@ background-color: white;
   border-radius: 8px;
   height: 60px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background: rgb(212, 205, 195);
-  margin-top: 10%
+  background: #ffdcc1;
 }
 .profileimg{
     border-radius: 8px;
@@ -408,7 +427,7 @@ background-color: white;
   opacity: 0.8;
   margin-top: 5px;
   border-radius: 8px;
-  box-shadow: 5px 5px 5px rgb(156, 89, 18);
+  box-shadow:  5px 5px 17px -5px rgb(156, 89, 18);
   height: 30px;
   z-index: 1;
   
@@ -425,7 +444,7 @@ background-color: white;
     width: fit-content;
     height: fit-content;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    box-shadow:  5px 5px 17px -5px rgb(156, 89, 18)
     
 }
 .admincard{
@@ -440,7 +459,7 @@ background-color: white;
   
   width: 300px;
  
-  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+  box-shadow:  5px 5px 17px -5px  rgb(134, 60, 13)
 }
 .newProductTitle{
   margin-top: 90px;
@@ -450,7 +469,7 @@ background-color: white;
     width: fit-content;
     height: fit-content;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    box-shadow:  5px 5px 17px -5px rgb(156, 89, 18)
 }
 .newProductcard{
   margin-top: 90px;
@@ -463,7 +482,7 @@ background-color: white;
   padding: 5vw;
   position: relative;
   width: 300px;
-  box-shadow: 10px 10px 15px rgb(134, 60, 13)
+  box-shadow:  5px 5px 17px -5px rgb(134, 60, 13)
 
 }
 .newProductcard input,textarea{
@@ -496,7 +515,7 @@ background-color: white;
     width: fit-content;
     height: fit-content;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(156, 89, 18)
+    box-shadow:  5px 5px 17px -5px rgb(156, 89, 18)
 
 }
 .contactcard{
@@ -510,7 +529,7 @@ background-color: white;
   padding: 5vw;
   position: relative;
   width: 300px;
-  box-shadow: 10px 10px 15px rgb(134, 60, 13);
+  box-shadow:  5px 5px 17px -5px rgb(134, 60, 13);
   margin-bottom: 10px
 
 }
