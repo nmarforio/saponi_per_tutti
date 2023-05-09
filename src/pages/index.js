@@ -96,7 +96,8 @@ export default function Home() {
                       onStarClick={(nextValue, prevValue, name) =>
                         handleStarClick(nextValue, prevValue, name)
                       }
-                      activeColor="#dc9109"
+                      activeColor="#E6BF77"
+                      color={"#562409"}
                     />
                   </div>
                   <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>
