@@ -10,6 +10,7 @@ import { Navigation, EffectFade } from "swiper";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import StarRating from "react-rating-stars-component";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -69,13 +70,15 @@ export default function Home() {
                 <div key={soap._id} className="soapdetails">
                   <h1>{soap.name}</h1>
                   <div className="imgDiv">
-                    <Image
-                      key={soap._id}
-                      alt={soap._id}
-                      src={soap.image}
-                      width={200}
-                      height={250}
-                    />
+                    <Link href={`/${soap._id}`}>
+                      <Image
+                        key={soap._id}
+                        alt={soap._id}
+                        src={soap.image}
+                        width={200}
+                        height={250}
+                      />
+                    </Link>
                   </div>
                   <Quantity soapId={soap._id} index={index} />
                   <strong>CHF: {soap.price}</strong>
@@ -96,8 +99,9 @@ export default function Home() {
                       onStarClick={(nextValue, prevValue, name) =>
                         handleStarClick(nextValue, prevValue, name)
                       }
-                      activeColor="#E6BF77"
-                      color={"#562409"}
+                      activeColor="#9B3D00"
+                      color={"black"}
+                      size={17}
                     />
                   </div>
                   <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>

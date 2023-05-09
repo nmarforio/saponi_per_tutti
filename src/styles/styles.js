@@ -354,6 +354,9 @@ background-color: white;
   justify-content: flex-end;
   margin-bottom: 10px;
 }
+.price{
+  margin-top: 10px;
+}
 
 
 .soapdetails{
