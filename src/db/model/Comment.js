@@ -5,6 +5,7 @@ const CommentSchema = new Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   commentText: String,
   starRating: Number,
+  soapId: { type: mongoose.Schema.Types.ObjectId, ref: "Soaps" },
 });
 
 const Comment =

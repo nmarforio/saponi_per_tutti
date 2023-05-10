@@ -17,6 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [soapList, setSoapList] = useState([]);
   const [moreInfos, setMoreInfos] = useState(false);
+  const [rating, setRating] = useState();
   const router = useRouter();
 
   useEffect(() => {
@@ -28,6 +29,19 @@ export default function Home() {
     };
     fetchData().catch(console.error);
   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("/api/comment");
+      const json = await data.json();
+      setRating(json);
+    };
+    fetchData().catch(console.error);
+  }, []);
+
+  const ratingForAvarege = rating?.map((stars) => {
+    return stars.starRating;
+  });
+  console.log(ratingForAvarege);
 
   return (
     <>
@@ -64,7 +78,7 @@ export default function Home() {
                       />
                     </Link>
                   </div>
-                  <Quantity soapId={soap._id} index={index} />
+                  <Quantity key={soap._id} soapId={soap._id} index={index} />
                   <strong>CHF: {soap.price}</strong>
                   <button
                     className="menuButton"
@@ -83,6 +97,7 @@ export default function Home() {
                       activeColor="#9B3D00"
                       color={"black"}
                       size={17}
+                      edit={false}
                     />
                   </div>
                   <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>

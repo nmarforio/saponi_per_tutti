@@ -358,7 +358,34 @@ background-color: white;
   margin-top: 10px;
 }
 
+.comments{
+  border-color: rgb(134, 60, 13) ;
+  border: solid 2px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commentInput{
+  border: solid 2px;
+  border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commentInput label{
+  margin-top: 15px;
+}
+.commentInput button{
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(134, 60, 13);
+  font-size: medium;
+  border-radius: 8px;
+  margin: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+}
 .soapdetails{
   border-radius: 8px;
   background: rgb(220,172,163);

@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     const comments = await Comment.find();
     return res.status(200).json(comments);
   }
+
   if (req.method === "POST") {
     try {
       const commentData = req.body;

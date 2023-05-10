@@ -52,6 +52,7 @@ export default function Soapdetail() {
         userId: session.user.id,
         commentText: comments,
         starRating: stars,
+        soapId: id,
       }),
       headers: { "Content-Type": "application/json" },
     });
@@ -85,9 +86,9 @@ export default function Soapdetail() {
           <strong>Sostanze</strong>
           <p>{detialSoap.recipes}</p>
 
-          <form onSubmit={handleSubmit}>
+          <form className="commentInput" onSubmit={handleSubmit}>
             <label htmlFor="comments" id="comments">
-              Lascia un commento:
+              <strong> Lascia un commento e delle Stelle:</strong>
             </label>
             <textarea
               name="comments"
@@ -108,15 +109,22 @@ export default function Soapdetail() {
         </div>
         <div className="soapdetails">
           <p>I commenti dei clienti:</p>
-          {comments.map((comment) => {
-            return (
-              <>
-                <div>
-                  <p>{comment.commentText}</p>
-                  <StarRating value={comment.starRating} edit={false} />
-                </div>
-              </>
-            );
+          {comments?.map((comment) => {
+            if (comment.soapId === id) {
+              return (
+                <>
+                  <div className="comments" key={comment._id}>
+                    <p>{comment.commentText}</p>
+                    <StarRating
+                      value={comment.starRating}
+                      edit={false}
+                      color={"black"}
+                      activeColor={"#9B3D00"}
+                    />
+                  </div>
+                </>
+              );
+            }
           })}
         </div>
       </>
