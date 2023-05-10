@@ -13,13 +13,12 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const basketData = req.body;
-      console.log(basketData);
       const basketItem = new BasketItem(basketData);
       await basketItem.save();
       res.status(201).json({ status: "Created BasketItem" });
     } catch (error) {
       console.log(error);
-      response.status(400).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     }
   }
 }

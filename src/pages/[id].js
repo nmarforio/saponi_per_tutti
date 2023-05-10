@@ -6,10 +6,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import StarRating from "react-rating-stars-component";
+import { useSession } from "next-auth/react";
 
 export default function Soapdetail() {
   const [detialSoap, setDetailSoap] = useState();
   const [rating, setRating] = useState(0);
+  const [comments, setComments] = useState();
+  const { data: session } = useSession();
 
   const router = useRouter();
   const id = router.query.id;
@@ -24,12 +27,41 @@ export default function Soapdetail() {
     id && fetchData().catch(console.error);
   }, [id]);
 
-  function handleSubmit(event) {
-    event.preventdefault();
-    const stars = event.target.stars.value;
-    setRating(stars);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(`/api/comment`);
+      const json = await data.json();
+
+      setComments(json);
+    };
+    fetchData().catch(console.error);
+  }, []);
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const comments = event.target.comments.value;
+    const stars = rating;
+
+    const response = await fetch(`/api/comment`, {
+      method: "POST",
+      body: JSON.stringify({
+        userId: session.user.id,
+        commentText: comments,
+        starRating: stars,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      await response.json();
+      event.target.reset();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
   }
-  console.log(rating);
 
   if (detialSoap) {
     return (
@@ -53,19 +85,39 @@ export default function Soapdetail() {
           <strong>Sostanze</strong>
           <p>{detialSoap.recipes}</p>
 
-          <form on onSubmit={handleSubmit}>
-            <label>Lascia un commento:</label>
-            <textarea placeholder="I LOVE IT"></textarea>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="comments" id="comments">
+              Lascia un commento:
+            </label>
+            <textarea
+              name="comments"
+              id="comments"
+              placeholder="I LOVE IT"
+              required
+            ></textarea>
             <StarRating
+              onChange={ratingChanged}
               id="stars"
               name="stars"
-              value={rating}
               activeColor="#9B3D00"
               color={"black"}
               size={17}
             />
             <button type="submit">Fatto</button>
           </form>
+        </div>
+        <div className="soapdetails">
+          <p>I commenti dei clienti:</p>
+          {comments.map((comment) => {
+            return (
+              <>
+                <div>
+                  <p>{comment.commentText}</p>
+                  <StarRating value={comment.starRating} edit={false} />
+                </div>
+              </>
+            );
+          })}
         </div>
       </>
     );

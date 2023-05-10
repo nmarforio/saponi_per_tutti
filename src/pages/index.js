@@ -17,23 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [soapList, setSoapList] = useState([]);
   const [moreInfos, setMoreInfos] = useState(false);
-  const [rating, setRating] = useState(0);
   const router = useRouter();
-
-  const customStyles = {
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.6)",
-    },
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
-  const handleStarClick = (nextValue, prevValue, name) => {};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,10 +79,7 @@ export default function Home() {
                   </button>
                   <div className="ratingStar">
                     <StarRating
-                      value={rating}
-                      onStarClick={(nextValue, prevValue, name) =>
-                        handleStarClick(nextValue, prevValue, name)
-                      }
+                      value={3}
                       activeColor="#9B3D00"
                       color={"black"}
                       size={17}
