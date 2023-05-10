@@ -10,15 +10,11 @@ export default async function handler(req, res) {
     const soap = await Soap.findById(id);
     return res.status(200).json(soap);
   }
-  if (req.method === "POST") {
-    try {
-      const basketData = req.body;
-      const basketItem = new BasketItem(basketData);
-      await basketItem.save();
-      res.status(201).json({ status: "Created BasketItem" });
-    } catch (error) {
-      console.log(error);
-      res.status(400).json({ error: error.message });
-    }
+  if (req.method === "PUT") {
+    console.log("AAAAAAA", req.body);
+    const newRating = await Soap.findByIdAndUpdate(id, {
+      $push: req.body,
+    });
+    return res.status(200).json(newRating);
   }
 }

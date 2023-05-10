@@ -51,8 +51,8 @@ export default function Soapdetail() {
       body: JSON.stringify({
         userId: session.user.id,
         commentText: comments,
-        starRating: stars,
         soapId: id,
+        starRating: rating,
       }),
       headers: { "Content-Type": "application/json" },
     });
@@ -61,6 +61,23 @@ export default function Soapdetail() {
       event.target.reset();
     } else {
       console.error(`Error: ${response.status}`);
+    }
+
+    const res = await fetch(`/api/soaps/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        ratingStar: rating,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      await res.json();
+      event.target.reset();
+    } else {
+      console.error(`Error: ${res.status}`);
     }
   }
 
