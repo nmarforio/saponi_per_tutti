@@ -1,16 +1,11 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import Quantity from "@/components/Quantity";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import { Navigation, EffectFade } from "swiper";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import StarRating from "react-rating-stars-component";
-import Link from "next/link";
+import HomeSoapCard from "@/components/HomeSoapCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,70 +41,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Swiper
-        modules={[Navigation, EffectFade]}
-        navigation
-        effect
-        speed={800}
-        slidesPerView={1}
-        loop
-        className="myswiper"
-      >
-        {soapList.map((soap, index) => {
-          const length = soap.ratingStar.length;
-          const arraySum = soap.ratingStar.reduce((a, b) => a + b, 0);
-          const starsAverage = arraySum / length;
-          return (
-            <>
-              <SwiperSlide key={soap._id}>
-                <div key={soap._id} className="soapdetails">
-                  <h1>{soap.name}</h1>
-                  <div className="imgDiv">
-                    <Link href={`/${soap._id}`}>
-                      <Image
-                        key={soap._id}
-                        alt={soap._id}
-                        src={soap.image}
-                        width={200}
-                        height={250}
-                      />
-                    </Link>
-                  </div>
-                  <Quantity key={soap._id} soapId={soap._id} index={index} />
-                  <strong>CHF: {soap.price}</strong>
-                  <button
-                    className="menuButton"
-                    onClick={() => setMoreInfos(!moreInfos)}
-                  >
-                    <Image
-                      src={"/dots.png"}
-                      alt={"menu"}
-                      width={30}
-                      height={30}
-                    />
-                  </button>
-                  <div className="ratingStar">
-                    <StarRating
-                      value={starsAverage}
-                      activeColor="#9B3D00"
-                      color={"black"}
-                      size={17}
-                      isHalf={true}
-                      edit={false}
-                    />
-                  </div>
-                  <div className={moreInfos ? "toogleInfo" : "toogleInfoNone"}>
-                    <p>{soap.description}</p>
-                    <strong>Sostanze</strong>
-                    <p className="recipes">{soap.recipes}</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </>
-          );
-        })}
-      </Swiper>
+      <HomeSoapCard
+        soapList={soapList}
+        moreInfosFunction={setMoreInfos}
+        moreInfosData={moreInfos}
+      />
     </>
   );
 }

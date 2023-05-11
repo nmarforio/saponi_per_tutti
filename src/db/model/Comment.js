@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const CommentSchema = new Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   commentText: String,
-  starRating: Number,
+  ratingStar: Number,
   soapId: { type: mongoose.Schema.Types.ObjectId, ref: "Soap" },
 });
 
