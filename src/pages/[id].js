@@ -133,7 +133,7 @@ export default function Soapdetail() {
                   <div className="comments" key={comment._id}>
                     <p>{comment.commentText}</p>
                     <StarRating
-                      value={comment.starRating}
+                      value={comment.starg}
                       edit={false}
                       color={"black"}
                       activeColor={"#9B3D00"}

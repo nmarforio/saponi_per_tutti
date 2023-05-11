@@ -38,11 +38,6 @@ export default function Home() {
     fetchData().catch(console.error);
   }, []);
 
-  const ratingForAvarege = rating?.map((stars) => {
-    return stars.starRating;
-  });
-  console.log(ratingForAvarege);
-
   return (
     <>
       <Head>
@@ -62,6 +57,9 @@ export default function Home() {
         className="myswiper"
       >
         {soapList.map((soap, index) => {
+          const length = soap.ratingStar.length;
+          const arraySum = soap.ratingStar.reduce((a, b) => a + b, 0);
+          const starsAverage = arraySum / length;
           return (
             <>
               <SwiperSlide key={soap._id}>
@@ -93,10 +91,11 @@ export default function Home() {
                   </button>
                   <div className="ratingStar">
                     <StarRating
-                      value={3}
+                      value={starsAverage}
                       activeColor="#9B3D00"
                       color={"black"}
                       size={17}
+                      isHalf={true}
                       edit={false}
                     />
                   </div>
