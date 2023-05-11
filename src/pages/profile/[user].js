@@ -1,5 +1,5 @@
 import LoginButton from "@/components/Login-btn";
-
+import UserUpDateForm from "@/components/UserUpDateForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -61,48 +61,15 @@ export default function UserPage() {
     return (
       <>
         <h2 className="changeDatasTitle">Cambia i toui Dati:</h2>
-        <div className="changeDatasForm">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Nome:</label>
-            <input
-              id="name"
-              name="name"
-              value={name}
-              onChange={(event) => {
-                setName(event.target.adress);
-              }}
-              required
-            ></input>
-
-            <label htmlFor="adress">Indirizzo:</label>
-            <textarea
-              id="adress"
-              name="adress"
-              value={adress}
-              onChange={(event) => {
-                setAdress(event.target.adress);
-              }}
-              required
-            ></textarea>
-            <label htmlFor="email">Email:</label>
-            <input
-              id="email"
-              name="email"
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.email);
-              }}
-              required
-            ></input>
-            <button
-              className="saveDatasButton"
-              type="Submit"
-              onClick={() => router.push("/profile")}
-            >
-              Salva
-            </button>
-          </form>
-        </div>
+        <UserUpDateForm
+          name={name}
+          onSubmit={handleSubmit}
+          onChangeName={setName}
+          adress={adress}
+          onChangeAdress={setAdress}
+          email={email}
+          onChangeEmail={email}
+        />
       </>
     );
   } else {

@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function BasketSoapCards({
   soap,
   quantity,
@@ -8,33 +10,54 @@ export default function BasketSoapCards({
   idtoDelete,
 }) {
   return (
-    <div key={soap.name} className="basketCard">
-      <h3 key={soap.price_id}>{soap.name}</h3>
-      <label htmlFor="quantity">quantità:</label>
-      <input
-        key={soap._id}
-        onChange={(event) => {
-          console.log(event.target.value);
-          updateQuantity(event.target.value, index);
-          // setQuantity(event.target.quantity);
-        }}
-        id="quantity"
-        name="quantity"
-        defaultValue={quantity[index]}
-        type="number"
-        min={0}
-        max={10}
-      ></input>
-      <p name="eachprice" id="eachprice">
-        CHF Prezzo: {total}
-      </p>
-      <button
-        onClick={() => {
-          onDelete(idtoDelete[index]);
-        }}
-      >
-        <p>Elimina</p>
-      </button>
-    </div>
+    <>
+      <StyledH3 key={soap.price_id}>{soap.name}</StyledH3>
+      <StyledDiv key={soap.name}>
+        <label htmlFor="quantity">quantità:</label>
+        <StyledBasketInput
+          key={soap._id}
+          onChange={(event) => {
+            updateQuantity(event.target.value, index);
+          }}
+          id="quantity"
+          name="quantity"
+          defaultValue={quantity[index]}
+          type="number"
+          min={0}
+          max={10}
+        ></StyledBasketInput>
+        <p name="eachprice" id="eachprice">
+          CHF Prezzo: {total}
+        </p>
+        <button
+          onClick={() => {
+            onDelete(idtoDelete[index]);
+          }}
+        >
+          <p>X</p>
+        </button>
+      </StyledDiv>
+    </>
   );
 }
+
+const StyledDiv = styled.div`
+  background-color: rgb(220, 172, 163);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 3px 1px rgb(122, 65, 23);
+`;
+const StyledH3 = styled.h3`
+  margin-bottom: 5px;
+`;
+
+const StyledBasketInput = styled.input`
+  border-radius: 8px;
+`;
+
+const StyledDivH3 = styled.div`
+  margin-bottom: 0;
+`;

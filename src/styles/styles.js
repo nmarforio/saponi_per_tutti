@@ -11,6 +11,13 @@ display: flex;
   justify-content: space-evenly;
 }
 
+//BASKET
+.basketOrder{
+  display: flex;
+    justify-content: center;
+    margin-top: 30%;
+}
+
 body{
   
     margin:0;
@@ -77,17 +84,7 @@ opacity: 0.8;
     color: black;
     padding-left: 10px;
 }
-.ordertitle{
-    margin-top: 90px;
-    border: solid 2px rgb(134, 60, 13);
-    color: rgb(134, 60, 13);
-    background-color: rgb(212, 205, 195);
-    width: fit-content;
-    height: fit-content;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(156, 89, 18)
-    
-}
+
 .ordertitle2{
   margin-top: 90px;
   border: solid 2px rgb(134, 60, 13);
@@ -304,36 +301,7 @@ background-color: white;
   border-radius: 8px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.basketCard{ 
-  background-color: rgb(212, 205, 195) ;
-  margin-top: 50px;  
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  opacity: 0.9;
-  border-radius: 8px;
-  border: 1px solid rgb(134, 60, 13);
-  padding: 5vw;
-  width: 250px;
-  box-shadow:  5px 5px 17px -5px rgb(134, 60, 13)
-}
 
-.basketCard input{
-  margin-top: 10px;
-    border-radius: 8px;
-    border-color: rgb(134, 60, 13);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.basketCard button{
-  background-color: white;
-  color: black;
-  border: 2px solid rgb(134, 60, 13);
-  font-size: medium;
-  border-radius: 8px;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
 
 .menuButton{
   margin-top: 10px;

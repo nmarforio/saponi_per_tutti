@@ -83,7 +83,6 @@ export default function NewProduct() {
         imageSrc={imageSrc}
         onImageSubmit={handleImageSubmit}
         onImageChange={handleImageChange}
-        // images={images}
       />
       <NewProductForm onSubmit={handleSubmitInfos} />
     </>
