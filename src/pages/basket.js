@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import BasketSoapCards from "@/components/BasketSoapCards";
+import styled from "styled-components";
 
 export default function Basket() {
   const { data: session } = useSession();
@@ -61,13 +62,14 @@ export default function Basket() {
     newOrder.items.push(newSoap);
   });
 
-  function sendingCost(quantity, total) {
-    if (quantity > 1 && quantity <= 3) {
-      return total + 7;
-    } else if (quantity > 3 && quantity <= 6) {
-      return total + 3.5;
+  function sendingCost(quantityForTotal, upDatedTotal) {
+    console.log(quantityForTotal);
+    if (quantityForTotal > 1 && quantityForTotal <= 3) {
+      return upDatedTotal + 7;
+    } else if (quantityForTotal > 3 && quantityForTotal <= 6) {
+      return upDatedTotal + 3.5;
     } else {
-      return total + 0;
+      return upDatedTotal + 0;
     }
   }
 
@@ -103,12 +105,43 @@ export default function Basket() {
             </>
           );
         })}
-        <div className="total">
+        <StyledTotalDiv className="total">
           <label htmlFor="total">Totale incluso spese:</label>
-          <input id="total" name="total" defaultValue={sum}></input>
-          <button type="Submit">compra</button>
-        </div>
+          <input
+            className="inputTotal"
+            id="total"
+            name="total"
+            defaultValue={total}
+          ></input>
+          <button className="buttonTotal" type="Submit">
+            compra
+          </button>
+        </StyledTotalDiv>
       </form>
     </>
   );
 }
+
+const StyledTotalDiv = styled.div`
+  background-color: rgb(220, 172, 163);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30%;
+  box-shadow: 1px 1px 3px 1px rgb(122, 65, 23);
+  height: 10%;
+  .inputTotal {
+    width: 15%;
+    border-radius: 8px;
+    border-color: rgb(122, 65, 23);
+  }
+  .buttonTotal {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(122, 65, 23);
+    border-radius: 8px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+`;

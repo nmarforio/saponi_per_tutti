@@ -271,36 +271,6 @@ background-color: white;
     border-radius: 8px;
     box-shadow:  5px 5px 17px -5px  rgb(134, 60, 13);
 }
-.total {
-    background-color: rgb(212, 205, 195) ;
-  opacity: 0.9;
-  border-radius: 8px;
-  border: 1px solid rgb(134, 60, 13);
-  height: fit-content;
-  padding: 5vw;
-  width: auto;
-  box-shadow:  5px 5px 17px -5px  rgb(134, 60, 13);
-  margin-top: 10px;
-}
-.total label{
-    margin-right: 10px;
-    font-size: large;
-}
-.total input{
-    margin: 10px;
-    border-radius: 8px;
-    border-color: rgb(134, 60, 13);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-}
-.total button{
-background-color: white;
-  color: black;
-  border: 2px solid rgb(134, 60, 13);
-  font-size: medium;
-  border-radius: 8px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
 
 
 .menuButton{

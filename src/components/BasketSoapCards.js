@@ -14,7 +14,8 @@ export default function BasketSoapCards({
       <StyledH3 key={soap.price_id}>{soap.name}</StyledH3>
       <StyledDiv key={soap.name}>
         <label htmlFor="quantity">quantità:</label>
-        <StyledBasketInput
+        <input
+          className="basketInput"
           key={soap._id}
           onChange={(event) => {
             updateQuantity(event.target.value, index);
@@ -25,7 +26,7 @@ export default function BasketSoapCards({
           type="number"
           min={0}
           max={10}
-        ></StyledBasketInput>
+        ></input>
         <p name="eachprice" id="eachprice">
           CHF Prezzo: {total}
         </p>
@@ -49,15 +50,11 @@ const StyledDiv = styled.div`
   justify-content: space-around;
   margin-bottom: 30px;
   box-shadow: 1px 1px 3px 1px rgb(122, 65, 23);
+  .basketInput {
+    border-radius: 8px;
+    border-color: rgb(122, 65, 23);
+  }
 `;
 const StyledH3 = styled.h3`
   margin-bottom: 5px;
-`;
-
-const StyledBasketInput = styled.input`
-  border-radius: 8px;
-`;
-
-const StyledDivH3 = styled.div`
-  margin-bottom: 0;
 `;
